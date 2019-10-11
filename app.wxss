@@ -1,0 +1,28 @@
+page {
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+view {
+  box-sizing: border-box;
+}
+.border-bottom {
+  border-bottom: 1px solid #999;
+}
+.fl {
+  float: left;
+}
+.w25 {
+  width: 25%;
+}
+.w50 {
+  width: 50%;
+}
+.w75 {
+  width: 75%;
+}
+.relative {
+  position: relative;
+}
+.user-info i-avatar{
+  margin-right: 20rpx;
+}

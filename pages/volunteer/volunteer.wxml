@@ -1,0 +1,19 @@
+<view class="container volunteer">
+  <i-tabs current="{{ current }}" bindchange="handleChange">
+    <i-tab key="tab1" title="我参与"></i-tab>
+    <i-tab key="tab2" title="我围观"></i-tab>
+  </i-tabs>
+  <view>
+    <navigator wx:for="{{activityList}}" wx:key="{{item.id}}" url='./activity?id={{item.id}}' style='padding: 20px 10px 0;'>
+      <view class='card'>
+        <i-avatar size="small">
+          <image class='card-image' src="{{item.newsImage}}"></image>
+        </i-avatar>
+        <view class='card-title'>{{item.name}}</view>
+        <view class='card-content'>{{item.time}}</view>
+        <view class='card-footer'>{{item.title}}</view>
+        <view class='card-status'>{{item.status}}</view>
+      </view>
+    </navigator>
+  </view>
+</view>

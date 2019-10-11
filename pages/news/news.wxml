@@ -1,0 +1,49 @@
+<view class="container news">
+  <view class="page-body">
+    <view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item {{item}}"></view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <i-tabs current="{{ current }}" bindchange="handleChange">
+    <i-tab key="tab1" title="新闻"></i-tab>
+    <i-tab key="tab2" title="文明秀"></i-tab>
+  </i-tabs>
+  <view class="new-list" hidden="{{current != 'tab1'}}">
+    <navigator url='./content'>
+      <view class="new-list-li">
+        <view class="fl w25">
+          <image src="https://ss2.bdstatic.com/8_V1bjqh_Q23odCf/pacific/1913601244.png" style="width: 100%;height: 200rpx;" />
+        </view>
+        <view class="fl w75 relative">
+          <view class="new-title">标题</view>
+          <view class="new-time">时间</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class="civilization-list" hidden="{{current != 'tab2'}}">
+    <navigator url='./content'>
+      <view class="civilization-list-li">
+        <view class="user-info">
+          <i-avatar>
+            <image class='card-image' src="{{item.newsImage}}"></image>
+          </i-avatar>
+          发布人
+        </view>
+        <view class="civilization-title">标题</view>
+        <view class="civilization-img">
+          <image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2350171032,3227234175&fm=26&gp=0.jpg" />
+          <image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2350171032,3227234175&fm=26&gp=0.jpg" />
+          <image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2350171032,3227234175&fm=26&gp=0.jpg" />
+        </view>
+        <view class="civilization-time">时间</view>
+      </view>
+    </navigator>
+  </view>
+</view>

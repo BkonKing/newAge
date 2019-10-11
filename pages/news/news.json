@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "test",
+    "component": true,
+    "usingComponents": {
+        "i-tabs": "../../iview/tabs/index",
+        "i-tab": "../../iview/tab/index",
+        "i-avatar": "../../iview/avatar/index",
+        "i-button": "../../iview/button/index",
+        "i-row": "../../iview/row/index",
+        "i-col": "../../iview/col/index"
+    }
+}

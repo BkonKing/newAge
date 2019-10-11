@@ -1,0 +1,32 @@
+<view class="container volunteer">
+  <i-cell-group>
+      <i-cell title="跳转到首页" is-link url="/pages/dashboard/index"></i-cell>
+      <i-cell title="只有 footer 点击有效" is-link url="/pages/dashboard/index" only-tap-footer></i-cell>
+      <i-cell title="开关">
+          <switch slot="footer" checked />
+      </i-cell>
+  </i-cell-group>
+  <i-cell class="h3" style="text-align: center;">
+      这是活动标题
+  </i-cell>
+  <i-cell>状态</i-cell>
+  <i-cell>
+    <i-avatar size="small">
+      <image class='card-image' src="https://i.loli.net/2017/08/21/599a521472424.jpg"></image>
+    </i-avatar>
+    发布名称
+  </i-cell>
+  <i-cell class="">【基础信息】</i-cell>
+  <i-cell>活动地点&nbsp;&nbsp;</i-cell>
+  <i-cell>报名上限&nbsp;&nbsp;</i-cell>
+  <i-cell>服务时长&nbsp;&nbsp;</i-cell>
+  <i-cell>开始时间&nbsp;&nbsp;</i-cell>
+  <i-cell>结束时间&nbsp;&nbsp;</i-cell>
+  <i-cell class="">【活动内容】</i-cell>
+  <i-cell>活动内容</i-cell>
+  <i-cell class="">【我的活动状态】</i-cell>
+  <i-cell>报名状态&nbsp;&nbsp;</i-cell>
+  <i-cell>签到状态&nbsp;&nbsp;</i-cell>
+  <i-cell>新增活跃&nbsp;&nbsp;</i-cell>
+  
+</view>

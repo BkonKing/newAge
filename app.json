@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/civilizationMap/civilizationMap",
+    "pages/news/news",
+    "pages/volunteer/volunteer",
+    "pages/volunteer/activity",
+    "pages/loveHelp/loveHelp",
+    "pages/personal/personal",
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#252525",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/civilizationMap/civilizationMap",
+        "text": "文明地图"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "新闻动态"
+      },
+      {
+        "pagePath": "pages/volunteer/volunteer",
+        "text": "志愿活动"
+      },
+      {
+        "pagePath": "pages/loveHelp/loveHelp",
+        "text": "爱心帮帮"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

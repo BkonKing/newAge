@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-avatar": "../../iview/avatar/index",
+    "i-button": "../../iview/button/index"
+  }
+}
