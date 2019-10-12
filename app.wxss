@@ -26,3 +26,14 @@ view {
 .user-info i-avatar{
   margin-right: 20rpx;
 }
+.module-title {
+  text-align: center;
+  color: #999;
+  padding: 10rpx 0;
+}
+.mt20 {
+  margin-top: 20rpx;
+}
+.mt40 {
+  margin-top: 40rpx;
+}

@@ -1,18 +1,21 @@
 <view class="container content">
-  <view>
-    <view>标题</view>
-    <view>时间</view>
+  <view class="content-header">
+    <view class="main-title">标题</view>
+    <view class="publish-time">时间</view>
   </view>
   <view>
-    <view>【关联活动】</view>
-    <view>
-      <i-avatar size="small">
-        <image class='card-image' src="{{item.newsImage}}"></image>
-      </i-avatar>
-      发布人
-      <i-button></i-button>
-      <view >标题</view>
-      <view >内容</view>
+    <view class="module-title">【关联活动】</view>
+    <view style="padding: 10rpx 0 20rpx;border-bottom: 2rpx solid #ddd;overflow: hidden;">
+      <view class="user-info fl">
+        <i-avatar size="small">
+          <image class='card-image' src="{{item.newsImage}}"></image>
+        </i-avatar>
+        发布人
+        <view class="mt40">标题</view>
+      </view>
+      <button class="fr" style="width: 150rpx;font-size: 28rpx;margin: 0;">查看</button>
     </view>
+    <view>内容</view>
+    <i-button size="small">查看</i-button>
   </view>
 </view>

@@ -36,7 +36,7 @@ App({
   request: function(url, method, data, successCallback, errorCallback) {
     // wx.showLoading()
     wx.request({
-      url: "http://csadmin.upin-cloud.com/api" + url,
+      url: "https://www.upin-cloud.com/api" + url,
       method: method,
       data: data,
       header: {
