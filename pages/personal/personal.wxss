@@ -1,1 +1,21 @@
-
+.personal-info {
+  background: #eee;
+  padding: 60rpx 20rpx;
+}
+.personal-info>view {
+  margin-right: 20rpx;
+}
+.personal .i-avatar-big {
+  width: 120rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  border-radius: 60rpx;
+  border: 1px solid #222;
+}
+.team-list {
+  padding: 20rpx;
+  border-bottom: 2rpx solid #ddd;
+}
+.personal .i-avatar {
+  border: 1px solid #222;
+}

@@ -2,12 +2,3 @@
   border-bottom: 2rpx solid #ddd;
   padding: 10rpx 20rpx;
 }
-.main-title {
-  padding: 40rpx;
-  text-align: center;
-}
-.publish-time {
-  font-size: 24rpx;
-  margin-top: 20rpx;
-  color: #888;
-}

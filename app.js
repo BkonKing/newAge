@@ -33,22 +33,22 @@ App({
       }
     })
   },
-  request: function(url, method, data, successCallback, errorCallback) {
+  request: function(params) {
     // wx.showLoading()
     wx.request({
-      url: "https://www.upin-cloud.com/api" + url,
-      method: method,
-      data: data,
+      url: "https://www.upin-cloud.com/api" + params.url,
+      method: params.method,
+      data: params.data,
       header: {
         'content-type': 'application/json',
         'Authorization': 'Basic 19ce655ff65026b8e64ce8cdbc050993'
       },
       success: function (res) {
-        successCallback(res)
+        params.success(res.data)
       },
       fail: function (ress) {
         // console.log(ress)
-        errorCallback(ress)
+        params.fail(ress)
       },
       complete: function () {
         wx.hideLoading()

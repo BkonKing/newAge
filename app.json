@@ -1,18 +1,21 @@
 {
   "pages": [
-    "pages/civilizationMap/civilizationMap",
     "pages/news/news",
-    "pages/volunteer/volunteer",
-    "pages/volunteer/activity",
-    "pages/loveHelp/loveHelp",
     "pages/personal/personal",
+    "pages/news/content",
+    "pages/volunteer/activity",
+    "pages/volunteer/volunteer",
+    "pages/civilizationMap/civilizationMap",
+    "pages/loveHelp/loveHelp",
     "pages/index/index"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#0081ff",
+    "navigationBarTitleText": "荔城文明实践",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
   },
   "tabBar": {
     "color": "#7A7E83",

@@ -4,15 +4,15 @@
     <i-tab key="tab2" title="我围观"></i-tab>
   </i-tabs>
   <view>
-    <navigator wx:for="{{activityList}}" wx:key="{{item.id}}" url='./activity?id={{item.id}}' style='padding: 20px 10px 0;'>
-      <view class='card'>
-        <i-avatar size="small">
-          <image class='card-image' src="{{item.newsImage}}"></image>
-        </i-avatar>
-        <view class='card-title'>{{item.name}}</view>
-        <view class='card-content'>{{item.time}}</view>
-        <view class='card-footer'>{{item.title}}</view>
-        <view class='card-status'>{{item.status}}</view>
+    <navigator wx:for="{{activityList}}" wx:key="{{item.id}}" url='./activity?id={{item.id}}' style='padding: 20px 0 0;'>
+      <view class='activity-list'>
+        <view class='cu-tag fr mt20'>{{item.status}}</view>
+        <view class='user-info'>
+            <image class='cu-avatar round' src="{{item.newsImage}}"></image>
+          <text>{{item.name}}</text>
+        </view>
+        <view class='text-sm'>{{item.time}}</view>
+        <view class='card-title text-lg'>{{item.name}}</view>
       </view>
     </navigator>
   </view>

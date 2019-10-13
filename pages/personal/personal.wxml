@@ -1,4 +1,36 @@
-
 <view class="container personal">
-  
+  <view class="overhidden w100 personal-info">
+    <view class="fl">
+      <image class='cu-avatar xl round' src="{{item.newsImage}}"></image>
+    </view>
+    <view class="fl">
+      <view class="text-lg">wodenicheng</view>
+      <view class="text-sm" style='line-height: 22px;margin: 8rpx 0;'>
+        zhiyuanzhe
+        <i-icon type="editor" size="22" color="#666" i-class='ml20' />
+      </view>
+      <view class="text-sm text-grey">weiwancheng</view>
+    </view>
+    <view class="fr center">
+      <view class='text-xxl'>2398</view>
+      <view class='text-sm'>活跃度</view>
+      <view class="text-xs text-grey mt20">已超过 的志愿者</view>
+    </view>
+  </view>
+  <view class='text-sm text-grey border-bottom' style='padding: 20rpx;'>【我的队伍】</view>
+  <view class='team-list' wx:for="{{teamList}}" wx:key="{{item.huoyue}}">
+    <view class='user-info'>
+      <image class='cu-avatar round' src="{{item.newsImage}}"></image>
+      <text>志愿者服务dui</text>
+    </view>
+    <view class='overhidden'>
+      <view class='fr cu-tag line-grey'>
+        已加入
+      </view>
+      <view class='text-sm'>我获得的活跃度 {{item.huoyue}}</view>
+    </view>
+  </view>
+  <view class="padding flex flex-direction mt20">
+    <button class="cu-btn bg-blue lg" bindtap='toActive'>找活动加队伍</button>
+  </view>
 </view>
