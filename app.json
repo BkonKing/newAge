@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/news/content",
-    "pages/volunteer/volunteer",
-    "pages/news/news",
     "pages/personal/personal",
+    "pages/volunteer/volunteer",
+    "pages/volunteer/join",
+    "pages/news/news",
+    "pages/news/content",
     "pages/volunteer/activity",
     "pages/civilizationMap/civilizationMap",
     "pages/loveHelp/loveHelp",
@@ -25,22 +26,32 @@
     "list": [
       {
         "pagePath": "pages/civilizationMap/civilizationMap",
+        "iconPath": "static/civilizationMap.png",
+        "selectedIconPath": "static/civilizationMap-checked.png",
         "text": "文明地图"
       },
       {
         "pagePath": "pages/news/news",
+        "iconPath": "static/news.png",
+        "selectedIconPath": "static/news-checked.png",
         "text": "新闻动态"
       },
       {
         "pagePath": "pages/volunteer/volunteer",
+        "iconPath": "static/volunteer.png",
+        "selectedIconPath": "static/volunteer-checked.png",
         "text": "志愿活动"
       },
       {
         "pagePath": "pages/loveHelp/loveHelp",
+        "iconPath": "static/loveHelp.png",
+        "selectedIconPath": "static/loveHelp-checked.png",
         "text": "爱心帮帮"
       },
       {
         "pagePath": "pages/personal/personal",
+        "iconPath": "static/personal.png",
+        "selectedIconPath": "static/personal-checked.png",
         "text": "个人中心"
       }
     ]

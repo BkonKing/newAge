@@ -27,16 +27,17 @@
 }
 
 .new-list, .civilization-list {
-  background: #fff;
   border-radius: 13rpx;
 }
 
 .new-list-li {
+  background: #fff;
   height: 220rpx;
   padding: 20rpx 32rpx;
 }
 
-.new-list-li + .new-list-li {
+.new-list-li + .new-list-li,
+.civilization-list-li + .civilization-list-li {
   margin-top: 20rpx;
 }
 
@@ -57,6 +58,7 @@
 }
 
 .civilization-list-li {
+  background: #fff;
   padding: 20rpx;
   border-bottom: 2rpx solid #ddd;
 }

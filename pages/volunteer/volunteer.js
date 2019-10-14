@@ -2,33 +2,50 @@ const app =  getApp();
 
 Page({
   onLoad() {
-    app.request('/category', 'get', {
-      // userid: wx.getStorageSync('userid'),
-      // id: 1
-    }, (res) => {
-      if (res.data.code == '0000') {
-        console.log(res);
-      }
-    })
+    this.queryActivity()
   },
   data: {
     current: 'tab1',
-    activityList: [
-      {
-        id: '1',
-        name: '1',
-        time: '1',
-        title: '1',
-        status: '1',
-        newsImage: 'https://i.loli.net/2017/08/21/599a521472424.jpg'
-      }
-    ]
+    activityList: []
   },
 
   handleChange({ detail }) {
     this.setData({
       current: detail.key
     });
+    if (detail.key == 'tab1') {
+      this.queryActivity()
+    } else {
+      this.queryCurrentActivity()
+    }
   },
+
+  queryActivity() {
+    app.request({
+      url: '/activity',
+      method: 'get',
+      success: (data) => {
+        if (data.code == 1) {
+          this.setData({
+            activityList: data.data.data
+          })   
+        }
+      }
+    })
+  },
+
+  queryCurrentActivity() {
+    app.request({
+      url: '/current/activity',
+      method: 'get',
+      success: (data) => {
+        if (data.code == 1) {
+          this.setData({
+            activityList: data.data.data
+          })   
+        }
+      }
+    })
+  }
 
 })

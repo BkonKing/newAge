@@ -1,6 +1,3 @@
 {
-  "component": true,
-  "usingComponents": {
-    "i-avatar": "../../iview/avatar/index"
-  }
+
 }

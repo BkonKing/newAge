@@ -1,31 +1,33 @@
 <view class="container activity">
-  <view class='text-center text-bold text-xl'>标题</view>
-  <view class='center mt20'>
-    <view class='cu-tag line-blue'>报名中</view>
+  <view class='text-center text-bold text-xl'>{{activity.name}}</view>
+  <view class='center mt20 fr'>
+    <wxs src="../../utils/filter.wxs" module="filter"></wxs>
+    <view class='cu-tag line-blue'>{{filter.toStatus(activity.join_status)}}</view>
   </view>
   <view class='user-info' style='padding-left: 40rpx;'>
-    <image class='cu-avatar round' src=""></image>
-    <text>名称</text>
+    <image class='cu-avatar round' src="{{activity.address}}"></image>
+    <text>{{activity.team_name}}</text>
   </view>
   <view class='module-title'>【基本信息】</view>
   <view class='ul'>
-    <view>活动地点</view>
-    <view>报名上限</view>
-    <view>服务时长</view>
-    <view>开始时间</view>
-    <view>结束时间</view>
+    <view>活动地点  {{activity.address}}</view>
+    <view>报名上限  {{activity.max}}</view>
+    <view>服务时长  {{activity.time}}</view>
+    <view>开始时间  {{activity.start_time}}</view>
+    <view>结束时间  {{activity.end_time}}</view>
   </view>
   <view class='module-title'>【活动内容】</view>
   <view class='ul'>
-    <view>活动地点</view>
+    <import src="/wxParse/wxParse.wxml" />
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
-    <view class='module-title'>【我的活动状态】</view>
+  <view class='module-title'>【我的活动状态】</view>
   <view class='ul'>
-    <view>报名状态</view>
-    <view>签到状态</view>
-    <view>新增活跃</view>
+    <view>报名状态  {{filter.joinStatus(activity.join_status)}}</view>
+    <view>签到状态  {{filter.signStatus(activity.sign_status)}}</view>
+    <view>新增活跃  {{activity.amount}} / {{activity.time}}</view>
   </view>
   <view class='center mt20'>
-    <button class='cu-btn bg-blue round shadow'>我要报名</button>
+    <button class='cu-btn bg-blue round shadow' bindtap="join">我要报名</button>
   </view>
 </view>

@@ -9,18 +9,8 @@ Page({
     autoplay: false,
     interval: 2000,
     duration: 500,
-    newList: [{
-      id: 1,
-      src: 'https://ss2.bdstatic.com/8_V1bjqh_Q23odCf/pacific/1913601244.png',
-      title: '为',
-      time: 'sdf'
-    }],
-    civilizationList: [{
-      id: 1,
-      src: 'https://ss2.bdstatic.com/8_V1bjqh_Q23odCf/pacific/1913601244.png',
-      title: '为',
-      time: 'sdf'
-    }]
+    newList: [],
+    civilizationList: []
   },
 
   onLoad() {
@@ -33,9 +23,9 @@ Page({
       method: 'get',
       success: (data) => {
         if (data.code == 1) {
-          // this.setData({
-          //   newList: data.data.data
-          // })   
+          this.setData({
+            newList: data.data.data
+          })   
         }
       }
     })
@@ -47,11 +37,20 @@ Page({
       method: 'get',
       success: (data) => {
         if (data.code == 1) {
-          // this.setData({
-          //   civilizationList: data.data.data
-          // })   
+          this.setData({
+            civilizationList: data.data.data
+          })   
         }
       }
+    })
+  },
+
+  navigator(e) {
+    var type = this.data.current == 'tab1' ? 'new' : 'show'
+    const params = e.currentTarget.dataset.param
+    wx.setStorageSync('newContent', params)
+    wx.navigateTo({
+      url: './content?type=' + type
     })
   },
 

@@ -1,3 +1,6 @@
+page {
+  background: #fff;
+}
 .personal-info {
   background: #eee;
   padding: 60rpx 20rpx;

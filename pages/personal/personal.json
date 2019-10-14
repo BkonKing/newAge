@@ -1,9 +1,8 @@
 {
-    "navigationBarTitleText": "test",
+    "navigationBarTitleText": "个人中心",
     "component": true,
     "usingComponents": {
         "i-button": "../../iview/button/index",
-        "i-icon": "../../iview/icon/index",
-        "i-avatar": "../../iview/avatar/index"
+        "i-icon": "../../iview/icon/index"
     }
 }
