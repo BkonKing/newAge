@@ -1,9 +1,8 @@
 {
-    "navigationBarTitleText": "test",
+    "navigationBarTitleText": "志愿活动",
     "component": true,
     "usingComponents": {
         "i-tabs": "../../iview/tabs/index",
-        "i-avatar": "../../iview/avatar/index",
         "i-tab": "../../iview/tab/index"
     }
 }

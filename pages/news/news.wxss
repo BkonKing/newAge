@@ -27,32 +27,33 @@
 }
 
 .new-list, .civilization-list {
-  margin-top: 20rpx;
-  border-top: 2rpx solid #ddd;
+  background: #fff;
+  border-radius: 13rpx;
 }
 
 .new-list-li {
   height: 220rpx;
-  border-bottom: 2rpx solid #ddd;
-  box-sizing: border-box;
+  padding: 20rpx 32rpx;
+}
+
+.new-list-li + .new-list-li {
+  margin-top: 20rpx;
 }
 
 .new-list-li>view {
-  padding: 20rpx;
   height: 100%;
 }
 
 .new-title {
-  padding-top: 10rpx;
   font-size: 32rpx;
-  color: #666;
+  color: var(--black);
 }
 
 .new-time {
   font-size: 24rpx;
   color: var(--grey);
   position: absolute;
-  bottom: 30rpx;
+  bottom: 10rpx;
 }
 
 .civilization-list-li {
@@ -79,5 +80,5 @@
 
 .civilization-time {
   font-size: 24rpx;
-  color: #999;
+  color: #717171;
 }

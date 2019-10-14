@@ -1,7 +1,3 @@
 {
-    "navigationBarTitleText": "test",
-    "component": true,
-    "usingComponents": {
-        "i-button": "../iview/button/index"
-    }
+    "navigationBarTitleText": "爱心帮帮"
 }

@@ -16,7 +16,10 @@ Page({
       time: 'sdf'
     }],
     civilizationList: [{
-
+      id: 1,
+      src: 'https://ss2.bdstatic.com/8_V1bjqh_Q23odCf/pacific/1913601244.png',
+      title: '为',
+      time: 'sdf'
     }]
   },
 

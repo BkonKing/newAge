@@ -1,27 +1,27 @@
 {
   "pages": [
+    "pages/news/content",
+    "pages/volunteer/volunteer",
     "pages/news/news",
     "pages/personal/personal",
-    "pages/news/content",
     "pages/volunteer/activity",
-    "pages/volunteer/volunteer",
     "pages/civilizationMap/civilizationMap",
     "pages/loveHelp/loveHelp",
     "pages/index/index"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#0081ff",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "荔城文明实践",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
   },
   "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#252525",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
+    "color": "#3a444a",
+    "selectedColor": "#ff7044",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "pages/civilizationMap/civilizationMap",

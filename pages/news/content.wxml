@@ -1,6 +1,6 @@
-<view class="container content">
+<view class="container content bg-white">
   <view class="content-header">
-    <view class="text-center text-bold text-xl" style='padding: 0 80rpx 40rpx;'>标题</view>
+    <view class="text-bold text-xl" style='padding: 0 80rpx 40rpx;'>标题</view>
     <view class="text-sm text-grey">时间</view>
   </view>
   <view class='border-bottom' style='padding: 0 20rpx; '>
@@ -9,7 +9,6 @@
       <view class="user-info fl">
           <image class='cu-avatar round' src="{{item.newsImage}}"></image>
         <text>发布人</text>
-        <view class="mt20 text-lg">标题</view>
       </view>
       <button class="fr cu-btn sm line-grey">查看</button>
     </view>

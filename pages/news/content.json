@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "新闻",
   "component": true,
   "usingComponents": {
     "i-avatar": "../../iview/avatar/index",

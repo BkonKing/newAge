@@ -3,16 +3,31 @@
     <i-tab key="tab1" title="我参与"></i-tab>
     <i-tab key="tab2" title="我围观"></i-tab>
   </i-tabs>
-  <view>
-    <navigator wx:for="{{activityList}}" wx:key="{{item.id}}" url='./activity?id={{item.id}}' style='padding: 20px 0 0;'>
+  <view class="padding">
+    <navigator wx:for="{{activityList}}" wx:key="{{item.id}}" url='./activity?id={{item.id}}'>
       <view class='activity-list'>
-        <view class='cu-tag fr mt20'>{{item.status}}</view>
-        <view class='user-info'>
+        <view class='text-lg'>{{item.name}}</view>
+        <view class='text-sm mt20 mb20'>{{item.time}}</view>
+        <view class="overhidden">
+          <view class='fl user-info'>
             <image class='cu-avatar round' src="{{item.newsImage}}"></image>
-          <text>{{item.name}}</text>
+            <text>{{item.name}}</text>
+          </view>
+          <view class='cu-tag fr'>{{item.status}}</view>
         </view>
-        <view class='text-sm'>{{item.time}}</view>
-        <view class='card-title text-lg'>{{item.name}}</view>
+      </view>
+    </navigator>
+    <navigator wx:for="{{activityList}}" wx:key="{{item.id}}" url='./activity?id={{item.id}}'>
+      <view class='activity-list'>
+        <view class='text-lg'>{{item.name}}</view>
+        <view class='text-sm mt20 mb20'>{{item.time}}</view>
+        <view class="overhidden">
+          <view class='fl user-info'>
+            <image class='cu-avatar round' src="{{item.newsImage}}"></image>
+            <text>{{item.name}}</text>
+          </view>
+          <view class='cu-tag fr'>{{item.status}}</view>
+        </view>
       </view>
     </navigator>
   </view>

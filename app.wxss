@@ -4,11 +4,7 @@
 page {
   box-sizing: border-box;
   font-size: 28rpx;
-  background: #fff;
-}
-
-view {
-  box-sizing: border-box;
+  background: #f1f3f7;
 }
 
 .border-bottom {
@@ -48,7 +44,7 @@ view {
 }
 
 .user-info {
-  color: #666;
+  color: var(--balck);
   vertical-align: middle;
 }
 
@@ -58,7 +54,7 @@ view {
 
 .user-info .cu-avatar + text {
   line-height: 64rpx;
-  font-size: 26rpx;
+  font-size: 28rpx;
 }
 
 .module-title {

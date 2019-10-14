@@ -1,7 +1,8 @@
-.activity-list {
-  padding: 0 20rpx;
-  border-bottom: 2rpx solid #ddd;
+navigator + navigator {
+  margin-top: 20rpx;
 }
-.activity-list > view {
-  margin-bottom: 10rpx;
+navigator {
+  background: #fff;
+  padding: 20rpx 32rpx;
+  border-radius: 13rpx;
 }

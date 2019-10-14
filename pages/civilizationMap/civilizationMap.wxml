@@ -1,4 +1,4 @@
 
 <view class="container">
-  <i-button bind_init="_initComponent" type="primary" data-wpy-evt="2-0" bindtap="_proxy">这是一个按钮</i-button>
+  
 </view>

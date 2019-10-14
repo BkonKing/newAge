@@ -14,32 +14,34 @@
     <i-tab key="tab1" title="新闻"></i-tab>
     <i-tab key="tab2" title="文明秀"></i-tab>
   </i-tabs>
-  <view class="new-list" hidden="{{current != 'tab1'}}">
-    <navigator url='./content' wx:for="{{newList}}" wx:key="item.id">
-      <view class="new-list-li">
-        <view class="fl" style='width:240rpx;'>
-          <image class="shadow-blur" src="{{item.src}}" style="width: 100%;height: 180rpx;" />
+  <view class="padding">
+    <view class="new-list" hidden="{{current != 'tab1'}}">
+      <navigator url='./content' wx:for="{{newList}}" wx:key="item.id">
+        <view class="new-list-li overhidden">
+          <view class="fl relative" style='width:calc(100% - 200rpx);'>
+            <view class="new-title">{{item.title}}</view>
+            <view class="new-time">{{item.time}}</view>
+          </view>
+          <view class="fr" style='width:180rpx;'>
+            <image class="shadow-blur" src="{{item.src}}" style="width: 100%;height: 180rpx;" />
+          </view>
         </view>
-        <view class="fl relative" style='width:calc(100% - 240rpx);padding: 20rpx 20rpx 20rpx 0;'>
-          <view class="new-title">{{item.title}}</view>
-          <view class="new-time">{{item.time}}</view>
+      </navigator>
+    </view>
+    <view class="civilization-list" hidden="{{current != 'tab2'}}">
+      <navigator url='./content' wx:for="{{civilizationList}}" wx:key="item.id">
+        <view class="civilization-list-li">
+          <view class="user-info">
+            <image class='cu-avatar round' src="{{item.src}}"></image>
+            <text>{{item.userName}}</text>
+          </view>
+          <view class="text-lg">{{item.title}}</view>
+          <view class="civilization-img">
+            <image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2350171032,3227234175&fm=26&gp=0.jpg" />
+          </view>
+          <view class="text-sm text-grey">{{item.time}}</view>
         </view>
-      </view>
-    </navigator>
-  </view>
-  <view class="civilization-list" hidden="{{current != 'tab2'}}">
-    <navigator url='./content' wx:for="{{civilizationList}}" wx:key="item.id">
-      <view class="civilization-list-li">
-        <view class="user-info">
-          <image class='cu-avatar round' src="{{item.newsImage}}"></image>
-          <text>{{item.userName}}</text>
-        </view>
-        <view class="text-lg">{{item.title}}</view>
-        <view class="civilization-img">
-          <image src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2350171032,3227234175&fm=26&gp=0.jpg" />
-        </view>
-        <view class="text-sm text-grey">{{item.time}}</view>
-      </view>
-    </navigator>
+      </navigator>
+    </view>
   </view>
 </view>
