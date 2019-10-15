@@ -1,18 +1,24 @@
 <view class="container personal">
+  <!-- <view class='canvasBox'>
+    <view class='bigCircle'></view>
+    <view class='littleCircle'></view>
+    <canvas canvas-id="runCanvas" id="runCanvas" class='canvas'></canvas>
+    <canvas canvas-id="runCanvas1" id="runCanvas1" class='canvas' style="z-index: 98;"></canvas>
+  </view> -->
   <view class="overhidden w100 personal-info">
     <view class="fl">
       <image class='cu-avatar xl round' src="{{item.newsImage}}"></image>
     </view>
     <view class="fl">
-      <view class="text-lg">{{volunteer.name}}</view>
+      <view class="text-lg">{{userInfo.volunteer_name}}</view>
       <view class="text-sm" style='line-height: 22px;margin: 8rpx 0;'>
         志愿者身份认证
-        <i-icon type="editor" size="22" color="#666" i-class='ml20' hidden="{{volunteer.idcard}}" />
+        <i-icon type="editor" size="22" color="#666" i-class='ml20' bindtap="edit" />
       </view>
-      <view class="text-sm text-grey">{{volunteer.status ? '已认证' : '未认证'}}</view>
+      <view class="text-sm text-grey">{{userInfo.volunteer_status == 1 ? '未认证' : '已认证'}}</view>
     </view>
     <view class="fr center">
-      <view class='text-xxl'>{{volunteer.point}}</view>
+      <view class='text-xxl'>{{userInfo.point}}</view>
       <view class='text-sm'>活跃度</view>
       <view class="text-xs text-grey mt20">已超过 的志愿者</view>
     </view>
@@ -26,7 +32,9 @@
       </view>
       <view class='overhidden mt20'>
         <view class='cu-tag round'>我获得的活跃度 | {{item.point}}</view>
-        <view class='fr cu-tag {{item.status == 1 ? "bg-orange" : "bg-green"}}' style="border-radius: 7rpx;">{{item.status == 1 ? '申请中' : '通过'}}</view>
+        <view class='fr cu-tag {{item.status == 1 ? "bg-orange" : "bg-green"}}' style="border-radius: 7rpx;">
+          {{item.status == 1 ? '申请中' : '通过'}}
+        </view>
       </view>
     </view>
     <view class="padding flex flex-direction mt20">

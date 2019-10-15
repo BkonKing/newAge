@@ -1,41 +1,44 @@
 const { $Toast } = require('../../iview/base/index');
 
-const app =  getApp();
+const app = getApp();
 Page({
-  onLoad(options) {
-    this.setData({
-      activityId: options.id
-    })
+  data: {
+    name: '',
+    idcard: undefined,
+    phone: undefined,
+    company: undefined,
+    address: ''
   },
-  formSubmit() {
+  onLoad() {
+    this.queryCurrentVolunteer();
+  },
+  formSubmit(e) {
     app.request({
-      url: '/activity/' + this.data.activityId + '/sign',
+      url: '/volunteer',
       method: 'post',
+      data: e.detail.value,
       success: (data) => {
-        if (data.code == 1) {
-          wx.switchTab({
-            url: '/pages/volunteer/volunteer'
-          });
-        } else {
-          $Toast({
-            content: data.msg,
-            type: 'warning'
+        wx.navigateBack({
+          delta: 1
         });
-        }
       }
     })
   },
-  bindChange(e) {
-    this.setData({
-      sex: e.detail.value
+  queryCurrentVolunteer() {
+    app.request({
+      url: '/current/volunteer',
+      method: 'get',
+      success: (data) => {
+        if (data.code == 1) {
+          this.setData({
+            name: data.data.name,
+            idcard: data.data.idcard,
+            phone: data.data.phone,
+            company: data.data.company,
+            address: data.data.address
+          })
+        }
+      }
     })
-  },
-  data: {
-    activityId: '',
-    name: '',
-    age: undefined,
-    sex: 0,
-    phone: undefined,
-    sexArray: ['男','女']
   }
 })

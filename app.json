@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/personal/personal",
     "pages/volunteer/volunteer",
+    "pages/personal/personal",
+    "pages/personal/info",
     "pages/volunteer/activity",
     "pages/volunteer/join",
     "pages/news/news",
