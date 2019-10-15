@@ -5,7 +5,7 @@ Page({
     this.queryActivity()
   },
   data: {
-    current: 'tab1',
+    current: 'tab2',
     activityList: []
   },
 
@@ -14,9 +14,9 @@ Page({
       current: detail.key
     });
     if (detail.key == 'tab1') {
-      this.queryActivity()
-    } else {
       this.queryCurrentActivity()
+    } else {
+      this.queryActivity()
     }
   },
 

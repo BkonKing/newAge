@@ -1,21 +1,22 @@
-<view class="container content bg-white">
+<view class="container content padding">
   <view class="content-header">
-    <view class="text-bold text-xl" style='padding: 40rpx 0 20rpx;'>{{info.title}}</view>
-    <view class="text-sm text-grey">{{info.crtime}}</view>
+    <view class="text-bold text-xl text-black" style='padding-bottom: 20rpx;'>{{info.title}}</view>
+    <view class="text-sm text-grey cu-tag round">{{info.crtime}}</view>
   </view>
-  <view class='border-bottom' style='padding: 0 20rpx; '>
-    <view class="module-title">【关联活动】</view>
+  <view style="padding-top: 20rpx;">
+    <view class="module-title">[ 关联活动 ]</view>
     <view style="padding: 20rpx 0;overflow: hidden;">
       <view class="user-info fl">
         <image class='cu-avatar round' src="{{item.newsImage}}"></image>
         <text>{{info.volunteer_name}}</text>
       </view>
-      <button class="fr cu-btn sm line-grey">查看</button>
+      <view class="fr">
+        <button class=" cu-btn round xs bg-orange" style="margin-top: 22rpx;">查看</button>
+      </view>
     </view>
   </view>
-  <view style='padding: 20rpx;'>
+  <view style='line-height: 2;'>
     <import src="/wxParse/wxParse.wxml" />
     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
-  <!-- <view>{{info.content}}</view> -->
 </view>

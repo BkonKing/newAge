@@ -1,3 +1,6 @@
 {
-
+  "navigationBarTitleText": "志愿活动",
+  "usingComponents": {
+    "i-toast": "../../iview/toast/index"
+  }
 }

@@ -7,9 +7,9 @@
       <view class="text-lg">{{volunteer.name}}</view>
       <view class="text-sm" style='line-height: 22px;margin: 8rpx 0;'>
         志愿者身份认证
-        <i-icon type="editor" size="22" color="#666" i-class='ml20' hidden="{{volunteer.idcard}}"/>
+        <i-icon type="editor" size="22" color="#666" i-class='ml20' hidden="{{volunteer.idcard}}" />
       </view>
-      <view class="text-sm text-grey">{{volunteer.idcard ? '已认证' : '未认证'}}</view>
+      <view class="text-sm text-grey">{{volunteer.status ? '已认证' : '未认证'}}</view>
     </view>
     <view class="fr center">
       <view class='text-xxl'>{{volunteer.point}}</view>
@@ -17,20 +17,20 @@
       <view class="text-xs text-grey mt20">已超过 的志愿者</view>
     </view>
   </view>
-  <view class='text-sm text-grey border-bottom' style='padding: 20rpx;'>【我的队伍】</view>
-  <view class='team-list' wx:for="{{teamList}}" wx:key="{{item.id}}">
-    <view class='user-info'>
-      <image class='cu-avatar round' src="{{item.newsImage}}"></image>
-      <text>{{item.team_name}}</text>
-    </view>
-    <view class='overhidden'>
-      <view class='fr cu-tag line-grey'>
-        {{item.status == 1 ? '申请中' : '通过'}}
+  <view class="padding bg-main">
+    <view class='text-sm text-grey' style='padding-bottom: 20rpx;'>我的队伍</view>
+    <view class='team-list' wx:for="{{teamList}}" wx:key="{{item.id}}">
+      <view class='user-info'>
+        <image class='cu-avatar round' src="{{item.newsImage}}"></image>
+        <text>{{item.team_name}}</text>
       </view>
-      <view class='text-sm'>我获得的活跃度 {{item.point}}</view>
+      <view class='overhidden mt20'>
+        <view class='cu-tag round'>我获得的活跃度 | {{item.point}}</view>
+        <view class='fr cu-tag {{item.status == 1 ? "bg-orange" : "bg-green"}}' style="border-radius: 7rpx;">{{item.status == 1 ? '申请中' : '通过'}}</view>
+      </view>
     </view>
-  </view>
-  <view class="padding flex flex-direction mt20">
-    <button class="cu-btn bg-blue lg" bindtap='toActive'>找活动加队伍</button>
+    <view class="padding flex flex-direction mt20">
+      <button class="cu-btn bg-orange lg w100 round" bindtap='toActive'>找活动加队伍</button>
+    </view>
   </view>
 </view>

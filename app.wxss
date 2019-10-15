@@ -5,19 +5,11 @@
 page {
   box-sizing: border-box;
   font-size: 28rpx;
-  background: #f1f3f7;
+  background: #fff;
 }
 
 .border-bottom {
   border-bottom: 1px solid #ddd;
-}
-
-.fl {
-  float: left;
-}
-
-.fr {
-  float: right;
 }
 
 .w25 {
@@ -54,7 +46,6 @@ page {
 }
 
 .user-info .cu-avatar + text {
-  line-height: 64rpx;
   font-size: 28rpx;
 }
 
@@ -88,6 +79,10 @@ page {
   margin-top: 40rpx;
 }
 
+.mb40 {
+  margin-bottom: 40rpx;
+}
+
 .fs10 {
   font-size: 20rpx;
 }
@@ -112,4 +107,10 @@ page {
   border: 2rpx solid #888;
   padding: 10rpx 18rpx;
   font-size: 24rpx;
+}
+.cu-btn.xs {
+	padding: 0 20rpx;
+	font-size: 20rpx;
+  height: 36rpx;
+  line-height: 36rpx;
 }

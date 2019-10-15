@@ -2,10 +2,10 @@
   "pages": [
     "pages/personal/personal",
     "pages/volunteer/volunteer",
+    "pages/volunteer/activity",
     "pages/volunteer/join",
     "pages/news/news",
     "pages/news/content",
-    "pages/volunteer/activity",
     "pages/civilizationMap/civilizationMap",
     "pages/loveHelp/loveHelp",
     "pages/index/index"

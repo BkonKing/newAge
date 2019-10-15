@@ -1,4 +1,5 @@
 {
+    "navigationBarTitleText": "新闻动态",
     "component": true,
     "usingComponents": {
         "i-tabs": "../../iview/tabs/index",

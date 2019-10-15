@@ -1,5 +1,5 @@
-var joinStatus = function(value) {
-  switch(value){
+var joinStatus = function (value) {
+  switch (value) {
     case 1:
       return '不可报名';
     case 2:
@@ -10,8 +10,20 @@ var joinStatus = function(value) {
       return '审核通过';
   }
 }
-var toActivityStatus = function(value) {
-  switch(value){
+var toJoinClass = function (value) {
+  switch (value) {
+    case 1:
+      return 'bg-grey';
+    case 2:
+      return 'bg-orange';
+    case 3:
+      return 'bg-orange';
+    case 4:
+      return 'bg-green';
+  }
+}
+var toActivityStatus = function (value) {
+  switch (value) {
     case 1:
       return '招募中';
     case 2:
@@ -20,8 +32,18 @@ var toActivityStatus = function(value) {
       return '已完成';
   }
 }
-var signStatus = function(value) {
-  switch(value){
+var toActivityClass = function (value) {
+  switch (value) {
+    case 1:
+      return 'bg-green';
+    case 2:
+      return 'bg-orange';
+    case 3:
+      return 'bg-grey';
+  }
+}
+var signStatus = function (value) {
+  switch (value) {
     case 1:
       return '未签到';
     case 2:
@@ -30,6 +52,8 @@ var signStatus = function(value) {
 }
 module.exports = {
   toActivityStatus: toActivityStatus,
+  toActivityClass: toActivityClass,
   signStatus: signStatus,
+  toJoinClass: toJoinClass,
   joinStatus: joinStatus
 }

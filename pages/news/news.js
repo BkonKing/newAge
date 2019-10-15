@@ -3,17 +3,13 @@ const app = getApp();
 Page({
   data: {
     current: 'tab1',
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    indicatorDots: true,
-    vertical: false,
-    autoplay: false,
-    interval: 2000,
-    duration: 500,
     newList: [],
-    civilizationList: []
+    civilizationList: [],
+    bannerList: []
   },
 
   onLoad() {
+    this.queryBanner();
     this.queryNewList();
   },
 
@@ -45,12 +41,38 @@ Page({
     })
   },
 
+  queryBanner() {
+    app.request({
+      url: '/banner',
+      method: 'get',
+      success: (data) => {
+        if (data.code == 1) {
+          this.setData({
+            bannerList: data.data.data
+          })   
+        }
+      }
+    })
+  },
+
   navigator(e) {
     var type = this.data.current == 'tab1' ? 'new' : 'show'
     const params = e.currentTarget.dataset.param
-    wx.setStorageSync('newContent', params)
     wx.navigateTo({
-      url: './content?type=' + type
+      url: `./content?type=${type}&id=${params.id}`
+    })
+  },
+
+  bannerNavigator(e) {
+    const params = e.currentTarget.dataset.param;
+    var url = '';
+    if (params.relate == 1) {
+      url = `../volunteer/activity?id=${params.id}`
+    } else {
+      url = `./content?type=new&id=${relate_id}`
+    }
+    wx.navigateTo({
+      url: url
     })
   },
 
@@ -65,36 +87,5 @@ Page({
     } else {
       this.queryCivilizationList()
     }
-  },
-
-  onShareAppMessage() {
-    return {
-      title: 'swiper',
-      path: 'page/component/pages/swiper/swiper'
-    }
-  },
-
-  changeIndicatorDots() {
-    this.setData({
-      indicatorDots: !this.data.indicatorDots
-    })
-  },
-
-  changeAutoplay() {
-    this.setData({
-      autoplay: !this.data.autoplay
-    })
-  },
-
-  intervalChange(e) {
-    this.setData({
-      interval: e.detail.value
-    })
-  },
-
-  durationChange(e) {
-    this.setData({
-      duration: e.detail.value
-    })
-  },
+  }
 })

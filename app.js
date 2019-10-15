@@ -42,9 +42,7 @@ App({
       data: params.data,
       header: {
         'content-type': 'application/json',
-        'Authorization': 'Basic 19ce655ff65026b8e64ce8cdbc050993',
-        'token': this.globalData.token
-        // 'token': 'a981280880646c2531d2e573ebfbd95d'
+        'Authorization': 'Basic 19ce655ff65026b8e64ce8cdbc050993'
       },
       success: function (res) {
         params.success(res.data)
@@ -65,23 +63,19 @@ App({
         success: data => {
           wx.showLoading()
           if (data.code) {
-            // 发送 res.code 到后台换取 openId, sessionKey, unionId
             this.request({
               url: '/login',
               method: 'post',
               data: {
-                username: '18888888883',
-                password: '123456',
-                type: 'weixin'
+                code: data.code
               },
               success: (data) => {
-                this.globalData.token = data.data.token;
+                // this.globalData.token = data.data.token;
                 this.request({
-                  url: '/current/user',
+                  url: '/currentUser',
                   method: 'get',
                   success: (response) => {
-                    wx.setStorageSync('userid', response.data.id)
-                    that.globalData.teacherinfo = response.data.teacherinfo
+                    that.globalData.userInfo = response.data.data
                     resolve(response)
                   }
                 })

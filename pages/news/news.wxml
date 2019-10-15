@@ -2,9 +2,9 @@
   <view class="page-body">
     <view class="page-section page-section-spacing swiper">
       <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
-        <block wx:for="{{background}}" wx:key="*this">
+        <block wx:for="{{bannerList}}" wx:key="{{item.id}}">
           <swiper-item>
-            <view class="swiper-item {{item}}"></view>
+            <image class="w100" bindtap="bannerNavigator" style="height: 100%;" src="{{item.image}}" data-param="{{item}}" />
           </swiper-item>
         </block>
       </swiper>
@@ -14,15 +14,15 @@
     <i-tab key="tab1" title="新闻"></i-tab>
     <i-tab key="tab2" title="文明秀"></i-tab>
   </i-tabs>
-  <view class="padding">
+  <view class="padding bg-main">
     <view class="new-list" hidden="{{current != 'tab1'}}">
-      <view wx:for="{{newList}}" wx:key="item.id"  bindtap="navigator" data-param="{{item}}" class="new-list-li overhidden">
+      <view wx:for="{{newList}}" wx:key="item.id" bindtap="navigator" data-param="{{item}}" class="new-list-li overhidden">
         <view class="fl relative" style='width:calc(100% - 200rpx);'>
           <view class="new-title">{{item.title}}</view>
-          <view class="new-time">{{item.crtime}}</view>
+          <view class="new-time cu-tag round">{{item.crtime}}</view>
         </view>
         <view class="fr" style='width:180rpx;'>
-          <image class="shadow-blur" src="{{item.thumb}}" style="width: 100%;height: 180rpx;" />
+          <image src="{{item.thumb}}" />
         </view>
       </view>
     </view>
@@ -32,13 +32,13 @@
           <image class='cu-avatar round' src="{{item.src}}"></image>
           <text>{{item.volunteer_name}}</text>
         </view>
-        <view class="text-lg">{{item.title}}</view>
+        <view class="civilization-title">{{item.title}}</view>
         <view class="civilization-img">
           <block wx:for="{{item.image}}" wx:key="{{item.id}}">
             <image src="{{item.img}}" />
           </block>
         </view>
-        <view class="text-sm text-grey">{{item.crtime}}</view>
+        <view class="civilization-time cu-tag round">{{item.crtime}}</view>
       </view>
     </view>
   </view>

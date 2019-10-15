@@ -1,9 +1,11 @@
-.ul {
-  border-top: 1px solid #ddd;
+.activity {
+  padding: 0 40rpx;
 }
 .ul > view {
-  border-bottom: 1px solid #ddd;
-  padding: 20rpx;
+  padding: 12rpx 0;
+}
+.ul text {
+  margin-right: 40rpx;
 }
 .module-title {
   padding: 30rpx 0;

@@ -1,21 +1,27 @@
 <view class="container volunteer">
   <i-tabs current="{{ current }}" bindchange="handleChange">
-    <i-tab key="tab1" title="我参与"></i-tab>
     <i-tab key="tab2" title="我围观"></i-tab>
+    <i-tab key="tab1" title="我参与"></i-tab>
   </i-tabs>
-  <view class="padding">
+  <view class="padding bg-main">
     <navigator wx:for="{{activityList}}" wx:key="{{item.id}}" url='./activity?id={{item.id}}'>
       <view class='activity-list'>
-        <view class='text-lg'>{{item.name}}</view>
-        <view class='text-sm mt20 mb20'>{{item.start_time}} - {{item.end_time}}</view>
-        <view class='text-sm mt20 mb20'>{{item.address}}</view>
+        <view class='text-lg text-black' style="line-height: 2;">{{item.name}}</view>
+        <view style="margin: 30rpx 0 20rpx;">
+          <view class='cu-tag round' style="margin-bottom: 10rpx;">
+            {{item.start_time}} - {{item.end_time}}
+          </view>
+          <view class='cu-tag round' style="margin-bottom: 10rpx;">{{item.address}}</view>
+        </view>
         <view class="overhidden">
           <view class='fl user-info'>
-            <image class='cu-avatar round' src="{{item.newsImage}}"></image>
+            <image class='cu-avatar round sm' src="{{item.newsImage}}"></image>
             <text>{{item.team_name}}</text>
           </view>
           <wxs src="../../utils/filter.wxs" module="filter"></wxs>
-          <view class='cu-tag fr'>{{filter.toActivityStatus(item.status)}}</view>
+          <view class='cu-tag fr {{filter.toActivityClass(item.status)}}'>
+            {{filter.toActivityStatus(item.status)}}
+          </view>
         </view>
       </view>
     </navigator>

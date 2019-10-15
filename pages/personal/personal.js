@@ -30,7 +30,7 @@ Page({
       success: (data) => {
         if (data.code == 1) {
           this.setData({
-            volunteer: data.data.data
+            volunteer: data.data
           })   
         }
       }

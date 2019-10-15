@@ -1,5 +1,6 @@
-const app =  getApp();
+const app = getApp();
 var WxParse = require('../../wxParse/wxParse.js');
+const { $Toast } = require('../../iview/base/index');
 Page({
   onLoad(options) {
     this.setData({
@@ -19,9 +20,29 @@ Page({
     })
   },
   join() {
-    wx.navigateTo({
-      url: './join?id=' + this.data.activityId
+    app.request({
+      url: '/activity/' + this.data.activityId + '/join',
+      method: 'post',
+      success: (data) => {
+        if (data.code == 1) {
+          $Toast({
+            content: 'success',
+            type: '报名成功'
+          });
+          wx.switchTab({
+            url: '/pages/volunteer/volunteer'
+          });
+        } else {
+          $Toast({
+            content: data.msg,
+            type: 'warning'
+          });
+        }
+      }
     })
+    // wx.navigateTo({
+    //   url: './join?id=' + this.data.activityId
+    // })
   },
   data: {
     activity: {},
