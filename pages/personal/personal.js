@@ -3,7 +3,8 @@ Page({
   onLoad() {
     // this.draw('runCanvas', 'runCanvas1', 20, 3000)
     this.setData({
-      userInfo: app.globalData.userInfo
+      userInfo: app.globalData.userInfo,
+      wxUserInfo: app.globalData.wxUserInfo
     })
     // this.queryCurrentVolunteer();
     this.queryCurrentTeam();
@@ -79,6 +80,7 @@ Page({
   },
   data: {
     userInfo: {},
+    wxUserInfo: {},
     teamList: [],
     volunteer: {}
   },

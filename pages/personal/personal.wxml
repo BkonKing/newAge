@@ -7,10 +7,10 @@
   </view> -->
   <view class="overhidden w100 personal-info">
     <view class="fl">
-      <image class='cu-avatar xl round' src="{{item.newsImage}}"></image>
+      <image class='cu-avatar xl round' src="{{userInfo.avatar || wxUserInfo.avatarUrl}}"></image>
     </view>
     <view class="fl">
-      <view class="text-lg">{{userInfo.volunteer_name}}</view>
+      <view class="text-lg">{{userInfo.volunteer_name || wxUserInfo.nickName}}</view>
       <view class="text-sm" style='line-height: 22px;margin: 8rpx 0;'>
         志愿者身份认证
         <i-icon type="editor" size="22" color="#666" i-class='ml20' bindtap="edit" />
@@ -20,14 +20,14 @@
     <view class="fr center">
       <view class='text-xxl'>{{userInfo.point}}</view>
       <view class='text-sm'>活跃度</view>
-      <view class="text-xs text-grey mt20">已超过 的志愿者</view>
+      <view class="text-xs text-grey mt20">已超过{{userInfo.rank}}%的志愿者</view>
     </view>
   </view>
   <view class="padding bg-main">
     <view class='text-sm text-grey' style='padding-bottom: 20rpx;'>我的队伍</view>
     <view class='team-list' wx:for="{{teamList}}" wx:key="{{item.id}}">
       <view class='user-info'>
-        <image class='cu-avatar round' src="{{item.newsImage}}"></image>
+        <image class='cu-avatar round' src="{{item.avatar}}"></image>
         <text>{{item.team_name}}</text>
       </view>
       <view class='overhidden mt20'>

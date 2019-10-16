@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/volunteer/volunteer",
     "pages/personal/personal",
     "pages/personal/info",
@@ -8,8 +9,7 @@
     "pages/news/news",
     "pages/news/content",
     "pages/civilizationMap/civilizationMap",
-    "pages/loveHelp/loveHelp",
-    "pages/index/index"
+    "pages/loveHelp/loveHelp"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

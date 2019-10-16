@@ -18,9 +18,15 @@ Page({
       method: 'post',
       data: e.detail.value,
       success: (data) => {
-        wx.navigateBack({
-          delta: 1
+        wx.showToast({
+          title: '提交成功',
+          mask: false
         });
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          });
+        }, 500);
       }
     })
   },

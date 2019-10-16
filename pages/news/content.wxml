@@ -7,7 +7,7 @@
     <view class="module-title">[ 关联活动 ]</view>
     <view style="padding: 20rpx 0;overflow: hidden;">
       <view class="user-info fl">
-        <image class='cu-avatar round' src="{{item.newsImage}}"></image>
+        <image class='cu-avatar round' src="{{item.avatar}}"></image>
         <text>{{info.volunteer_name}}</text>
       </view>
       <view class="fr">

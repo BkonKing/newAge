@@ -15,7 +15,7 @@
         </view>
         <view class="overhidden">
           <view class='fl user-info'>
-            <image class='cu-avatar round sm' src="{{item.newsImage}}"></image>
+            <image class='cu-avatar round sm' src="{{item.avatar}}"></image>
             <text>{{item.team_name}}</text>
           </view>
           <wxs src="../../utils/filter.wxs" module="filter"></wxs>

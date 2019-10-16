@@ -7,7 +7,7 @@
     <i-input value="{{ address }}" name="address" title="地址" placeholder="请输入地址" />
   </view>
   <view class="padding">
-    <button class="cu-btn bg-orange round shadow w100" form-type="submit">修改</button>
+    <button class="cu-btn bg-orange round shadow w100" form-type="submit">提交</button>
   </view>
 </form>
 <i-toast id="toast" />

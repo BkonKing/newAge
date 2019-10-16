@@ -1,5 +1,5 @@
 <view class="container news">
-  <view class="page-body">
+  <view class="page-body" hidden="{{bannerList.length == 0}}">
     <view class="page-section page-section-spacing swiper">
       <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
         <block wx:for="{{bannerList}}" wx:key="{{item.id}}">
@@ -29,7 +29,7 @@
     <view class="civilization-list" hidden="{{current != 'tab2'}}">
       <view class="civilization-list-li" wx:for="{{civilizationList}}" wx:key="item.id" bindtap="navigator" data-param="{{item}}">
         <view class="user-info">
-          <image class='cu-avatar round' src="{{item.src}}"></image>
+          <image class='cu-avatar round' src="{{item.avatar}}"></image>
           <text>{{item.volunteer_name}}</text>
         </view>
         <view class="civilization-title">{{item.title}}</view>

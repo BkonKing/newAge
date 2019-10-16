@@ -2,40 +2,11 @@
 App({
   onLaunch: function () {
     this.getUser()
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-
-    // // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //   }
-    // })
-    // // 获取用户信息
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           // 可以将 res 发送给后台解码出 unionId
-    //           this.globalData.userInfo = res.userInfo
-
-    //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //           // 所以此处加入 callback 以防止这种情况
-    //           if (this.userInfoReadyCallback) {
-    //             this.userInfoReadyCallback(res)
-    //           }
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
   },
-  request: function(params) {
-    // wx.showLoading()
+  request: function (params) {
+    if (params.showLoading) {
+      wx.showLoading()
+    }
     wx.request({
       url: "https://www.upin-cloud.com/api" + params.url,
       method: params.method,
@@ -45,6 +16,7 @@ App({
         'Authorization': 'Basic 19ce655ff65026b8e64ce8cdbc050993'
       },
       success: function (res) {
+        wx.hideLoading()
         if (res.data.code == 1) {
           params.success(res.data)
         } else {
@@ -57,47 +29,39 @@ App({
         }
       },
       fail: function (ress) {
+        wx.hideLoading()
         // console.log(ress)
         params.fail(ress)
       },
       complete: function () {
-        wx.hideLoading()
       }
     })
   },
-  getUser: function() {
-    var that = this;
+  getUser: function () {
     return new Promise((resolve, reject) => {
       wx.login({
         success: data => {
-          wx.showLoading()
           if (data.code) {
             this.request({
-              url: '/currentUser',
-              method: 'get',
-              success: (response) => {
-                this.globalData.userInfo = response.data
-                resolve(response)
+              url: '/login',
+              method: 'post',
+              showLoading: true,
+              data: {
+                type: 'weixin',
+                code: data.code
+              },
+              success: (data) => {
+                // this.globalData.token = data.data.token;
+                this.request({
+                  url: '/currentUser',
+                  method: 'get',
+                  success: (response) => {
+                    this.globalData.userInfo = response.data
+                    resolve(response)
+                  }
+                })
               }
             })
-            // this.request({
-            //   url: '/login',
-            //   method: 'post',
-            //   data: {
-            //     code: data.code
-            //   },
-            //   success: (data) => {
-            //     // this.globalData.token = data.data.token;
-            //     this.request({
-            //       url: '/currentUser',
-            //       method: 'get',
-            //       success: (response) => {
-            //         this.globalData.userInfo = response.data
-            //         resolve(response)
-            //       }
-            //     })
-            //   }
-            // })
           } else {
             // console.log('获取用户登录态失败！' + res.errMsg);
             reject('error');
@@ -108,6 +72,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    wxUserInfo: null,
     token: '',
     newContent: {}
   }
