@@ -47,7 +47,7 @@
         "pagePath": "pages/loveHelp/loveHelp",
         "iconPath": "static/loveHelp.png",
         "selectedIconPath": "static/loveHelp-checked.png",
-        "text": "爱心帮帮"
+        "text": "文明点单"
       },
       {
         "pagePath": "pages/personal/personal",

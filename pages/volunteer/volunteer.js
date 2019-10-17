@@ -2,10 +2,14 @@ const app =  getApp();
 
 Page({
   onLoad() {
+    this.setData({
+      defaultAvatar: app.globalData.defaultAvatar
+    })
     this.queryActivity()
   },
   data: {
     current: 'tab2',
+    defaultAvatar: '',
     activityList: []
   },
 

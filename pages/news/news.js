@@ -4,11 +4,15 @@ Page({
   data: {
     current: 'tab1',
     newList: [],
+    defaultAvatar: '',
     civilizationList: [],
     bannerList: []
   },
 
   onLoad() {
+    this.setData({
+      defaultAvatar: app.globalData.defaultAvatar
+    })
     this.queryBanner();
     this.queryNewList();
   },

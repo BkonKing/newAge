@@ -7,7 +7,7 @@
     <view class="module-title">[ 关联活动 ]</view>
     <view style="padding: 20rpx 0;overflow: hidden;">
       <view class="user-info fl">
-        <image class='cu-avatar round' src="{{item.avatar}}"></image>
+        <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>
         <text>{{info.volunteer_name}}</text>
       </view>
       <view class="fr">
@@ -16,7 +16,12 @@
     </view>
   </view>
   <view style='line-height: 2;'>
-    <import src="/wxParse/wxParse.wxml" />
-    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    <block wx:if="{{type == 'new'}}">
+      <import src="/wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </block>
+    <block wx:else>
+      <image wx:for="{{info.image}}" wx:key="{{item.id}}" src="{{item.img}}"/>
+    </block>
   </view>
 </view>

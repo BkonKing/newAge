@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-    this.getUser()
+    // this.getUser()
   },
   request: function (params) {
     if (params.showLoading) {
@@ -13,7 +13,7 @@ App({
       data: params.data,
       header: {
         'content-type': 'application/json',
-        'Authorization': 'Basic 19ce655ff65026b8e64ce8cdbc050993'
+        'Authorization': 'Basic ' + this.globalData.token
       },
       success: function (res) {
         wx.hideLoading()
@@ -48,10 +48,12 @@ App({
               showLoading: true,
               data: {
                 type: 'weixin',
-                code: data.code
+                code: data.code,
+                nickname: this.globalData.wxUserInfo.nickName,
+                avatar: this.globalData.wxUserInfo.avatarUrl
               },
               success: (data) => {
-                // this.globalData.token = data.data.token;
+                this.globalData.token = data.data.token;
                 this.request({
                   url: '/currentUser',
                   method: 'get',
@@ -74,6 +76,7 @@ App({
     userInfo: null,
     wxUserInfo: null,
     token: '',
-    newContent: {}
+    newContent: {},
+    defaultAvatar: 'https://www.upin-cloud.com/uploads/default/avatar.png'
   }
 })

@@ -5,7 +5,7 @@
     <view class='cu-tag {{filter.toJoinClass(activity.join_status)}}'>{{filter.joinStatus(activity.join_status)}}</view>
   </view>
   <view class='user-info'>
-    <image class='cu-avatar round sm' src="{{activity.avatar}}"></image>
+    <image class='cu-avatar round sm' src="{{activity.avatar || defaultAvatar}}"></image>
     <text>{{activity.team_name}}</text>
   </view>
   <view class='module-title'>[ 基本信息 ]</view>

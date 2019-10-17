@@ -4,7 +4,8 @@ const { $Toast } = require('../../iview/base/index');
 Page({
   onLoad(options) {
     this.setData({
-      activityId: options.id
+      activityId: options.id,
+      defaultAvatar: app.globalData.defaultAvatar
     })
     app.request({
       url: '/activity/' + options.id,
@@ -46,6 +47,7 @@ Page({
   },
   data: {
     activity: {},
-    activityId: ''
+    activityId: '',
+    defaultAvatar: ''
   }
 })

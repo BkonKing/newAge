@@ -7,10 +7,10 @@
   </view> -->
   <view class="overhidden w100 personal-info">
     <view class="fl">
-      <image class='cu-avatar xl round' src="{{userInfo.avatar || wxUserInfo.avatarUrl}}"></image>
+      <image class='cu-avatar xl round' src="{{wxUserInfo.avatarUrl || userInfo.avatar}}"></image>
     </view>
     <view class="fl">
-      <view class="text-lg">{{userInfo.volunteer_name || wxUserInfo.nickName}}</view>
+      <view class="text-lg">{{wxUserInfo.nickName || userInfo.username}}</view>
       <view class="text-sm" style='line-height: 22px;margin: 8rpx 0;'>
         志愿者身份认证
         <i-icon type="editor" size="22" color="#666" i-class='ml20' bindtap="edit" />

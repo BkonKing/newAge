@@ -9,8 +9,10 @@ Page({
   },
   //事件处理函数
   bindViewTap: function () {
-    wx.switchTab({
-      url: '../personal/personal'
+    app.getUser().then(() => {
+      wx.switchTab({
+        url: '../personal/personal'
+      })
     })
   },
   onLoad: function () {
@@ -31,6 +33,7 @@ Page({
         }
       }
     })
+
   },
   getUserInfo: function (e) {
     app.globalData.wxUserInfo = e.detail.wxUserInfo;

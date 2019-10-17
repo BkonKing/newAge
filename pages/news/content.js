@@ -1,12 +1,18 @@
-var WxParse = require('../../wxParse/wxParse.js');
+// var WxParse = require('../../wxParse/wxParse.js');
 const app = getApp();
 
 Page({
   data: {
-    info: {}
+    info: {},
+    type: '',
+    defaultAvatar: ''
   },
   onLoad(options) {
     var title = ''
+    this.setData({
+      type: options.type,
+      defaultAvatar: app.globalData.defaultAvatar
+    })
     if (options.type == 'new') {
       title = '新闻'
       this.queryNew(options.id)
@@ -41,7 +47,7 @@ Page({
           this.setData({
             info: data.data
           })
-          WxParse.wxParse('article', 'html', data.data.content, this, '100%'); 
+          // WxParse.wxParse('article', 'html', data.data.content, this, '100%'); 
         }
       }
     })
