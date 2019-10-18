@@ -5,10 +5,10 @@
     "pages/personal/personal",
     "pages/personal/info",
     "pages/volunteer/activity",
-    "pages/volunteer/join",
     "pages/news/news",
     "pages/news/content",
     "pages/civilizationMap/civilizationMap",
+    "pages/civilizationMap/team",
     "pages/loveHelp/loveHelp"
   ],
   "window": {
@@ -56,6 +56,11 @@
         "text": "个人中心"
       }
     ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   },
   "sitemapLocation": "sitemap.json"
 }

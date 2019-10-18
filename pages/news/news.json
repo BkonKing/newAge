@@ -1,5 +1,6 @@
 {
     "navigationBarTitleText": "新闻动态",
+    "enablePullDownRefresh": true,
     "component": true,
     "usingComponents": {
         "i-tabs": "../../iview/tabs/index",

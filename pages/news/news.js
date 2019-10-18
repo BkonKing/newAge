@@ -13,8 +13,17 @@ Page({
     this.setData({
       defaultAvatar: app.globalData.defaultAvatar
     })
+    this.queryData();
+  },
+
+  onPullDownRefresh() {
+    this.queryData();
+  },
+
+  queryData() {
     this.queryBanner();
     this.queryNewList();
+    this.queryCivilizationList()
   },
 
   queryNewList() {
@@ -86,10 +95,10 @@ Page({
     this.setData({
       current: detail.key
     });
-    if (detail.key == 'tab1') {
-      this.queryNewList()
-    } else {
-      this.queryCivilizationList()
-    }
+    // if (detail.key == 'tab1') {
+    //   this.queryNewList()
+    // } else {
+    //   this.queryCivilizationList()
+    // }
   }
 })
