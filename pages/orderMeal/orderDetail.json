@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "点单详情",
+  "usingComponents": {
+    "i-input": "../../iview/input/index"
+  }
+}

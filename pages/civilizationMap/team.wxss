@@ -1,0 +1,9 @@
+.team-list-li {
+  background: #fff;
+  padding: 20rpx;
+  border-radius: 13rpx;
+}
+
+.team-list-li + .team-list-li {
+  margin-top: 20rpx;
+}

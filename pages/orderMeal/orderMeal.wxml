@@ -1,0 +1,21 @@
+<view class="container volunteer">
+  <view class="padding" style="padding-bottom: 132rpx;">
+    <navigator wx:for="{{orderList}}" wx:key="{{item.id}}" url='./orderDetail?id={{item.id}}'>
+      <view class='activity-list'>
+        <view class='text-lg text-black' style="line-height: 2;">{{item.name}}</view>
+        <view class="overhidden">
+          <view class='cu-tag round'>
+            提交时间：{{item.crtime}}
+          </view>
+          <wxs src="../../utils/filter.wxs" module="filter"></wxs>
+          <view class='cu-tag fr {{filter.toOrderClass(item.status)}}'>
+            {{filter.orderStatus(item.status)}}
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class="w100 padding bg-main" style="position: fixed;bottom: 0;">
+    <button class="cu-btn bg-orange lg w100 round" bindtap="toAdd">我要点单</button>
+  </view>
+</view>

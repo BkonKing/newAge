@@ -11,7 +11,7 @@ Page({
   bindViewTap: function () {
     app.getUser().then(() => {
       wx.switchTab({
-        url: '../civilizationMap/civilizationMap'
+        url: '../orderMeal/orderMeal'
       })
     })
   },

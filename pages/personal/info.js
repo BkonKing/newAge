@@ -1,5 +1,3 @@
-const { $Toast } = require('../../iview/base/index');
-
 const app = getApp();
 Page({
   data: {

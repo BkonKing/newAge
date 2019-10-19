@@ -1,7 +1,11 @@
 <view class="container">
   <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="20" markers="{{markers}}" bindmarkertap="markertap" show-location style="width: 100%; height: 300px;"></map>
-  <view >
-    <view >礼堂</view>
-    <view >队伍</view>
+  <view class="flex" style="height: 268rpx;padding: 34rpx;">
+    <navigator class="flex-sub bg-grey radius" style="margin-right: 14rpx;" url="./hall">
+      礼堂
+    </navigator>
+    <navigator class="flex-sub bg-grey radius" style="margin-left: 14rpx;" url="./team">
+      队伍
+    </navigator>
   </view>
 </view>

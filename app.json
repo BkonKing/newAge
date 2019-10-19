@@ -9,7 +9,11 @@
     "pages/news/content",
     "pages/civilizationMap/civilizationMap",
     "pages/civilizationMap/team",
-    "pages/loveHelp/loveHelp"
+    "pages/civilizationMap/hall",
+    "pages/civilizationMap/hallDetail",
+    "pages/orderMeal/orderMeal",
+    "pages/orderMeal/orderDetail",
+    "pages/orderMeal/orderStart"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
@@ -44,7 +48,7 @@
         "text": "志愿活动"
       },
       {
-        "pagePath": "pages/loveHelp/loveHelp",
+        "pagePath": "pages/orderMeal/orderMeal",
         "iconPath": "static/loveHelp.png",
         "selectedIconPath": "static/loveHelp-checked.png",
         "text": "文明点单"

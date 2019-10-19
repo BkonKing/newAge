@@ -1,0 +1,21 @@
+<view class="container padding">
+  <view>
+    <view class="text-bold text-xl text-black" style='padding-bottom: 20rpx;'>{{info.name}}</view>
+    <view >
+      <image src="{{info.image}}" />
+    </view>
+    <view >
+      <view class='ul' style="line-height: 2;">
+    <view><text>地点</text>{{info.address}}</view>
+    <view><text>联系人</text>{{info.contact_name}}</view>
+    <view><text>联系电话</text>{{info.contact_phone}}</view>
+  </view>
+    </view>
+    <view class="module-title">[ 简介 ]</view>
+    <view >
+      {{info.desc}}
+      <!-- <import src="/wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" /> -->
+    </view>
+  </view>
+</view>

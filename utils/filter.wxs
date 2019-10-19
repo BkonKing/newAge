@@ -42,6 +42,16 @@ var toActivityClass = function (value) {
       return 'bg-grey';
   }
 }
+var toOrderClass = function (value) {
+  switch (value) {
+    case '1':
+      return 'bg-green';
+    case '2':
+      return 'bg-orange';
+    case '3':
+      return 'bg-grey';
+  }
+}
 var signStatus = function (value) {
   switch (value) {
     case 1:
@@ -50,10 +60,22 @@ var signStatus = function (value) {
       return '已签到';
   }
 }
+var orderStatus = function (value) {
+  switch (value) {
+    case '1':
+      return '派单中';
+    case '2':
+      return '进行中';
+    case '3':
+        return '已结束';
+  }
+}
 module.exports = {
   toActivityStatus: toActivityStatus,
   toActivityClass: toActivityClass,
   signStatus: signStatus,
+  orderStatus: orderStatus,
+  toOrderClass: toOrderClass,
   toJoinClass: toJoinClass,
   joinStatus: joinStatus
 }

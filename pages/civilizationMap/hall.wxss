@@ -1,0 +1,16 @@
+.hall-list-li {
+  background: #fff;
+  height: 220rpx;
+  padding: 20rpx;
+  border-radius: 13rpx;
+}
+
+.hall-list-li image {
+  width: 270rpx;
+  height: 180rpx;
+  border-radius: 10rpx;
+}
+
+.hall-list-li + .hall-list-li {
+  margin-top: 20rpx;
+}
