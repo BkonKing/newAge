@@ -11,7 +11,7 @@
   <view class='module-title'>[ 基本信息 ]</view>
   <view class='ul'>
     <view><text>地　　点</text>{{order.address}}</view>
-    <view><text>联 系 人</text>{{order.contact_name}}</view>
+    <view><text><text style="letter-spacing: 13rpx;">联系</text>人</text>{{order.contact_name}}</view>
     <view><text>联系电话</text>{{order.contact_name}}</view>
     <view><text>关联活动</text>{{order.activity_name}}{{order.activity_id}}</view>
   </view>

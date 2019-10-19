@@ -4,7 +4,7 @@
 .ul > view {
   padding: 12rpx 0;
 }
-.ul text {
+.ul > view > text {
   margin-right: 40rpx;
 }
 .module-title {
