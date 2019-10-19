@@ -2,21 +2,16 @@
   <view class="hall-list">
     <view wx:for="{{hallList}}" wx:key="item.id" class="hall-list-li">
       <navigator url="{{'./hallDetail?id=' + item.id}}">
-        <view style="padding-bottom: 20rpx;">
-          <view class="flex justify-start">
-            <view class="margin-right-sm">
-              <image src="{{item.image}}"></image>
-            </view>
-            <view style='line-height: 1.5;width: 100%;'>
-              <view class='text-xl text-black'>{{item.name}}</view>
-              <view class='text-sm text-grey padding-bottom-sm'>{{item.address}}</view>
-              <view class='text-df xs' style='border-top: 1px solid #ddd;'>
-                <text class="cuIcon-addressbook text-lg"></text>
-                {{item.contact_name}}
-              </view>
+        <view class="img-box fl margin-right-sm" style="width: 160rpx;">
+            <image src="{{item.image}}"></image>
+          </view>
+          <view class="fl" style='line-height: 1.7;width: calc(100% - 190rpx);'>
+            <view class='text-lg text-black'>{{item.name}}</view>
+            <view class='text-sm text-grey padding-bottom-sm'>{{item.address}}</view>
+            <view class='text-df xs' style='border-top: 1px solid #ddd;'>
+              <text class="cuIcon-addressbook text-lg"></text> {{item.contact_name}}
             </view>
           </view>
-        </view>
       </navigator>
     </view>
   </view>

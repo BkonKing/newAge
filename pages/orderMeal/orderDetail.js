@@ -19,6 +19,7 @@ Page({
       url: '/orders/' + options.id,
       method: 'get',
       success: (data) => {
+        console.log(data);
         if (data.code == 1) {
           this.setData({
             order: data.data
@@ -28,9 +29,9 @@ Page({
       }
     })
   },
-  join() {
+  publish() {
     app.request({
-      url: '/activity/' + this.data.orderId + '/join',
+      url: '/activ',
       method: 'post',
       success: (data) => {
         if (data.code == 1) {
@@ -39,7 +40,7 @@ Page({
             type: '报名成功'
           });
           wx.switchTab({
-            url: '/pages/volunteer/volunteer'
+            url: '/pages/orderMeal/orderMeal'
           });
         } else {
           $Toast({
@@ -49,8 +50,10 @@ Page({
         }
       }
     })
-    // wx.navigateTo({
-    //   url: './join?id=' + this.data.orderId
-    // })
+  },
+  callUp: function () {
+    wx.makePhoneCall({
+      phoneNumber: String(this.data.order.contact_phone)
+    })
   }
 })

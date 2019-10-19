@@ -4,14 +4,7 @@ Page({
   data: {
     longitude: 0,
     latitude: 0,
-    markers: [{
-      iconPath: "",
-      id: 0,
-      latitude: 0,
-      longitude: 0,
-      width: 50,
-      height: 50
-    }]
+    markers: []
   },
   onLoad() {
     wx.getSetting({
@@ -32,9 +25,10 @@ Page({
   getLocation() {
     wx.getLocation({
       success: res => {
+        console.log(res)
         this.setData({
-          latitude: parseFloat("234.000000"),
-          longitude: parseFloat("123.000000")
+          latitude: res.latitude,
+          longitude: res.longitude
         })
         this.queryStation()
       }
@@ -46,16 +40,20 @@ Page({
       method: 'get',
       success: (data) => {
         if (data.code == 1) {
-          console.log(data.data.data);
           var stationList = data.data.data.map((obj) => {
             return {
-              iconPath: "",
-              id: obj.id,
-              latitude: obj.lat,
-              longitude: obj.lng,
-              width: 50,
-              height: 50
+              iconPath: "/static/civilizationMap-checked.png",
+              id: 0,
+              latitude: 26.0527,
+              longitude: 119.31414,
+              width: 500,
+              height: 500,
+              zIndex: 999
             }
+          })
+          console.log(stationList)
+          this.setData({
+            markers: stationList
           })
         }
       }

@@ -1,12 +1,26 @@
 .activity {
   padding: 0 40rpx;
 }
+
 .ul > view {
   padding: 12rpx 0;
 }
+
 .ul > view > text {
   margin-right: 40rpx;
 }
+
 .module-title {
   padding: 30rpx 0;
+}
+
+input {
+  background: #ddd;
+  border-radius: 32rpx;
+  padding: 8rpx 16rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  display: block;
+  float: left;
+  width: calc(100% - 100rpx);
 }

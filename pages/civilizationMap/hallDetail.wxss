@@ -1,1 +1,6 @@
-/* pages/civilizationMap/hallDetail.wxss */
+.ul > view {
+  padding: 12rpx 0;
+}
+.ul > view > text {
+  margin-right: 40rpx;
+}

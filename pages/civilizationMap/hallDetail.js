@@ -21,5 +21,10 @@ Page({
         }
       }
     })
+  },
+  callUp: function () {
+    wx.makePhoneCall({
+      phoneNumber: String(this.data.info.contact_phone)
+    })
   }
 })
