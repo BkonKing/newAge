@@ -4,7 +4,7 @@
       <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
         <block wx:for="{{bannerList}}" wx:key="{{item.id}}">
           <swiper-item>
-            <image class="w100" bindtap="bannerNavigator" style="height: 100%;" src="{{item.image}}" data-param="{{item}}" />
+            <image class="w100" mode="aspectFill" bindtap="bannerNavigator" style="height: 100%;" src="{{item.image}}" data-param="{{item}}" />
           </swiper-item>
         </block>
       </swiper>
@@ -22,7 +22,7 @@
           <view class="new-time cu-tag round">{{item.crtime}}</view>
         </view>
         <view class="fr" style='width:180rpx;'>
-          <image src="{{item.thumb}}" />
+          <image src="{{item.thumb}}" mode="aspectFill"  />
         </view>
       </view>
     </view>
@@ -35,7 +35,7 @@
           </view>
           <view class="civilization-title">{{item.title}}</view>
           <view class="civilization-img">
-            <block wx:for="{{item.image}}" wx:key="{{item.id}}">
+            <block wx:for="{{item.image}}" mode="aspectFill"  wx:key="{{item.id}}">
               <image src="{{item.img}}" />
             </block>
           </view>

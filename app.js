@@ -42,6 +42,11 @@ App({
       wx.login({
         success: data => {
           if (data.code) {
+            var nickName = '',avatar = ''
+            if (this.globalData.wxUserInfo) {
+              nickName = this.globalData.wxUserInfo.nickName
+              avatar = this.globalData.wxUserInfo.avatarUrl
+            }
             this.request({
               url: '/login',
               method: 'post',
@@ -49,8 +54,8 @@ App({
               data: {
                 type: 'weixin',
                 code: data.code,
-                nickname: this.globalData.wxUserInfo.nickName,
-                avatar: this.globalData.wxUserInfo.avatarUrl
+                nickname: nickName,
+                avatar: avatar
               },
               success: (data) => {
                 this.globalData.token = data.data.token;

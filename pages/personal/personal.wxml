@@ -27,7 +27,7 @@
     <view class='text-sm text-grey' style='padding-bottom: 20rpx;'>我的队伍</view>
     <view class='team-list' wx:for="{{teamList}}" wx:key="{{item.id}}">
       <view class='user-info'>
-        <image class='cu-avatar round' src="{{item.avatar}}"></image>
+        <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>
         <text>{{item.team_name}}</text>
       </view>
       <view class='overhidden mt20'>

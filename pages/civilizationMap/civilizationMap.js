@@ -25,7 +25,6 @@ Page({
   getLocation() {
     wx.getLocation({
       success: res => {
-        console.log(res)
         this.setData({
           latitude: res.latitude,
           longitude: res.longitude
@@ -36,22 +35,27 @@ Page({
   },
   queryStation() {
     app.request({
-      url: '/station',
+      url: '/map',
       method: 'get',
       success: (data) => {
         if (data.code == 1) {
-          var stationList = data.data.data.map((obj) => {
-            return {
-              iconPath: "/static/civilizationMap-checked.png",
-              id: 0,
-              latitude: 26.0527,
-              longitude: 119.31414,
-              width: 500,
-              height: 500,
-              zIndex: 999
+          var stationList = []
+          data.data.data.forEach((obj) => {
+            var lat = parseFloat(obj.lat)
+            var lng = parseFloat(obj.lng)
+            if (lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180) {
+              var img = obj.map_type == '1' ? "/static/marker.png" : "/static/hall.png"
+              stationList.push({
+                iconPath: img,
+                id: 0,
+                latitude: lat,
+                longitude: lng,
+                width: 16,
+                height: 16,
+                zIndex: 999
+              })
             }
           })
-          console.log(stationList)
           this.setData({
             markers: stationList
           })

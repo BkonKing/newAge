@@ -13,7 +13,7 @@
     <view><text>地　　点</text>{{order.address}}</view>
     <view><text><text style="letter-spacing: 13rpx;">联系</text>人</text>{{order.contact_name}}</view>
     <view><text>联系电话</text><text style="color: #3171ff;text-decoration: underline;" bindtap='callUp'>{{order.contact_phone}}</text></view>
-    <view><text>关联活动</text>{{order.activity_name}}{{order.activity_id}}</view>
+    <view><text>关联活动</text><text wx:if="{{order.activity_id != '0'}}" style="color: #3171ff;text-decoration: underline;" bindtap='toActivity'>{{order.activity_name || '无'}}</text><text wx:else>{{order.activity_name || '无'}}</text></view>
   </view>
   <view class='module-title'>[ 点单内容 ]</view>
   <view class='ul'>
@@ -27,7 +27,7 @@
   </view>
 </view>
 <view class="bg-white padding" style="position: fixed;bottom: 0;box-shadow: 0 -2px 5rpx #ddd;width: 100%;" wx:if="{{order.user_id == userId}}">
-  <input value="{{ evaluate }}" placeholder="发表评价" />
+  <input value="{{ evaluate }}" bindinput="bindKeyInput" placeholder="发表评价" />
   <button class='cu-btn bg-orange round sm shadow fr' bindtap="publish">发表</button>
 </view>
 <i-toast id="toast" />

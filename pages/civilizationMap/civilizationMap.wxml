@@ -1,5 +1,5 @@
 <view style="position: fixed;height: 100%;width: 100%;padding-bottom:268rpx;">
-  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="20" markers="{{markers}}" bindmarkertap="markertap" show-location style="width: 100%; height: 100%;"></map>
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="16" markers="{{markers}}" bindmarkertap="markertap" show-location style="width: 100%; height: 100%;"></map>
 </view>
 <view class="flex bg-white w100" style="position:fixed;bottom:0;height: 268rpx;padding: 34rpx;">
   <navigator class="flex-sub radius" style="margin-right: 14rpx;height: 100%;" url="./hall">

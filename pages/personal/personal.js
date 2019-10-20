@@ -1,14 +1,63 @@
 const app = getApp();
 Page({
+  data: {
+    userInfo: {},
+    wxUserInfo: {},
+    teamList: [],
+    defaultAvatar: '',
+    volunteer: {}
+  },
   onLoad() {
     // this.draw('runCanvas', 'runCanvas1', 20, 3000)
     this.setData({
       userInfo: app.globalData.userInfo,
+      defaultAvatar: app.globalData.defaultAvatar,
       wxUserInfo: app.globalData.wxUserInfo
     })
     // this.queryCurrentVolunteer();
     this.queryCurrentTeam();
   },
+
+  queryCurrentTeam() {
+    app.request({
+      url: '/current/team',
+      method: 'get',
+      success: (data) => {
+        if (data.code == 1) {
+          this.setData({
+            teamList: data.data.data
+          })
+        }
+      }
+    })
+  },
+
+  // queryCurrentVolunteer() {
+  //   app.request({
+  //     url: '/current/volunteer',
+  //     method: 'get',
+  //     success: (data) => {
+  //       if (data.code == 1) {
+  //         this.setData({
+  //           volunteer: data.data
+  //         })   
+  //       }
+  //     }
+  //   })
+  // },
+
+  edit() {
+    wx.navigateTo({
+      url: './info'
+    })
+  },
+
+  toActive() {
+    wx.switchTab({
+      url: '/pages/volunteer/volunteer'
+    })
+  },
+
   // 绘制圆形进度条方法
   run(c, w, h) {
     let that = this;
@@ -77,51 +126,5 @@ Page({
       ctx3.beginPath();
       ctx3.draw();
     }).exec();
-  },
-  data: {
-    userInfo: {},
-    wxUserInfo: {},
-    teamList: [],
-    volunteer: {}
-  },
-
-  queryCurrentTeam() {
-    app.request({
-      url: '/current/team',
-      method: 'get',
-      success: (data) => {
-        if (data.code == 1) {
-          this.setData({
-            teamList: data.data.data
-          })
-        }
-      }
-    })
-  },
-
-  // queryCurrentVolunteer() {
-  //   app.request({
-  //     url: '/current/volunteer',
-  //     method: 'get',
-  //     success: (data) => {
-  //       if (data.code == 1) {
-  //         this.setData({
-  //           volunteer: data.data
-  //         })   
-  //       }
-  //     }
-  //   })
-  // },
-
-  edit() {
-    wx.navigateTo({
-      url: './info'
-    })
-  },
-
-  toActive() {
-    wx.switchTab({
-      url: '/pages/volunteer/volunteer'
-    })
   }
 })

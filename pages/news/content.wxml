@@ -7,11 +7,11 @@
     <view class="module-title">[ 关联活动 ]</view>
     <view style="padding: 20rpx 0;overflow: hidden;">
       <view class="user-info fl">
-        <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>
+        <image class='cu-avatar round' src="{{info.avatar || defaultAvatar}}"></image>
         <text>{{info.volunteer_name}}</text>
       </view>
-      <view class="fr">
-        <button class=" cu-btn round xs bg-orange" style="margin-top: 22rpx;">查看</button>
+      <view class="fr" wx:if="{{info.activity_id != '0'}}">
+        <button class=" cu-btn round xs bg-orange" style="margin-top: 22rpx;" bindtap="look">查看</button>
       </view>
     </view>
   </view>

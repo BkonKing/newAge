@@ -11,7 +11,7 @@ Page({
   bindViewTap: function () {
     app.getUser().then(() => {
       wx.switchTab({
-        url: '../civilizationMap/civilizationMap'
+        url: '../personal/personal'
       })
     })
   },
@@ -35,7 +35,7 @@ Page({
     })
   },
   getUserInfo: function (e) {
-    app.globalData.wxUserInfo = e.detail.wxUserInfo;
+    app.globalData.wxUserInfo = e.detail.userInfo;
     this.bindViewTap();
   }
 })

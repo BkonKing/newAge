@@ -15,14 +15,17 @@ Page({
       defaultAvatar: app.globalData.defaultAvatar,
       userId: app.globalData.userInfo.id
     })
+    this.queryOrderContent()
+  },
+  queryOrderContent() {
     app.request({
-      url: '/orders/' + options.id,
+      url: '/orders/' + this.data.orderId,
       method: 'get',
       success: (data) => {
-        console.log(data);
         if (data.code == 1) {
           this.setData({
-            order: data.data
+            order: data.data,
+            evaluate: data.data.comment
           })
           // WxParse.wxParse('article', 'html', data.data.content, this, '100%');
         }
@@ -31,16 +34,17 @@ Page({
   },
   publish() {
     app.request({
-      url: '/activ',
-      method: 'post',
+      url: '/orders/' + this.data.orderId,
+      method: 'put',
+      data: {
+        comment: this.data.evaluate 
+      },
       success: (data) => {
         if (data.code == 1) {
+          this.queryOrderContent()
           $Toast({
-            content: 'success',
-            type: '报名成功'
-          });
-          wx.switchTab({
-            url: '/pages/orderMeal/orderMeal'
+            content: '发表评论成功',
+            type: 'success'
           });
         } else {
           $Toast({
@@ -51,9 +55,19 @@ Page({
       }
     })
   },
-  callUp: function () {
+  callUp() {
     wx.makePhoneCall({
       phoneNumber: String(this.data.order.contact_phone)
     })
+  },
+  bindKeyInput: function (e) {
+    this.setData({
+      evaluate: e.detail.value
+    })
+  },
+  toActivity() {
+    wx.navigateTo({
+      url: '../volunteer/activity?id=' + this.data.order.activity_id
+    });
   }
 })

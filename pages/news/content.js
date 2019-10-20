@@ -51,5 +51,10 @@ Page({
         }
       }
     })
+  },
+  look() {
+    wx.navigateTo({
+      url: '../volunteer/activity?id=' + this.data.info.activity_id
+    });
   }
 })

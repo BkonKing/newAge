@@ -20,10 +20,18 @@ Page({
           title: '提交成功',
           mask: false
         });
-        setTimeout(() => {
-          wx.navigateBack({
-            delta: 1
-          });
+        var timeout = setTimeout(() => {
+          app.getUser().then(() => {
+            wx.switchTab({
+              url: './personal',
+              success: function () {
+                var page = getCurrentPages().pop();
+                if (page == undefined || page == null) return;
+                page.onLoad();
+              }
+            });
+          })
+          clearTimeout(timeout)
         }, 500);
       }
     })
