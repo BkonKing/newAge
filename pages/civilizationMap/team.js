@@ -26,7 +26,8 @@ Page({
         if (data.code == 1) {
           this.setData({
             teamList: data.data.data
-          })   
+          })
+          wx.stopPullDownRefresh()
         }
       }
     })

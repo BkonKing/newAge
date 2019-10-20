@@ -8,7 +8,7 @@
             提交时间：{{item.crtime}}
           </view>
           <wxs src="../../utils/filter.wxs" module="filter"></wxs>
-          <view class='cu-tag fr {{filter.toOrderClass(item.status)}}'>
+          <view class='cu-tag fr {{filter.toActivityClass(item.status)}}'>
             {{filter.orderStatus(item.status)}}
           </view>
         </view>

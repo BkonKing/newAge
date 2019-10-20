@@ -1,5 +1,6 @@
 {
     "navigationBarTitleText": "志愿活动",
+    "enablePullDownRefresh": true,
     "component": true,
     "usingComponents": {
         "i-tabs": "../../iview/tabs/index",

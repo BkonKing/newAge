@@ -24,6 +24,7 @@ Page({
   },
   getLocation() {
     wx.getLocation({
+      type: 'gcj02',
       success: res => {
         this.setData({
           latitude: res.latitude,

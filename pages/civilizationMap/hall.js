@@ -22,7 +22,8 @@ Page({
         if (data.code == 1) {
           this.setData({
             hallList: data.data.data
-          })   
+          })
+          wx.stopPullDownRefresh()
         }
       }
     })

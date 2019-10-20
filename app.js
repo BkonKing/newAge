@@ -8,7 +8,7 @@ App({
       wx.showLoading()
     }
     wx.request({
-      url: "https://www.upin-cloud.com/api" + params.url,
+      url: "https://lcqxsd.fjhqit.cn/api" + params.url,
       method: params.method,
       data: params.data,
       header: {
@@ -82,6 +82,6 @@ App({
     wxUserInfo: null,
     token: '',
     newContent: {},
-    defaultAvatar: 'https://www.upin-cloud.com/uploads/default/avatar.png'
+    defaultAvatar: 'https://lcqxsd.fjhqit.cn/uploads/default/avatar.png'
   }
 })

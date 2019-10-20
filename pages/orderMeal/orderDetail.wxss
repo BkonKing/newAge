@@ -16,11 +16,11 @@
 
 input {
   background: #ddd;
-  border-radius: 32rpx;
+  border-radius: 48rpx;
   padding: 8rpx 16rpx;
-  height: 48rpx;
-  line-height: 48rpx;
+  height: 64rpx;
+  line-height: 64rpx;
   display: block;
   float: left;
-  width: calc(100% - 100rpx);
+  width: calc(100% - 136rpx);
 }

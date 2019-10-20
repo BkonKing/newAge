@@ -62,12 +62,36 @@ var signStatus = function (value) {
 }
 var orderStatus = function (value) {
   switch (value) {
-    case '1':
+    case 1:
       return '派单中';
-    case '2':
+    case 2:
       return '进行中';
-    case '3':
-        return '已结束';
+    case 3:
+      return '已结束';
+  }
+}
+var teamStatus = function (value) {
+  switch (value) {
+    case 0:
+      return '无法加入';
+    case 1:
+      return '未加入';
+    case 2:
+      return '待审核';
+    case 3:
+      return '已加入';
+  }
+}
+var toTeamClass = function (value) {
+  switch (value) {
+    case 0:
+      return 'bg-grey';
+    case 1:
+      return 'bg-grey';
+    case 2:
+      return 'bg-orange';
+    case 3:
+      return 'bg-green';
   }
 }
 module.exports = {
@@ -76,6 +100,8 @@ module.exports = {
   signStatus: signStatus,
   orderStatus: orderStatus,
   toOrderClass: toOrderClass,
+  teamStatus: teamStatus,
+  toTeamClass: toTeamClass,
   toJoinClass: toJoinClass,
   joinStatus: joinStatus
 }

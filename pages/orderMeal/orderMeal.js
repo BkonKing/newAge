@@ -18,7 +18,8 @@ Page({
         if (data.code == 1) {
           this.setData({
             orderList: data.data.data
-          })   
+          })
+          wx.stopPullDownRefresh()
         }
       }
     })

@@ -11,7 +11,7 @@ Page({
   },
   onPullDownRefresh() {
     this.queryActivityContent(this.data.activityId).then(() => {
-      wx.stopPullDownRefresh();
+      wx.stopPullDownRefresh()
     })
   },
   queryActivityContent(id) {

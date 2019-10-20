@@ -27,7 +27,7 @@
     <view><text>签到状态</text>{{filter.signStatus(activity.sign_status)}}</view>
     <!-- <view><text>新增活跃</text>{{activity.amount}} / {{activity.time}}</view> -->
   </view>
-  <view class='center mt20 padding' wx:if="{{activity.join_status == 1}}">
+  <view class='center mt20 padding' wx:if="{{activity.join_status == 1 && activity.status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="apply">加入服务队</button>
   </view>
   <view class='center mt20 padding' wx:if="{{activity.join_status == 2 && activity.status == 1}}">

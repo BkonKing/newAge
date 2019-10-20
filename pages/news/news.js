@@ -34,7 +34,8 @@ Page({
         if (data.code == 1) {
           this.setData({
             newList: data.data.data
-          })   
+          })
+          wx.stopPullDownRefresh()
         }
       }
     })

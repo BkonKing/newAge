@@ -1,25 +1,27 @@
 <view class="container padding bg-main">
   <view class="team-list">
     <view wx:for="{{teamList}}" wx:key="item.id" class="team-list-li">
-      <view style="padding-bottom: 20rpx;">
-        <view class="flex justify-start">
-          <view class="margin-right-sm">
-            <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>
+      <navigator url="{{'./teamDetail?id=' + item.id}}">
+        <view style="padding-bottom: 20rpx;">
+          <view class="flex justify-start">
+            <view class="margin-right-sm">
+              <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>
+            </view>
+            <view>
+              <view>{{item.name}}</view>
+              <view class="text-xs text-grey">创建时间：{{item.crtime}}</view>
+            </view>
           </view>
-          <view>
-            <view>{{item.name}}</view>
-            <view class="text-xs text-grey">创建时间：{{item.crtime}}</view>
+        </view>
+        <view class="flex justify-between" style="padding-top: 20rpx;border-top: 1px solid #ddd;">
+          <view class='text-gray'>
+            <text class="cuIcon-addressbook lg"></text> {{item.contact_name}}
+          </view>
+          <view class='text-gray'>
+            <text class="cuIcon-dianhua lg"></text> {{item.contact_phone}}
           </view>
         </view>
-      </view>
-      <view class="flex justify-between" style="padding-top: 20rpx;border-top: 1px solid #ddd;">
-        <view class='text-gray'>
-          <text class="cuIcon-addressbook lg"></text> {{item.contact_name}}
-        </view>
-        <view class='text-gray'>
-          <text class="cuIcon-dianhua lg"></text> {{item.contact_phone}}
-        </view>
-      </view>
+      </navigator>
     </view>
   </view>
 </view>

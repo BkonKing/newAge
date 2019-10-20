@@ -1,0 +1,38 @@
+<view class="container padding">
+  <view>
+    <view class='fr' style="margin-top: 8rpx;">
+      <wxs src="../../utils/filter.wxs" module="filter"></wxs>
+      <view class='cu-tag {{filter.toTeamClass(info.user_status)}}'>
+        {{filter.teamStatus(info.user_status)}}
+      </view>
+    </view>
+    <view class="user-info">
+      <image class='cu-avatar round' src="{{info.avatar || defaultAvatar}}"></image>
+      <text>{{info.name}}</text>
+    </view>
+  </view>
+  <view class="module-title">[ 基本信息 ]</view>
+  <view class='ul' style="line-height: 1.5;">
+    <view>
+      <text>队　　长</text>
+      {{info.leader_name}}
+    </view>
+    <view>
+      <text><text style="letter-spacing: 14rpx;">副队</text>人</text>
+      {{info.assistant_name}}
+    </view>
+    <view>
+      <text><text style="letter-spacing: 14rpx;">联系</text>人</text>
+      {{info.contact_name}}
+    </view>
+    <view>
+      <text>联系电话</text><text style="color: #3171ff;text-decoration: underline;" bindtap='callUp'>{{info.contact_phone}}</text>
+    </view>
+  </view>
+  <view class="module-title">[ 简介 ]</view>
+  <view>{{info.desc}}</view>
+  <view class='center mt20 padding' wx:if="{{info.user_status == 1}}">
+    <button class='cu-btn bg-orange round shadow w100' bindtap="apply">加入服务队</button>
+  </view>
+</view>
+<i-toast id="toast" />
