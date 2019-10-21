@@ -31,7 +31,7 @@
         <block wx:if="{{index<3}}">
           <view class="user-info">
             <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>
-            <text>{{item.volunteer_name}}</text>
+            <text>{{item.username}}</text>
           </view>
           <view class="civilization-title">{{item.title}}</view>
           <view class="civilization-img">

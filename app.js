@@ -13,7 +13,7 @@ App({
       data: params.data,
       header: {
         'content-type': 'application/json',
-        'Authorization': 'Basic 19ce655ff65026b8e64ce8cdbc050993'
+        'Authorization': 'Basic ' + this.globalData.token
       },
       success: function (res) {
         wx.hideLoading()

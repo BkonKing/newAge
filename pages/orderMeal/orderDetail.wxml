@@ -5,12 +5,13 @@
     <view class='cu-tag {{filter.toActivityClass(order.status)}}'>{{filter.orderStatus(order.status)}}</view>
   </view>
   <view class='user-info'>
-    <image class='cu-avatar round sm' src="{{order.team_avatar || defaultAvatar}}"></image>
-    <text>{{order.team_name}}</text>
+    <image class='cu-avatar round sm' src="{{order.avatar || defaultAvatar}}"></image>
+    <text>{{order.username}}</text>
   </view>
   <view class='module-title'>[ 基本信息 ]</view>
   <view class='ul'>
     <view><text>地　　点</text>{{order.address}}</view>
+    <view wx:if="{{order.team_id != '0'}}"><text>对　　伍</text>{{order.team_name}}</view>
     <view><text><text style="letter-spacing: 13rpx;">联系</text>人</text>{{order.contact_name}}</view>
     <view><text>联系电话</text><text style="color: #3171ff;text-decoration: underline;" bindtap='callUp'>{{order.contact_phone}}</text></view>
     <view><text>关联活动</text><text wx:if="{{order.activity_id != '0'}}" style="color: #3171ff;text-decoration: underline;" bindtap='toActivity'>{{order.activity_name || '无'}}</text><text wx:else>{{order.activity_name || '无'}}</text></view>

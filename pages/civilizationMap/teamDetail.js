@@ -16,7 +16,6 @@ Page({
       url: '/team/' + id,
       method: 'get',
       success: (data) => {
-        console.log(data.data);
         if (data.code == 1) {
           this.setData({
             info: data.data

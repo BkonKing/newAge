@@ -4,11 +4,11 @@
     <view class="text-sm text-grey cu-tag round">{{info.crtime}}</view>
   </view>
   <view style="padding-top: 20rpx;">
-    <view class="module-title">[ 关联活动 ]</view>
+    <view class="module-title" wx:if="{{info.activity_id != '0'}}">[ 关联活动 ]</view>
     <view style="padding: 20rpx 0;overflow: hidden;">
       <view class="user-info fl">
         <image class='cu-avatar round' src="{{info.avatar || defaultAvatar}}"></image>
-        <text>{{info.volunteer_name}}</text>
+        <text>{{info.username}}</text>
       </view>
       <view class="fr" wx:if="{{info.activity_id != '0'}}">
         <button class=" cu-btn round sm bg-orange" style="margin-top: 16rpx;" bindtap="look">查看</button>

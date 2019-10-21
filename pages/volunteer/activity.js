@@ -31,6 +31,11 @@ Page({
       })
     })
   },
+  signin() {
+    wx.navigateTo({
+      url: '../personal/info'
+    })
+  },
   apply() {
     app.request({
       url: '/apply',

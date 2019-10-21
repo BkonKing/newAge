@@ -2,8 +2,8 @@ const app = getApp()
 
 Page({
   data: {
-    longitude: 0,
-    latitude: 0,
+    longitude: 119.015123,
+    latitude: 25.431979,
     markers: []
   },
   onLoad() {
@@ -23,16 +23,17 @@ Page({
     })
   },
   getLocation() {
-    wx.getLocation({
-      type: 'gcj02',
-      success: res => {
-        this.setData({
-          latitude: res.latitude,
-          longitude: res.longitude
-        })
-        this.queryStation()
-      }
-    })
+    this.queryStation()
+    // wx.getLocation({
+    //   type: 'gcj02',
+    //   success: res => {
+    //     this.setData({
+    //       latitude: res.latitude,
+    //       longitude: res.longitude
+    //     })
+    //     this.queryStation()
+    //   }
+    // })
   },
   queryStation() {
     app.request({
