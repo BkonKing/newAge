@@ -82,6 +82,16 @@ var teamStatus = function (value) {
       return '已加入';
   }
 }
+var volunteerStatus = function (value) {
+  switch (value) {
+    case 0:
+      return '未认证';
+    case 1:
+      return '待审核';
+    case 2:
+      return '已通过';
+  }
+}
 var toTeamClass = function (value) {
   switch (value) {
     case 0:
@@ -101,6 +111,7 @@ module.exports = {
   orderStatus: orderStatus,
   toOrderClass: toOrderClass,
   teamStatus: teamStatus,
+  volunteerStatus: volunteerStatus,
   toTeamClass: toTeamClass,
   toJoinClass: toJoinClass,
   joinStatus: joinStatus

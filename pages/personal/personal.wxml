@@ -15,7 +15,8 @@
         志愿者身份认证
         <i-icon type="editor" size="22" color="#666" i-class='ml20' bindtap="edit" />
       </view>
-      <view class="text-sm text-grey">{{userInfo.volunteer_status == 1 ? '未认证' : '已认证'}}</view>
+      <wxs src="../../utils/filter.wxs" module="filter"></wxs>
+      <view class="text-sm text-grey">{{filter.volunteerStatus(userInfo.volunteer_status)}}</view>
     </view>
     <view class="fr center">
       <view class='text-xxl'>{{userInfo.point}}</view>
