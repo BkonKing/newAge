@@ -5,10 +5,67 @@ Page({
     idcard: undefined,
     phone: undefined,
     company: undefined,
-    address: ''
+    address: '',
+    skillList: [
+      {
+        id: 1,
+        name: '移风易俗',
+      }, {
+        id: 2,
+        name: '助学帮困',
+      }, {
+        id: 3,
+        name: '助医助残',
+      }, {
+        id: 4,
+        name: '精准脱贫',
+      }, {
+        id: 5,
+        name: '邻里守望',
+      }, {
+        id: 6,
+        name: '应急救援',
+      }, {
+        id: 7,
+        name: '助老扶幼',
+      }, {
+        id: 8,
+        name: '文明劝导',
+      }, {
+        id: 9,
+        name: '生态环保',
+      }, {
+        id: 10,
+        name: '文艺惠民',
+      }, {
+        id: 11,
+        name: '文明旅游',
+      }, {
+        id: 12,
+        name: '教育服务',
+      }, {
+        id: 13,
+        name: '心理咨询',
+      }, {
+        id: 14,
+        name: '理论宣讲',
+      }, {
+        id: 15,
+        name: '健身体育',
+      }, {
+        id: 16,
+        name: '科技科普',
+      }, {
+        id: 17,
+        name: '社会宣传',
+      }, {
+        id: 18,
+        name: '法律维权',
+      }
+    ]
   },
   onLoad() {
-    this.queryCurrentVolunteer();
+    this.queryCurrentVolunteer()
   },
   formSubmit(e) {
     app.request({
@@ -44,15 +101,23 @@ Page({
       method: 'get',
       success: (data) => {
         if (data.code == 1) {
+          var skillList = this.data.skillList
+          data.data.skill.forEach((obj) => {
+            skillList[parseInt(obj) - 1].checked = true
+          })
           this.setData({
-            name: data.data.name || '1',
-            idcard: data.data.idcard || '1',
-            phone: data.data.phone || '1',
-            company: data.data.company || '1',
-            address: data.data.address || '1'
+            name: data.data.name,
+            idcard: data.data.idcard,
+            phone: data.data.phone,
+            company: data.data.company,
+            address: data.data.address,
+            skillList: skillList
           })
         }
       }
     })
-  }
+  },
+  // checkboxChange(e) {
+  //   console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+  // }
 })

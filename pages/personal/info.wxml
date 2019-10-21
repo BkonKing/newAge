@@ -5,6 +5,15 @@
     <i-input value="{{ phone }}" name="phone" type="number" title="电话" placeholder="请输入联系电话" />
     <i-input value="{{ company }}" name="company" title="公司" placeholder="请输入公司名称" />
     <i-input value="{{ address }}" name="address" title="地址" placeholder="请输入地址" />
+    <view class="i-cell i-input" style="border-bottom:1px solid #e9eaec;">
+      <view class="i-cell-hd i-input-title">技能</view>
+      <checkbox-group name="skill">
+        <label class="checkbox" wx:for="{{skillList}}" wx:key="{{item.id}}">
+          <checkbox class="green" value="{{item.id}}" checked="{{item.checked}}" />
+          {{item.name}}
+        </label>
+      </checkbox-group>
+    </view>
   </view>
   <view class="padding">
     <button class="cu-btn bg-orange round lg shadow w100" form-type="submit">提交</button>
