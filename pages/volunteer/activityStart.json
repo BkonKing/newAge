@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "报名",
+  "navigationBarTitleText": "提交活动",
   "usingComponents": {
     "i-toast": "../../iview/toast/index",
     "i-input": "../../iview/input/index"

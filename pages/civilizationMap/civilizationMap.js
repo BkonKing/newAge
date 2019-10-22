@@ -4,9 +4,13 @@ Page({
   data: {
     longitude: 119.015123,
     latitude: 25.431979,
+    volunteer_status: 0,
     markers: []
   },
   onLoad() {
+    this.setData({
+      volunteer_status: app.globalData.userInfo.volunteer_status
+    })
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userLocation']) {

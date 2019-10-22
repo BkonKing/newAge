@@ -4,6 +4,7 @@ Page({
   data: {
     current: 'tab2',
     defaultAvatar: '',
+    isLeader: false,
     activityList: []
   },
 
@@ -11,6 +12,12 @@ Page({
     this.setData({
       defaultAvatar: app.globalData.defaultAvatar
     })
+    if (app.globalData.userInfo.lead_team.length > 0) {
+      this.setData({
+        isLeader: true
+      })
+    }
+    this.queryCurrentActivity()
     this.queryActivity()
   },
 
@@ -25,11 +32,11 @@ Page({
     this.setData({
       current: detail.key
     });
-    if (detail.key == 'tab1') {
-      this.queryCurrentActivity()
-    } else {
-      this.queryActivity()
-    }
+    // if (detail.key == 'tab1') {
+    //   this.queryCurrentActivity()
+    // } else {
+    //   this.queryActivity()
+    // }
   },
 
   queryActivity() {
@@ -59,6 +66,11 @@ Page({
         }
       }
     })
-  }
+  },
 
+  toActivityStart() {
+    wx.navigateTo({
+      url: './activityStart'
+    })
+  }
 })

@@ -1,5 +1,5 @@
 const app = getApp();
-var WxParse = require('../../wxParse/wxParse.js');
+// var WxParse = require('../../wxParse/wxParse.js');
 const { $Toast } = require('../../iview/base/index');
 Page({
   onLoad(options) {
@@ -24,7 +24,7 @@ Page({
             this.setData({
               activity: data.data
             })
-            WxParse.wxParse('article', 'html', data.data.content, this, '100%')
+            // WxParse.wxParse('article', 'html', data.data.content, this, '100%')
             resolve()
           }
         }

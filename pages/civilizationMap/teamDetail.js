@@ -39,14 +39,16 @@ Page({
       success: (data) => {
         if (data.code == 1) {
           $Toast({
-            content: '已申请加入，请耐心等待审核',
+            // content: '已申请加入，请耐心等待审核',
+            content: '已申请加入成功',
             type: 'success'
-          });
+          })
+          this.queryTeamDetail(this.data.teamId)
         } else {
           $Toast({
             content: data.msg,
             type: 'warning'
-          });
+          })
         }
       }
     })

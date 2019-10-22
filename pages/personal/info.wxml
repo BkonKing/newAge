@@ -6,6 +6,12 @@
     <i-input value="{{ company }}" name="company" title="公司" placeholder="请输入公司名称" />
     <i-input value="{{ address }}" name="address" title="地址" placeholder="请输入地址" />
     <view class="i-cell i-input" style="border-bottom:1px solid #e9eaec;">
+      <view class="i-cell-hd i-input-title">街镇</view>
+      <picker name="town_id" bindchange="bindPickerChange" value="{{town_id}}" range="{{townList}}" range-key="name">
+        <view class="picker">{{townList[town_id].name}}</view>
+      </picker>
+    </view>
+    <view class="i-cell i-input" style="border-bottom:1px solid #e9eaec;">
       <view class="i-cell-hd i-input-title">技能</view>
       <checkbox-group name="skill">
         <label class="checkbox" wx:for="{{skillList}}" wx:key="{{item.id}}">

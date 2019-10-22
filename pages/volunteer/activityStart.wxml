@@ -1,0 +1,43 @@
+<form bindsubmit="formSubmit">
+  <view>
+    <i-input value="{{ name }}" name="name" title="标题" autofocus placeholder="请输入标题" />
+    <i-input value="{{ address }}" name="address" title="地址" placeholder="请输入地址" />
+    <i-input value="{{ time }}" name="time" title="服务时长" type="number" placeholder="请输入服务时长（分钟）" />
+    <i-input value="{{ max }}" name="max" title="报名上限" type="number" placeholder="请输入报名上限" />
+    <view class="i-cell i-input">
+      <view class="i-cell-hd i-input-title">开始时间</view>
+      <picker name="start_date" mode="date" bindchange="bindStartDateChange" value="{{start_date}}">
+        <view class="picker">{{start_date}}</view>
+      </picker>
+      <picker name="start_time" mode="time" bindchange="bindStartTimeChange" value="{{start_time}}">
+        <view class="picker">{{start_time}}</view>
+      </picker>
+    </view>
+    <view class="i-cell i-input">
+      <view class="i-cell-hd i-input-title">结束时间</view>
+      <picker name="end_date" mode="date" bindchange="bindEndDateChange" value="{{end_date}}">
+        <view class="picker">{{end_date}}</view>
+      </picker>
+      <picker name="end_time" mode="time" bindchange="bindEndTimeChange" value="{{end_time}}">
+        <view class="picker">{{end_time}}</view>
+      </picker>
+    </view>
+    <view class="i-cell i-input">
+      <view class="i-cell-hd i-input-title">活动分类</view>
+      <picker name="category_id" bindchange="bindCategoryChange" value="{{category_id}}" range="{{categoryList}}" range-key="name">
+        <view class="picker">{{categoryList[category_id].name}}</view>
+      </picker>
+    </view>
+    <view class="i-cell i-input">
+      <view class="i-cell-hd i-input-title">队伍选择</view>
+      <picker name="team_id" bindchange="bindTeamChange" value="{{team_id}}" range="{{teamList}}" range-key="name">
+        <view class="picker">{{teamList[team_id].name}}</view>
+      </picker>
+    </view>
+    <i-input value="{{ desc }}" name="desc" title="内容" placeholder="请输入内容" />
+  </view>
+  <view class="padding">
+    <button class="cu-btn bg-orange round lg shadow w100" form-type="submit">提交</button>
+  </view>
+</form>
+<i-toast id="toast" />

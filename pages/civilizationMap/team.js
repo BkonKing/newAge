@@ -3,6 +3,7 @@ const app = getApp()
 Page({
 
   data: {
+    name: '',
     teamList: [],
     defaultAvatar: ''
   },
@@ -19,8 +20,9 @@ Page({
   },
 
   queryTeam() {
+    var url = this.data.name ? `/team?name=${this.data.name}` : '/team'
     app.request({
-      url: '/team',
+      url: url,
       method: 'get',
       success: (data) => {
         if (data.code == 1) {

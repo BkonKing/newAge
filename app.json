@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/volunteer/volunteer",
     "pages/volunteer/activity",
+    "pages/volunteer/activityStart",
     "pages/personal/personal",
     "pages/personal/info",
     "pages/news/news",
@@ -12,7 +13,6 @@
     "pages/civilizationMap/teamDetail",
     "pages/civilizationMap/hall",
     "pages/civilizationMap/hallDetail",
-    "pages/orderMeal/orderMeal",
     "pages/orderMeal/orderDetail",
     "pages/orderMeal/orderStart"
   ],
@@ -47,12 +47,6 @@
         "iconPath": "static/volunteer.png",
         "selectedIconPath": "static/volunteer-checked.png",
         "text": "志愿活动"
-      },
-      {
-        "pagePath": "pages/orderMeal/orderMeal",
-        "iconPath": "static/loveHelp.png",
-        "selectedIconPath": "static/loveHelp-checked.png",
-        "text": "文明点单"
       },
       {
         "pagePath": "pages/personal/personal",

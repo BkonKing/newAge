@@ -1,9 +1,11 @@
 const app = getApp();
 Page({
   data: {
+    current: 'tab1',
     userInfo: {},
     wxUserInfo: {},
     teamList: [],
+    orderList: [],
     defaultAvatar: '',
     volunteer: {}
   },
@@ -14,10 +16,9 @@ Page({
       defaultAvatar: app.globalData.defaultAvatar,
       wxUserInfo: app.globalData.wxUserInfo
     })
-    // this.queryCurrentVolunteer();
-    this.queryCurrentTeam();
+    this.queryCurrentTeam()
+    this.queryOrderList()
   },
-
   queryCurrentTeam() {
     app.request({
       url: '/current/team',
@@ -29,6 +30,40 @@ Page({
           })
         }
       }
+    })
+  },
+  queryOrderList() {
+    app.request({
+      url: '/orders',
+      method: 'get',
+      success: (data) => {
+        if (data.code == 1) {
+          this.setData({
+            orderList: data.data.data
+          })
+          // wx.stopPullDownRefresh()
+        }
+      }
+    })
+  },
+  handleChange({ detail }) {
+    this.setData({
+      current: detail.key
+    });
+  },
+  edit() {
+    wx.navigateTo({
+      url: './info'
+    })
+  },
+  toAdd() {
+    wx.navigateTo({
+      url: '../orderMeal/orderStart'
+    });
+  },
+  toActive() {
+    wx.switchTab({
+      url: '/pages/volunteer/volunteer'
     })
   },
 
@@ -45,19 +80,6 @@ Page({
   //     }
   //   })
   // },
-
-  edit() {
-    wx.navigateTo({
-      url: './info'
-    })
-  },
-
-  toActive() {
-    wx.switchTab({
-      url: '/pages/volunteer/volunteer'
-    })
-  },
-
   // 绘制圆形进度条方法
   run(c, w, h) {
     let that = this;

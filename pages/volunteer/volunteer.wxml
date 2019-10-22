@@ -26,4 +26,7 @@
       </view>
     </navigator>
   </view>
+  <button wx:if="{{isLeader}}" bindtap="toActivityStart" class="cu-btn bg-orange lg icon" style="position: fixed;bottom: 60rpx;right: 40rpx;">
+    <text class="cuIcon-add" style="font-size: 38rpx;"></text>
+  </button>
 </view>

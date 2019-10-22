@@ -6,12 +6,28 @@ Page({
     order: {},
     orderId: '',
     defaultAvatar: '',
+    isLeader: false,
     userId: '',
     evaluate: ''
   },
   onLoad(options) {
+    let obj = wx.getLaunchOptionsSync()
+    if (obj.scene == 1043) {
+      app.getUser().then(() => {
+        this.toLoad(options.id)
+      })
+    } else {
+      this.toLoad(options.id)
+    }
+  },
+  toLoad(id) {
+    if (app.globalData.userInfo.lead_team.length > 0){
+      this.setData({
+        isLeader: true
+      })
+    }
     this.setData({
-      orderId: options.id,
+      orderId: id,
       defaultAvatar: app.globalData.defaultAvatar,
       userId: app.globalData.userInfo.id
     })
@@ -60,7 +76,7 @@ Page({
       phoneNumber: String(this.data.order.contact_phone)
     })
   },
-  bindKeyInput: function (e) {
+  bindKeyInput (e) {
     this.setData({
       evaluate: e.detail.value
     })
@@ -68,6 +84,11 @@ Page({
   toActivity() {
     wx.navigateTo({
       url: '../volunteer/activity?id=' + this.data.order.activity_id
-    });
+    })
+  },
+  toStartActivity() {
+    wx.navigateTo({
+      url: '../volunteer/activity?orders_id=' + this.data.orderId
+    })
   }
 })

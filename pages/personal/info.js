@@ -6,6 +6,8 @@ Page({
     phone: undefined,
     company: undefined,
     address: '',
+    town_id: 0,
+    townList: [],
     skillList: [
       {
         id: 1,
@@ -65,13 +67,15 @@ Page({
     ]
   },
   onLoad() {
-    this.queryCurrentVolunteer()
+    this.queryTown()
   },
   formSubmit(e) {
+    var params = JSON.parse(JSON.stringify(e.detail.value))
+    params.town_id = this.data.townList[this.data.town_id].id
     app.request({
       url: '/volunteer',
       method: 'post',
-      data: e.detail.value,
+      data: params,
       success: (data) => {
         if (data.code == 1) {
           wx.showToast({
@@ -95,6 +99,11 @@ Page({
       }
     })
   },
+  bindPickerChange: function(e) {
+    this.setData({
+      town_id: e.detail.value
+    })
+  },
   queryCurrentVolunteer() {
     app.request({
       url: '/current/volunteer',
@@ -105,18 +114,41 @@ Page({
           data.data.skill.forEach((obj) => {
             skillList[parseInt(obj) - 1].checked = true
           })
+          var town_id = 0
+          const town = data.data.town_id
+          this.data.townList.some((obj, index) => {
+            if (obj.id == town) {
+              town_id = index
+              return true
+            }
+          })
           this.setData({
             name: data.data.name,
             idcard: data.data.idcard,
             phone: data.data.phone,
             company: data.data.company,
             address: data.data.address,
+            town_id: town_id,
             skillList: skillList
           })
         }
       }
     })
   },
+  queryTown() {
+    app.request({
+      url: '/town',
+      method: 'get',
+      success: (data) => {
+        if (data.code == 1) {
+          this.setData({
+            townList: data.data.data
+          })
+          this.queryCurrentVolunteer()
+        }
+      }
+    })
+  }
   // checkboxChange(e) {
   //   console.log('checkbox发生change事件，携带value值为：', e.detail.value)
   // }
