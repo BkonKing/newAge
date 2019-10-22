@@ -17,12 +17,12 @@ Page({
   },
 
   onPullDownRefresh() {
-    this.queryData();
+    this.queryData()
   },
 
   queryData() {
-    this.queryBanner();
-    this.queryNewList();
+    this.queryBanner()
+    this.queryNewList()
     this.queryCivilizationList()
   },
 

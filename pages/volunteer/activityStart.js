@@ -1,4 +1,5 @@
 const app = getApp();
+var dateTimePicker = require('../../utils/dateTimePicker.js');
 Page({
   data: {
     name: '',
@@ -10,21 +11,56 @@ Page({
     categoryList: [],
     team_id: 0,
     teamList: [],
-    start_date: '2019-10-22',
-    start_time: '10:12',
-    end_date: '2019-10-31',
-    end_time: '12:11',
+    start_dateTime: null,
+    dateTimeArray: null,
+    end_dateTime: null,
+    startYear: 2000,
+    endYear: 2050,
+    orders_id: ''
   },
-  onLoad() {
+  onLoad(options) {
     this.setData({
       teamList: app.globalData.userInfo.lead_team
     })
+    if (options.orders_id) {
+      this.setData({
+        orders_id: options.orders_id
+      })
+    }
+    // 获取完整的年月日 时分秒，以及默认显示的数组
+    var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear)
+    this.setData({
+      start_dateTime: obj.dateTime,
+      dateTimeArray: obj.dateTimeArray,
+      end_dateTime: obj.dateTime
+    })
     this.queryCategory()
+  },
+  changeStartDateTime(e) {
+    this.setData({ start_dateTime: e.detail.value });
+  },
+  changeEndDateTime(e) {
+    this.setData({ end_dateTime: e.detail.value });
+  },
+  changeStartDateTimeColumn(e) {
+    this.changeDateTimeColumn('start_dateTime', 'dateTimeArray', e)
+  },
+  changeEndDateTimeColumn(e) {
+    this.changeDateTimeColumn('end_dateTime', 'dateTimeArray', e)
+  },
+  changeDateTimeColumn(dateTime, dateTimeArray, e) {
+    var arr = this.data[dateTime],
+      dateArr = this.data[dateTimeArray]
+    arr[e.detail.column] = e.detail.value
+    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]])
+    this.setData({
+      [dateTimeArray]: dateArr,
+      [dateTime]: arr
+    })
   },
   queryCategory() {
     app.request({
-      // url: '/category?module_id=1',
-      url: '/category',
+      url: '/category?module=1',
       method: 'get',
       success: (data) => {
         if (data.code == 1) {
@@ -45,61 +81,53 @@ Page({
       team_id: e.detail.value
     })
   },
-  bindStartDateChange(e) {
-    this.setData({
-      start_date: e.detail.value
-    })
-  },
-  bindStartTimeChange(e) {
-    this.setData({
-      start_time: e.detail.value
-    })
-  },
-  bindEndDateChange(e) {
-    this.setData({
-      end_date: e.detail.value
-    })
-  },
-  bindEndTimeChange(e) {
-    this.setData({
-      end_time: e.detail.value
-    })
-  },
   formSubmit(e) {
-    console.log(e.detail.value);
     wx.showModal({
       title: '提示',
       content: '是否确认提交活动？',
-      success(res) {
+      success: (res) => {
         if (res.confirm) {
-          var params = JSON.parse(JSON.stringify(e.detail.value))
-          params.town_id = this.data.townList[this.data.town_id].id
-          app.request({
-            url: '/volunteer',
-            method: 'post',
-            data: params,
-            success: (data) => {
-              if (data.code == 1) {
-                wx.showToast({
-                  title: '提交成功',
-                  mask: false
-                });
-                var timeout = setTimeout(() => {
-                  wx.switchTab({
-                    url: './volunteer',
-                    success: function () {
-                      var page = getCurrentPages().pop();
-                      if (page == undefined || page == null) return;
-                      page.onLoad();
-                    }
-                  });
-                  clearTimeout(timeout)
-                }, 500);
-              }
-            }
-          })
+          var obj = e.detail.value
+          var params = JSON.parse(JSON.stringify(obj))
+          const dateArr = this.data.dateTimeArray
+          params.category_id = this.data.categoryList[obj.category_id].id
+          params.team_id = this.data.teamList[obj.team_id].id
+          var start_time = `${dateArr[0][obj.start_dateTime[0]]}-${dateArr[1][obj.start_dateTime[1]]}-${dateArr[2][obj.start_dateTime[2]]} ${dateArr[3][obj.start_dateTime[3]]}:${dateArr[4][obj.start_dateTime[4]]}:${dateArr[5][obj.start_dateTime[5]]}`
+          var end_time = `${dateArr[0][obj.end_dateTime[0]]}-${dateArr[1][obj.end_dateTime[1]]}-${dateArr[2][obj.end_dateTime[2]]} ${dateArr[3][obj.end_dateTime[3]]}:${dateArr[4][obj.end_dateTime[4]]}:${dateArr[5][obj.end_dateTime[5]]}`
+          params.start_time = start_time
+          params.end_time = end_time
+          if (this.data.orders_id) {
+            params.orders_id = this.data.orders_id
+          }
+          this.submit(params)
         } else if (res.cancel) {
           console.log('用户点击取消')
+        }
+      }
+    })
+  },
+  submit(params) {
+    app.request({
+      url: '/activity',
+      method: 'post',
+      data: params,
+      success: (data) => {
+        if (data.code == 1) {
+          wx.showToast({
+            title: '提交成功',
+            mask: false
+          })
+          var timeout = setTimeout(() => {
+            wx.switchTab({
+              url: './volunteer',
+              success: function () {
+                var page = getCurrentPages().pop();
+                if (page == undefined || page == null) return;
+                page.onLoad();
+              }
+            })
+            clearTimeout(timeout)
+          }, 500)
         }
       }
     })

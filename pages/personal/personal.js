@@ -7,17 +7,33 @@ Page({
     teamList: [],
     orderList: [],
     defaultAvatar: '',
+    isLeader: false,
     volunteer: {}
   },
   onLoad() {
     // this.draw('runCanvas', 'runCanvas1', 20, 3000)
+    this.toLoad()
+  },
+  onPullDownRefresh() {
+    this.toLoad()
+  },
+  toLoad() {
     this.setData({
       userInfo: app.globalData.userInfo,
+      isLeader: app.globalData.isLeader,
       defaultAvatar: app.globalData.defaultAvatar,
       wxUserInfo: app.globalData.wxUserInfo
     })
-    this.queryCurrentTeam()
-    this.queryOrderList()
+    if (this.data.userInfo.volunteer_status == 0) {
+      this.setData({
+        current: 'tab2'
+      })
+    } else {
+      this.queryCurrentTeam()
+    }
+    if (this.data.isLeader || this.data.userInfo.volunteer_status == 0) {
+      this.queryOrderList()
+    }
   },
   queryCurrentTeam() {
     app.request({
@@ -28,6 +44,7 @@ Page({
           this.setData({
             teamList: data.data.data
           })
+          wx.stopPullDownRefresh()
         }
       }
     })
@@ -41,7 +58,7 @@ Page({
           this.setData({
             orderList: data.data.data
           })
-          // wx.stopPullDownRefresh()
+          wx.stopPullDownRefresh()
         }
       }
     })
@@ -49,7 +66,7 @@ Page({
   handleChange({ detail }) {
     this.setData({
       current: detail.key
-    });
+    })
   },
   edit() {
     wx.navigateTo({
@@ -59,7 +76,7 @@ Page({
   toAdd() {
     wx.navigateTo({
       url: '../orderMeal/orderStart'
-    });
+    })
   },
   toActive() {
     wx.switchTab({

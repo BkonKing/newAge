@@ -6,20 +6,20 @@
     <i-input value="{{ max }}" name="max" title="报名上限" type="number" placeholder="请输入报名上限" />
     <view class="i-cell i-input">
       <view class="i-cell-hd i-input-title">开始时间</view>
-      <picker name="start_date" mode="date" bindchange="bindStartDateChange" value="{{start_date}}">
-        <view class="picker">{{start_date}}</view>
-      </picker>
-      <picker name="start_time" mode="time" bindchange="bindStartTimeChange" value="{{start_time}}">
-        <view class="picker">{{start_time}}</view>
+      <picker mode="multiSelector" name="start_dateTime" value="{{start_dateTime}}" bindchange="changeStartDateTime" bindcolumnchange="changeStartDateTimeColumn" range="{{dateTimeArray}}">
+        <view class="tui-picker-detail">
+          {{dateTimeArray[0][start_dateTime[0]]}}-{{dateTimeArray[1][start_dateTime[1]]}}-{{dateTimeArray[2][start_dateTime[2]]}} 
+          {{dateTimeArray[3][start_dateTime[3]]}}:{{dateTimeArray[4][start_dateTime[4]]}}:{{dateTimeArray[5][start_dateTime[5]]}}
+        </view>
       </picker>
     </view>
     <view class="i-cell i-input">
       <view class="i-cell-hd i-input-title">结束时间</view>
-      <picker name="end_date" mode="date" bindchange="bindEndDateChange" value="{{end_date}}">
-        <view class="picker">{{end_date}}</view>
-      </picker>
-      <picker name="end_time" mode="time" bindchange="bindEndTimeChange" value="{{end_time}}">
-        <view class="picker">{{end_time}}</view>
+      <picker mode="multiSelector" name="end_dateTime" value="{{end_dateTime}}" bindchange="changeEndDateTime" bindcolumnchange="changeEndDateTimeColumn" range="{{dateTimeArray}}">
+        <view class="tui-picker-detail">
+          {{dateTimeArray[0][end_dateTime[0]]}}-{{dateTimeArray[1][end_dateTime[1]]}}-{{dateTimeArray[2][end_dateTime[2]]}} 
+          {{dateTimeArray[3][end_dateTime[3]]}}:{{dateTimeArray[4][end_dateTime[4]]}}:{{dateTimeArray[5][end_dateTime[5]]}}
+        </view>
       </picker>
     </view>
     <view class="i-cell i-input">

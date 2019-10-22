@@ -14,6 +14,7 @@ App({
       header: {
         'content-type': 'application/json',
         'Authorization': 'Basic 19ce655ff65026b8e64ce8cdbc050993'
+        // 'Authorization': 'Basic af584e7cb09078b50158b91404bae281'
         // 'Authorization': 'Basic ' + this.globalData.token
       },
       success: function (res) {
@@ -65,6 +66,9 @@ App({
                   method: 'get',
                   success: (response) => {
                     this.globalData.userInfo = response.data
+                    if (response.data.lead_team.length > 0) {
+                      this.globalData.isLeader = true
+                    }
                     resolve(response)
                   }
                 })
@@ -82,6 +86,7 @@ App({
     userInfo: null,
     wxUserInfo: null,
     token: '',
+    isLeader: false,
     newContent: {},
     defaultAvatar: 'https://lcqxsd.fjhqit.cn/uploads/default/avatar.png'
   }

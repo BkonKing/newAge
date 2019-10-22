@@ -4,7 +4,28 @@
     <i-tab key="tab1" title="我参与"></i-tab>
   </i-tabs>
   <view class="padding bg-main">
-    <navigator wx:for="{{activityList}}" wx:key="{{item.id}}" url='./activity?id={{item.id}}'>
+    <navigator hidden="{{ current == 'tab1'}}" wx:for="{{activityList}}" wx:key="{{item.id}}" url='./activity?id={{item.id}}'>
+      <view class='activity-list'>
+        <view class='text-lg text-black' style="line-height: 2;">{{item.name}}</view>
+        <view style="margin: 30rpx 0 20rpx;">
+          <view class='cu-tag round' style="margin-bottom: 10rpx;">
+            {{item.start_time}} - {{item.end_time}}
+          </view>
+          <view class='cu-tag round' style="margin-bottom: 10rpx;">{{item.address}}</view>
+        </view>
+        <view class="overhidden">
+          <view class='fl user-info'>
+            <image class='cu-avatar round sm' src="{{item.avatar || defaultAvatar}}"></image>
+            <text>{{item.team_name}}</text>
+          </view>
+          <wxs src="../../utils/filter.wxs" module="filter"></wxs>
+          <view class='cu-tag fr {{filter.toActivityClass(item.status)}}'>
+            {{filter.toActivityStatus(item.status)}}
+          </view>
+        </view>
+      </view>
+    </navigator>
+    <navigator hidden="{{ current == 'tab2'}}" wx:for="{{myActivityList}}" wx:key="{{item.id}}" url='./activity?id={{item.id}}'>
       <view class='activity-list'>
         <view class='text-lg text-black' style="line-height: 2;">{{item.name}}</view>
         <view style="margin: 30rpx 0 20rpx;">

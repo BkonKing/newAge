@@ -5,18 +5,15 @@ Page({
     current: 'tab2',
     defaultAvatar: '',
     isLeader: false,
-    activityList: []
+    activityList: [],
+    myActivityList: []
   },
 
   onLoad() {
     this.setData({
-      defaultAvatar: app.globalData.defaultAvatar
+      defaultAvatar: app.globalData.defaultAvatar,
+      isLeader: app.globalData.isLeader
     })
-    if (app.globalData.userInfo.lead_team.length > 0) {
-      this.setData({
-        isLeader: true
-      })
-    }
     this.queryCurrentActivity()
     this.queryActivity()
   },
@@ -61,7 +58,7 @@ Page({
       success: (data) => {
         if (data.code == 1) {
           this.setData({
-            activityList: data.data.data
+            myActivityList: data.data.data
           })   
         }
       }

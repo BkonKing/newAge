@@ -9,12 +9,14 @@ page {
 .personal-info>view {
   margin-right: 20rpx;
 }
-.team-list {
+.team-list,
+navigator {
   padding: 20rpx 26rpx;
   background: #fff;
   border-radius: 13rpx;
 }
-.team-list + .team-list {
+.team-list + .team-list,
+navigator + navigator {
   margin-top: 20rpx;
 }
 .canvasBox{

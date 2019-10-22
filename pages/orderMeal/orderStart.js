@@ -13,7 +13,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '是否确认提交点单？',
-      success (res) {
+      success(res) {
         if (res.confirm) {
           app.request({
             url: '/orders',
@@ -23,12 +23,18 @@ Page({
               wx.showToast({
                 title: '提交成功',
                 mask: false
-              });
-              setTimeout(() => {
-                wx.navigateBack({
-                  delta: 1
-                });
-              }, 500);
+              })
+              var timeout = setTimeout(() => {
+                wx.switchTab({
+                  url: '../personal/personal',
+                  success: function () {
+                    var page = getCurrentPages().pop();
+                    if (page == undefined || page == null) return;
+                    page.onLoad();
+                  }
+                })
+                clearTimeout(timeout)
+              }, 500)
             }
           })
         } else if (res.cancel) {

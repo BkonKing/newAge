@@ -21,11 +21,9 @@ Page({
     }
   },
   toLoad(id) {
-    if (app.globalData.userInfo.lead_team.length > 0){
-      this.setData({
-        isLeader: true
-      })
-    }
+    this.setData({
+      isLeader: app.globalData.isLeader
+    })
     this.setData({
       orderId: id,
       defaultAvatar: app.globalData.defaultAvatar,
@@ -88,7 +86,7 @@ Page({
   },
   toStartActivity() {
     wx.navigateTo({
-      url: '../volunteer/activity?orders_id=' + this.data.orderId
+      url: '../volunteer/activityStart?orders_id=' + this.data.orderId
     })
   }
 })

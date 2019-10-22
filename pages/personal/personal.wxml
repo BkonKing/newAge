@@ -24,7 +24,7 @@
       <view class="text-xs text-grey mt20">已超过{{userInfo.rank}}%的志愿者</view>
     </view>
   </view>
-  <i-tabs current="{{ current }}" bindchange="handleChange">
+  <i-tabs wx:if="{{isLeader}}" current="{{ current }}" bindchange="handleChange">
     <i-tab key="tab1" title="我的队伍"></i-tab>
     <i-tab key="tab2" title="我的点单"></i-tab>
   </i-tabs>
@@ -45,21 +45,21 @@
     </block>
     <block wx:if="{{current == 'tab2'}}">
       <navigator wx:for="{{orderList}}" wx:key="{{item.id}}" url='../orderMeal/orderDetail?id={{item.id}}'>
-          <view class='activity-list'>
-            <view class='text-lg text-black' style="line-height: 2;">{{item.name}}</view>
-            <view class="overhidden">
-              <view class='cu-tag round'>提交时间：{{item.crtime}}</view>
-              <wxs src="../../utils/filter.wxs" module="filter"></wxs>
-              <view class='cu-tag fr {{filter.toActivityClass(item.status)}}'>
-                {{filter.orderStatus(item.status)}}
-              </view>
+        <view class='activity-list'>
+          <view class='text-lg text-black' style="line-height: 2;">{{item.name}}</view>
+          <view class="overhidden">
+            <view class='cu-tag round'>提交时间：{{item.crtime}}</view>
+            <wxs src="../../utils/filter.wxs" module="filter"></wxs>
+            <view class='cu-tag fr {{filter.toActivityClass(item.status)}}'>
+              {{filter.orderStatus(item.status)}}
             </view>
           </view>
-        </navigator>
+        </view>
+      </navigator>
     </block>
   </view>
   <view class="w100 padding bg-white" style="position: fixed;bottom: 0;">
     <button hidden="{{current == 'tab2'}}" class="cu-btn bg-orange lg w100 round" bindtap='toActive'>找活动加队伍</button>
-    <button hidden="{{current == 'tab1'}}" class="cu-btn bg-orange lg w100 round" bindtap="toAdd">我要点单</button>
+    <button hidden="{{current == 'tab1' || isLeader}}" class="cu-btn bg-orange lg w100 round" bindtap="toAdd">我要点单</button>
   </view>
 </view>

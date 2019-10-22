@@ -1,6 +1,6 @@
 <view class="container padding bg-main">
   <view class="mb20">
-    <i-input value="{{ name }}" name="name" autofocus placeholder="请输入筛选的队伍名称" />
+    <i-input value="{{ name }}" name="name" bind:change="changeName" autofocus placeholder="请输入筛选的队伍名称" />
   </view>
   <view class="team-list">
     <view wx:for="{{teamList}}" wx:key="item.id" class="team-list-li">

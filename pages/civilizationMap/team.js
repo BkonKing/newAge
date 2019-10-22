@@ -33,5 +33,12 @@ Page({
         }
       }
     })
+  },
+
+  changeName(e) {
+    this.setData({
+      name: e.detail.detail.value
+    })
+    this.queryTeam()
   }
 })
