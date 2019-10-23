@@ -41,9 +41,9 @@ Page({
     } else {
       this.queryCurrentTeam()
     }
-    if (this.data.isLeader || this.data.userInfo.volunteer_status == 0) {
-      this.queryOrderList()
-    }
+    // if (this.data.isLeader || this.data.userInfo.volunteer_status == 0) {
+    this.queryOrderList()
+    // }
   },
   queryCurrentTeam() {
     app.request({

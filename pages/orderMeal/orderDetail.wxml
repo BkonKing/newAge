@@ -1,7 +1,7 @@
-<view class="container padding order" style="padding-bottom: {{(isLeader && order.status == 2) || order.user_id == userId ? '116rpx' : '26rpx'}};">
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+<view class="container padding order" style="padding-bottom: {{filter.toBottom(isLeader, order.status, order.user_id, userId)}}rpx;">
   <view class='text-bold text-xl text-black mb20'>{{order.name}}</view>
   <view class='fr'>
-    <wxs src="../../utils/filter.wxs" module="filter"></wxs>
     <view class='cu-tag {{filter.toActivityClass(order.status)}}'>{{filter.orderStatus(order.status)}}</view>
   </view>
   <view class='user-info'>
@@ -27,13 +27,15 @@
     {{order.comment}}
   </view>
 </view>
-<view class="bg-white padding fixed-btn-view" wx:if="{{isLeader && order.status == 2}}">
-  <button class="cu-btn bg-orange w100" bindtap="toStartActivity">
-    发起活动
-  </button>
-</view>
-<view class="bg-white padding fixed-btn-view" wx:if="{{order.user_id == userId}}">
-  <input value="{{ evaluate }}" bindinput="bindKeyInput" placeholder="发表评价" />
-  <button class='cu-btn bg-orange round shadow fr' bindtap="publish">发表</button>
+<view class="bg-white padding fixed-btn-view" wx:if="{{order.user_id == userId || (isLeader && order.status == 2)}}">
+  <block wx:if="{{order.user_id == userId}}">
+    <input value="{{ evaluate }}" bindinput="bindKeyInput" placeholder="发表评价" />
+    <button class='cu-btn bg-orange round shadow fr' bindtap="publish">发表</button>
+  </block>
+  <block wx:if="{{isLeader && order.status == 2}}">
+    <button class="cu-btn bg-orange w100" bindtap="toStartActivity">
+      发起活动
+    </button>
+  </block>
 </view>
 <i-toast id="toast" />

@@ -1,4 +1,4 @@
-<view style="position: fixed;height: 100%;width: 100%;padding-bottom:{{volunteer_status == 0 ? 438 : 278}}rpx;">
+<view style="position: fixed;height: 100%;width: 100%;padding-bottom: 438rpx;">
   <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="12" markers="{{markers}}" bindmarkertap="markertap" show-location style="width: 100%; height: 100%;"></map>
 </view>
 <view class="w100 bg-white" style="position:fixed;bottom:0;padding: 34rpx;">
@@ -10,7 +10,7 @@
       <image class="w100" src="/static/team.png" style="height: 100%;"></image>
     </navigator>
   </view>
-  <navigator wx:if="{{volunteer_status == 0}}" class="radius w100 mt20" style="height: 140rpx;" url="../orderMeal/orderStart">
+  <navigator class="radius w100 mt20" style="height: 140rpx;" url="../orderMeal/orderStart">
     <image class="w100" src="/static/diandan.png" style="height: 100%;"></image>
   </navigator>
 </view>

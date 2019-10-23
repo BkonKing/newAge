@@ -72,8 +72,8 @@ Page({
       success: (data) => {
         if (data.code == 1) {
           $Toast({
-            content: 'success',
-            type: '报名成功'
+            content: '报名成功',
+            type: 'success'
           });
           var timeout = setTimeout(() => {
             wx.switchTab({

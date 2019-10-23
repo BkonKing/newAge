@@ -24,13 +24,12 @@
       <view class="text-xs text-grey mt20">已超过{{userInfo.rank}}%的志愿者</view>
     </view>
   </view>
-  <i-tabs wx:if="{{isLeader}}" current="{{ current }}" bindchange="handleChange">
+  <i-tabs wx:if="{{userInfo.volunteer_status != 0}}" current="{{ current }}" bindchange="handleChange">
     <i-tab key="tab1" title="我的队伍"></i-tab>
     <i-tab key="tab2" title="我的点单"></i-tab>
   </i-tabs>
   <view class="padding bg-main">
     <block wx:if="{{current == 'tab1'}}">
-      <view class="text-lg text-black" style="padding-bottom: 20rpx;" wx:if="{{!isLeader}}">我的队伍</view>
       <view class='team-list' wx:for="{{teamList}}" wx:key="{{item.id}}">
         <view class='user-info'>
           <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>
@@ -47,14 +46,14 @@
               <text class="cuIcon-dianhua lg"></text> {{item.contact_phone}}
             </view>
           </view>
-          <view class='fr cu-tag {{item.status == 1 ? "bg-orange" : "bg-green"}}' style="border-radius: 7rpx;">
+          <!-- <view class='fr cu-tag {{item.status == 1 ? "bg-orange" : "bg-green"}}' style="border-radius: 7rpx;">
             {{item.status == 1 ? '申请中' : '通过'}}
-          </view>
+          </view> -->
         </view>
       </view>
     </block>
     <block wx:if="{{current == 'tab2'}}">
-      <view class="text-lg text-black" style="padding-bottom: 20rpx;" wx:if="{{!isLeader}}">我的点单</view>
+      <view class="text-lg text-black" style="padding-bottom: 20rpx;" wx:if="{{userInfo.volunteer_status == 0}}">我的点单</view>
       <navigator wx:for="{{orderList}}" wx:key="{{item.id}}" url='../orderMeal/orderDetail?id={{item.id}}'>
         <view class='activity-list'>
           <view class='text-lg text-black' style="line-height: 2;">{{item.name}}</view>

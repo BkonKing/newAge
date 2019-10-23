@@ -104,6 +104,15 @@ var toTeamClass = function (value) {
       return 'bg-green';
   }
 }
+var toBottom = function (isLeader, status, user_id, userId) {
+  if (isLeader && status == 2 && user_id == userId) {
+    return 220
+  } else if ((isLeader && status == 2) || user_id == userId) {
+    return 136
+  } else {
+    return 26
+  }
+}
 module.exports = {
   toActivityStatus: toActivityStatus,
   toActivityClass: toActivityClass,
@@ -114,5 +123,6 @@ module.exports = {
   volunteerStatus: volunteerStatus,
   toTeamClass: toTeamClass,
   toJoinClass: toJoinClass,
+  toBottom: toBottom,
   joinStatus: joinStatus
 }

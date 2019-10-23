@@ -31,3 +31,7 @@ input {
   box-shadow: 0 -2px 5rpx #ddd;
   width: 100%;
 }
+
+.fixed-btn-view  button + button{
+  margin-top: 20rpx;
+}

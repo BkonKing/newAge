@@ -71,6 +71,16 @@ Page({
   },
   formSubmit(e) {
     var params = JSON.parse(JSON.stringify(e.detail.value))
+    if (!this.isPhone(params.phone)) {
+      return false;
+    }
+    if (params.idcard.length != 18) {
+      wx.showModal({
+        content: "请输入18位身份号码",
+        showCancel: false,
+      })
+      return false;
+    }
     params.town_id = this.data.townList[this.data.town_id].id
     app.request({
       url: '/volunteer',
@@ -98,6 +108,17 @@ Page({
         }
       }
     })
+  },
+  isPhone: function(value) {
+    var isMob = /^((\+?86)|(\(\+86\)))?(1[3456789][0123456789]{9})$/
+    if (isMob.test(value)) {
+      return true
+    }
+    wx.showModal({
+      content: "请输入正确的手机号",
+      showCancel: false,
+    })
+    return false
   },
   bindPickerChange: function(e) {
     this.setData({
