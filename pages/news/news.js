@@ -79,11 +79,13 @@ Page({
 
   bannerNavigator(e) {
     const params = e.currentTarget.dataset.param;
-    var url = '';
+    var url = ''
     if (params.relate == 1) {
       url = `../volunteer/activity?id=${params.id}`
+    } else if (params.relate == 2) {
+      url = `./content?type=new&id=${params.relate_id}`
     } else {
-      url = `./content?type=new&id=${relate_id}`
+      return 
     }
     wx.navigateTo({
       url: url

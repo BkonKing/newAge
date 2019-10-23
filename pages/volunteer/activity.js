@@ -2,10 +2,17 @@ const app = getApp();
 // var WxParse = require('../../wxParse/wxParse.js');
 const { $Toast } = require('../../iview/base/index');
 Page({
+  data: {
+    activity: {},
+    activityId: '',
+    defaultAvatar: '',
+    volunteer_status: null
+  },
   onLoad(options) {
     this.setData({
       activityId: options.id,
-      defaultAvatar: app.globalData.defaultAvatar
+      defaultAvatar: app.globalData.defaultAvatar,
+      volunteer_status: app.globalData.userInfo.volunteer_status,
     })
     this.queryActivityContent(options.id)
   },
@@ -85,10 +92,5 @@ Page({
     // wx.navigateTo({
     //   url: './join?id=' + this.data.activityId
     // })
-  },
-  data: {
-    activity: {},
-    activityId: '',
-    defaultAvatar: ''
   }
 })

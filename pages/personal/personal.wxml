@@ -28,15 +28,25 @@
     <i-tab key="tab1" title="我的队伍"></i-tab>
     <i-tab key="tab2" title="我的点单"></i-tab>
   </i-tabs>
-  <view class="padding bg-main" style="padding-bottom: 142rpx;">
+  <view class="padding bg-main">
     <block wx:if="{{current == 'tab1'}}">
+      <view class="text-lg text-black" style="padding-bottom: 20rpx;" wx:if="{{!isLeader}}">我的队伍</view>
       <view class='team-list' wx:for="{{teamList}}" wx:key="{{item.id}}">
         <view class='user-info'>
           <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>
           <text>{{item.team_name}}</text>
         </view>
         <view class='overhidden mt20'>
-          <view class='cu-tag round'>我获得的活跃度 | {{item.point}}</view>
+          <view class='cu-tag round'>
+            <view class='text-gray'>
+              <text class="cuIcon-addressbook lg"></text> {{item.contact_name}}
+            </view>
+          </view>
+          <view class='cu-tag round'>
+            <view class='text-gray'>
+              <text class="cuIcon-dianhua lg"></text> {{item.contact_phone}}
+            </view>
+          </view>
           <view class='fr cu-tag {{item.status == 1 ? "bg-orange" : "bg-green"}}' style="border-radius: 7rpx;">
             {{item.status == 1 ? '申请中' : '通过'}}
           </view>
@@ -44,6 +54,7 @@
       </view>
     </block>
     <block wx:if="{{current == 'tab2'}}">
+      <view class="text-lg text-black" style="padding-bottom: 20rpx;" wx:if="{{!isLeader}}">我的点单</view>
       <navigator wx:for="{{orderList}}" wx:key="{{item.id}}" url='../orderMeal/orderDetail?id={{item.id}}'>
         <view class='activity-list'>
           <view class='text-lg text-black' style="line-height: 2;">{{item.name}}</view>
@@ -58,8 +69,8 @@
       </navigator>
     </block>
   </view>
-  <view class="w100 padding bg-white" style="position: fixed;bottom: 0;">
+  <!-- <view hidden="{{current == 'tab1' || isLeader}}" class="w100 padding bg-white" style="position: fixed;bottom: 0;">
     <button hidden="{{current == 'tab2'}}" class="cu-btn bg-orange lg w100 round" bindtap='toActive'>找活动加队伍</button>
-    <button hidden="{{current == 'tab1' || isLeader}}" class="cu-btn bg-orange lg w100 round" bindtap="toAdd">我要点单</button>
-  </view>
+    <button class="cu-btn bg-orange lg w100 round" bindtap="toAdd">我要点单</button>
+  </view> -->
 </view>

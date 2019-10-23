@@ -2,11 +2,11 @@
   padding: 0 40rpx;
 }
 
-.ul > view {
+.ul>view {
   padding: 12rpx 0;
 }
 
-.ul > view > text {
+.ul>view>text {
   margin-right: 40rpx;
 }
 
@@ -23,4 +23,11 @@ input {
   display: block;
   float: left;
   width: calc(100% - 136rpx);
+}
+
+.fixed-btn-view {
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0 -2px 5rpx #ddd;
+  width: 100%;
 }

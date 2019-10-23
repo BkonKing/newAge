@@ -15,7 +15,17 @@ Page({
     this.toLoad()
   },
   onPullDownRefresh() {
-    this.toLoad()
+    app.request({
+      url: '/currentUser',
+      method: 'get',
+      success: (response) => {
+        app.globalData.userInfo = response.data
+        if (response.data.lead_team.length > 0) {
+          app.globalData.isLeader = true
+        }
+        this.toLoad()
+      }
+    })
   },
   toLoad() {
     this.setData({

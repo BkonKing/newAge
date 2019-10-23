@@ -33,7 +33,8 @@ Page({
           this.setData({
             info: data.data
           })
-          WxParse.wxParse('article', 'html', data.data.content, this, '100%');
+          console.log(data.data);
+          WxParse.wxParse('article', 'html', data.data.content || '', this, '100%');
         }
       }
     })

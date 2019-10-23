@@ -1,7 +1,7 @@
 <form bindsubmit="formSubmit">
   <view>
     <i-input value="{{ name }}" name="name" title="标题" autofocus placeholder="请输入标题" />
-    <i-input value="{{ address }}" name="address" title="活动地点" placeholder="请输入活动地点" />
+    <i-input value="{{ address }}" name="address" title="地址" placeholder="请输入地址" />
     <i-input value="{{ contact_name }}" name="contact_name" title="联系人" placeholder="请输入联系人姓名" />
     <i-input value="{{ contact_phone }}" name="contact_phone" type="number" title="联系电话" placeholder="请输入联系电话" />
     <i-input value="{{ desc }}" name="desc" title="内容" placeholder="请输入活动内容" />
