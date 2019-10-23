@@ -32,3 +32,11 @@ checkbox-group {
   width: 50%;
   padding: 10rpx 0;
 }
+
+picker {
+  width: calc(100% - 70px);
+}
+
+picker > view {
+  width: 100%;
+}

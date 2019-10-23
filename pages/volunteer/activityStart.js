@@ -14,7 +14,7 @@ Page({
     start_dateTime: null,
     dateTimeArray: null,
     end_dateTime: null,
-    startYear: 2000,
+    startYear: 2019,
     endYear: 2050,
     orders_id: ''
   },
@@ -30,9 +30,9 @@ Page({
     // 获取完整的年月日 时分秒，以及默认显示的数组
     var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear)
     this.setData({
-      start_dateTime: obj.dateTime,
-      dateTimeArray: obj.dateTimeArray,
-      end_dateTime: obj.dateTime
+      // start_dateTime: obj.dateTime,
+      // end_dateTime: obj.dateTime,
+      dateTimeArray: obj.dateTimeArray
     })
     this.queryCategory()
   },
@@ -92,8 +92,26 @@ Page({
           const dateArr = this.data.dateTimeArray
           params.category_id = this.data.categoryList[obj.category_id].id
           params.team_id = this.data.teamList[obj.team_id].id
+          if (!obj.start_dateTime || !obj.end_dateTime) {
+            wx.showToast({
+              title: "请选择开始时间和结束时间",
+              icon: 'none',
+              duration: 1500,
+              mask: false
+            })
+            return
+          }
           var start_time = `${dateArr[0][obj.start_dateTime[0]]}-${dateArr[1][obj.start_dateTime[1]]}-${dateArr[2][obj.start_dateTime[2]]} ${dateArr[3][obj.start_dateTime[3]]}:${dateArr[4][obj.start_dateTime[4]]}:${dateArr[5][obj.start_dateTime[5]]}`
           var end_time = `${dateArr[0][obj.end_dateTime[0]]}-${dateArr[1][obj.end_dateTime[1]]}-${dateArr[2][obj.end_dateTime[2]]} ${dateArr[3][obj.end_dateTime[3]]}:${dateArr[4][obj.end_dateTime[4]]}:${dateArr[5][obj.end_dateTime[5]]}`
+          if (!this.compareDate(start_time, end_time)) {
+            wx.showToast({
+              title: "请确保结束时间比开始时间晚",
+              icon: 'none',
+              duration: 1500,
+              mask: false
+            })
+            return
+          }
           params.start_time = start_time
           params.end_time = end_time
           if (this.data.orders_id) {
@@ -131,5 +149,14 @@ Page({
         }
       }
     })
+  },
+  compareDate(start, end) {
+    var sDate = new Date(start)
+    var eDate = new Date(end)
+    if(sDate.getTime() > eDate.getTime()){
+        return false
+    } else {
+        return true
+    }
   }
 })
