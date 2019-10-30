@@ -16,8 +16,8 @@
   </i-tabs>
   <view class="padding bg-main">
     <view class="new-list" hidden="{{current != 'tab1'}}">
-      <view wx:for="{{newList}}" wx:key="item.id" bindtap="navigator" data-param="{{item}}" class="new-list-li overhidden">
-        <view class="fl relative" style='width:calc(100% - 200rpx);'>
+      <view wx:for="{{newList}}" wx:key="item.id" bindtap="navigator" data-param="{{item}}" class="new-list-li overhidden relative">
+        <view class="fl" style='width:calc(100% - 200rpx);'>
           <view class="new-title">{{item.title}}</view>
           <view class="new-time cu-tag round">{{item.crtime}}</view>
         </view>

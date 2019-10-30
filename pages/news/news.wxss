@@ -18,14 +18,18 @@
   line-height: 1.7;
 }
 
+.new-title {
+  padding-bottom: 48rpx;
+}
+
 .new-list-li {
   background: #fff;
-  height: 220rpx;
+  min-height: 220rpx;
   padding: 20rpx;
   border-radius: 13rpx;
 }
 
-.new-list-li>view {
+.new-list-li>view.fl {
   height: 100%;
 }
 
@@ -39,7 +43,7 @@
   font-size: 24rpx;
   color: var(--grey);
   position: absolute;
-  bottom: 10rpx;
+  bottom: 20rpx;
 }
 
 .civilization-list-li {

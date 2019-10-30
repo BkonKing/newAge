@@ -102,7 +102,12 @@ Page({
           });
           var timeout = setTimeout(() => {
             wx.switchTab({
-              url: '/pages/volunteer/volunteer'
+              url: '/pages/volunteer/volunteer',
+              success: function () {
+                var page = getCurrentPages().pop();
+                if (page == undefined || page == null) return;
+                page.onLoad();
+              }
             });
             clearTimeout(timeout)
           }, 500);
