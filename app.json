@@ -14,7 +14,9 @@
     "pages/civilizationMap/hall",
     "pages/civilizationMap/hallDetail",
     "pages/orderMeal/orderDetail",
-    "pages/orderMeal/orderStart"
+    "pages/orderMeal/orderStart",
+    "pages/publicBenefit/publicBenefit",
+    "pages/publicBenefit/publicBenefitDetail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
@@ -41,6 +43,12 @@
         "iconPath": "static/news.png",
         "selectedIconPath": "static/news-checked.png",
         "text": "新闻动态"
+      },
+      {
+        "pagePath": "pages/publicBenefit/publicBenefit",
+        "iconPath": "static/gongyi.png",
+        "selectedIconPath": "static/gongyi-checked.png",
+        "text": "公益活动"
       },
       {
         "pagePath": "pages/volunteer/volunteer",

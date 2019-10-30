@@ -1,0 +1,12 @@
+.activity {
+  padding: 0 40rpx;
+}
+.ul > view {
+  padding: 12rpx 0;
+}
+.ul text {
+  margin-right: 40rpx;
+}
+.module-title {
+  padding: 30rpx 0;
+}

@@ -1,0 +1,11 @@
+page {
+  background: #f1f3f7;
+}
+navigator + navigator {
+  margin-top: 20rpx;
+}
+navigator {
+  background: #fff;
+  padding: 20rpx 32rpx;
+  border-radius: 13rpx;
+}

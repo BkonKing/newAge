@@ -3,13 +3,16 @@
     <i-input value="{{ name }}" name="name" title="姓名" autofocus placeholder="请输入姓名" />
     <i-input value="{{ idcard }}" name="idcard" title="身份证" placeholder="请输入身份证号码" />
     <i-input value="{{ phone }}" name="phone" type="number" title="电话" placeholder="请输入联系电话" />
-    <i-input value="{{ company }}" name="company" title="公司" placeholder="请输入公司名称" />
-    <i-input value="{{ address }}" name="address" title="地址" placeholder="请输入地址" />
+    <i-input value="{{ company }}" name="company" title="单位" placeholder="请输入单位名称" />
     <view class="i-cell i-input" style="border-bottom:1px solid #e9eaec;">
-      <view class="i-cell-hd i-input-title">街镇</view>
+      <view class="i-cell-hd i-input-title">所属镇街</view>
       <picker name="town_id" bindchange="bindPickerChange" value="{{town_id}}" range="{{townList}}" range-key="name">
         <view class="picker">{{townList[town_id].name}}</view>
       </picker>
+    </view>
+    <i-input value="{{ address }}" name="address" title="地址" placeholder="请输入地址" />
+    <view class="text-red text-sm" style="padding: 2px 15px;">
+      提醒：单位（个体公司个体）志愿者：请填写单位(个体公司)所属镇街及地址。自由职业者：请填写居住地所属镇街及地址。
     </view>
     <view class="i-cell i-input" style="border-bottom:1px solid #e9eaec;">
       <view class="i-cell-hd i-input-title">技能</view>
