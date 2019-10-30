@@ -43,6 +43,31 @@ Page({
       url: '../personal/info'
     })
   },
+  sign() {
+    app.request({
+      url: '/activity/' + this.data.activityId + '/sign',
+      method: 'post',
+      success: (data) => {
+        if (data.code == 1) {
+          $Toast({
+            content: '签到成功',
+            type: 'success'
+          });
+          // var timeout = setTimeout(() => {
+          //   wx.switchTab({
+          //     url: '/pages/volunteer/volunteer'
+          //   });
+          //   clearTimeout(timeout)
+          // }, 500);
+        } else {
+          $Toast({
+            content: data.msg,
+            type: 'warning'
+          });
+        }
+      }
+    })
+  },
   apply() {
     app.request({
       url: '/apply',

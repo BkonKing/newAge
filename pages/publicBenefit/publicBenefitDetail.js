@@ -3,33 +3,33 @@ const app = getApp();
 const { $Toast } = require('../../iview/base/index');
 Page({
   data: {
-    activity: {},
-    activityId: '',
+    eventInfo: {},
+    eventId: '',
     defaultAvatar: '',
     volunteer_status: null
   },
   onLoad(options) {
     this.setData({
-      activityId: options.id,
+      eventId: options.id,
       defaultAvatar: app.globalData.defaultAvatar,
       volunteer_status: app.globalData.userInfo.volunteer_status,
     })
-    this.queryActivityContent(options.id)
+    this.queryEventContent(options.id)
   },
   onPullDownRefresh() {
-    this.queryActivityContent(this.data.activityId).then(() => {
+    this.queryEventContent(this.data.eventId).then(() => {
       wx.stopPullDownRefresh()
     })
   },
-  queryActivityContent(id) {
+  queryEventContent(id) {
     return new Promise((resolve, reject) => {
       app.request({
-        url: '/activity/' + id,
+        url: '/event/' + id,
         method: 'get',
         success: (data) => {
           if (data.code == 1) {
             this.setData({
-              activity: data.data
+              eventInfo: data.data
             })
             // WxParse.wxParse('article', 'html', data.data.content, this, '100%')
             resolve()
@@ -43,12 +43,37 @@ Page({
       url: '../personal/info'
     })
   },
+  sign() {
+    app.request({
+      url: '/event/' + this.data.eventId + '/sign',
+      method: 'post',
+      success: (data) => {
+        if (data.code == 1) {
+          $Toast({
+            content: '签到成功',
+            type: 'success'
+          });
+          // var timeout = setTimeout(() => {
+          //   wx.switchTab({
+          //     url: '/pages/volunteer/volunteer'
+          //   });
+          //   clearTimeout(timeout)
+          // }, 500);
+        } else {
+          $Toast({
+            content: data.msg,
+            type: 'warning'
+          });
+        }
+      }
+    })
+  },
   apply() {
     app.request({
       url: '/apply',
       method: 'post',
       data: {
-        team_id: this.data.activity.team_id
+        team_id: this.data.event.team_id
       },
       success: (data) => {
         if (data.code == 1) {
@@ -67,7 +92,7 @@ Page({
   },
   join() {
     app.request({
-      url: '/activity/' + this.data.activityId + '/join',
+      url: '/event/' + this.data.eventId + '/join',
       method: 'post',
       success: (data) => {
         if (data.code == 1) {
@@ -89,8 +114,5 @@ Page({
         }
       }
     })
-    // wx.navigateTo({
-    //   url: './join?id=' + this.data.activityId
-    // })
   }
 })

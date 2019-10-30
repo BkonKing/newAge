@@ -1,10 +1,16 @@
-<view style="position: fixed;height: 100%;width: 100%;padding-bottom: 438rpx;">
+<view style="position: fixed;height: 100%;width: 100%;padding-bottom: 476rpx;">
   <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="12" markers="{{markers}}" bindmarkertap="markertap" show-location style="width: 100%; height: 100%;"></map>
 </view>
-<view class="w100 bg-white" style="position:fixed;bottom:0;padding: 34rpx;">
+<view class="w100 bg-white" style="position:fixed;bottom:0;padding: 20rpx 34rpx 34rpx;">
+  <view class="text-sm margin-bottom-sm" style="height: 32rpx;">
+    <image class="fl margin-right-xs" src="/static/marker.png" style="width: 32rpx;height: 32rpx;"/>
+    <text class="fl margin-right-sm" >文明服务站</text>
+    <image class="fl margin-right-xs" src="/static/hall.png" style="width: 32rpx;height: 32rpx;"/>
+    <text class="fl" >文明实践管理站</text>
+  </view>
   <view class="flex w100" style="height: 214rpx;">
     <navigator class="flex-sub radius" style="margin-right: 14rpx;height: 95%;" url="./hall">
-      <image class="w100" src="/static/litang.png" style="height: 100%;"></image>
+      <image class="w100" src="/static/service.png" style="height: 100%;"></image>
     </navigator>
     <navigator class="flex-sub radius" style="margin-left: 14rpx;height: 95%;" url="./team">
       <image class="w100" src="/static/team.png" style="height: 100%;"></image>

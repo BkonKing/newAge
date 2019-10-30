@@ -1,40 +1,39 @@
-<view class="container activity">
-  <view class='text-bold text-xl text-black mb20'>{{activity.name}}</view>
+<view class="container padding">
+  <view class='text-bold text-xl text-black mb20'>{{eventInfo.name}}</view>
   <view class='fr'>
     <wxs src="../../utils/filter.wxs" module="filter"></wxs>
-    <view class='cu-tag {{filter.toJoinClass(activity.join_status)}}'>{{filter.joinStatus(activity.join_status)}}</view>
-  </view>
-  <view class='user-info'>
-    <image class='cu-avatar round sm' src="{{activity.avatar || defaultAvatar}}"></image>
-    <text>{{activity.team_name}}</text>
+    <view class='cu-tag {{filter.toJoinClass(eventInfo.join_status)}}'>{{filter.joinStatus(eventInfo.join_status)}}</view>
   </view>
   <view class='module-title'>[ 基本信息 ]</view>
   <view class='ul'>
-    <view><text>活动地点</text>{{activity.address}}</view>
-    <view><text>报名截止时间</text>{{activity.max}}人</view>
-    <view><text>开始时间</text>{{activity.start_time}}</view>
-    <view><text>结束时间</text>{{activity.end_time}}</view>
+    <view><text>活动地点</text>{{eventInfo.address}}</view>
+    <view><text>报名截止时间</text>{{eventInfo.max}}人</view>
+    <view><text>开始时间</text>{{eventInfo.start_time}}</view>
+    <view><text>结束时间</text>{{eventInfo.end_time}}</view>
   </view>
   <view class='module-title'>[ 活动内容 ]</view>
   <view class='ul'>
-    {{activity.desc}}
+    {{eventInfo.desc}}
     <!-- <import src="/wxParse/wxParse.wxml" />
     <template is="wxParse" data="{{wxParseData:article.nodes}}" /> -->
   </view>
   <view class='module-title'>[ 我的活动状态 ]</view>
   <view class='ul'>
-    <view><text>报名状态</text>{{filter.joinStatus(activity.join_status)}}</view>
-    <view><text>签到状态</text>{{filter.signStatus(activity.sign_status)}}</view>
-    <!-- <view><text>新增活跃</text>{{activity.amount}} / {{activity.time}}</view> -->
+    <view><text>报名状态</text>{{filter.joinStatus(eventInfo.join_status)}}</view>
+    <view><text>签到状态</text>{{filter.signStatus(eventInfo.sign_status)}}</view>
+    <!-- <view><text>新增活跃</text>{{eventInfo.amount}} / {{eventInfo.time}}</view> -->
   </view>
-  <view class='center mt20 padding' wx:if="{{activity.join_status == 0 && volunteer_status == 0}}">
+  <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 0 && volunteer_status == 0}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="signin">成为志愿者</button>
   </view>
-  <view class='center mt20 padding' wx:if="{{activity.join_status == 1 && activity.status == 1}}">
+  <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 1 && eventInfo.status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="apply">加入服务队</button>
   </view>
-  <view class='center mt20 padding' wx:if="{{activity.join_status == 2 && activity.status == 1}}">
+  <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 2 && eventInfo.status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="join">我要报名</button>
+  </view>
+  <view class='center mt20 padding' wx:if="{{activity.join_status == 4 && activity.status == 2 && activity.sign_status == 1}}">
+    <button class='cu-btn bg-orange round shadow w100' bindtap="sign">签到</button>
   </view>
 </view>
 <i-toast id="toast" />

@@ -22,6 +22,7 @@ Page({
     this.setData({
       current: 'tab2'
     })
+    this.queryCurrentActivity()
     this.queryActivity()
   },
 

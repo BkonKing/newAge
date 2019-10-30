@@ -37,5 +37,8 @@
   <view class='center mt20 padding' wx:if="{{activity.join_status == 2 && activity.status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="join">我要报名</button>
   </view>
+  <view class='center mt20 padding' wx:if="{{activity.join_status == 4 && activity.status == 2 && activity.sign_status == 1}}">
+    <button class='cu-btn bg-orange round shadow w100' bindtap="sign">签到</button>
+  </view>
 </view>
 <i-toast id="toast" />

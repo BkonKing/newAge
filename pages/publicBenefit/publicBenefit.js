@@ -2,28 +2,28 @@ const app =  getApp();
 
 Page({
   data: {
-    defaultAvatar: '',
+    current: 'tab2',
     eventList: [],
     myEventList: []
   },
 
   onLoad() {
-    this.setData({
-      defaultAvatar: app.globalData.defaultAvatar
-    })
-    // this.queryCurrentEvent()
+    this.queryCurrentEvent()
     this.queryEvent()
   },
 
   onPullDownRefresh() {
-    // this.queryCurrentEvent()
+    this.setData({
+      current: 'tab2'
+    })
+    this.queryCurrentEvent()
     this.queryEvent()
   },
 
   handleChange({ detail }) {
     this.setData({
       current: detail.key
-    });
+    })
   },
 
   queryEvent() {
