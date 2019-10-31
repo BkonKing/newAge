@@ -36,11 +36,11 @@ Page({
       })
     })
   },
-  // signin() {
-  //   wx.navigateTo({
-  //     url: '../personal/info'
-  //   })
-  // },
+  signin() {
+    wx.navigateTo({
+      url: '../personal/info'
+    })
+  },
   sign() {
     app.request({
       url: '/event/' + this.data.eventId + '/sign',

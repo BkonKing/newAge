@@ -16,8 +16,8 @@
           <view class="overhidden">
             <wxs src="../../utils/filter.wxs" module="filter"></wxs>
             <view class='cu-tag round fl'>{{item.address}}</view>
-            <view class='cu-tag fr {{filter.toActivityClass(item.status)}}'>
-              {{filter.toActivityStatus(item.status)}}
+            <view class='cu-tag fr {{filter.toPublicClass(item.status)}}'>
+              {{filter.toPublicStatus(item.status)}}
             </view>
           </view>
         </view>
@@ -34,8 +34,8 @@
           </view>
           <view class="overhidden">
             <view class='cu-tag round fl'>{{item.address}}</view>
-            <view class='cu-tag fr {{filter.toActivityClass(item.status)}}'>
-              {{filter.toActivityStatus(item.status)}}
+            <view class='cu-tag fr {{filter.toPublicClass(item.status)}}'>
+              {{filter.toPublicStatus(item.status)}}
             </view>
           </view>
         </view>
