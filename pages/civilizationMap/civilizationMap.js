@@ -53,6 +53,11 @@ Page({
               var img = obj.map_type == '1' ? "/static/marker.png" : "/static/hall.png"
               stationList.push({
                 iconPath: img,
+                // callout: {
+                //   content: obj.name,
+                //   padding: 2,
+                //   display: 'ALWAYS'
+                // },
                 id: 0,
                 latitude: lat,
                 longitude: lng,

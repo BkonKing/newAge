@@ -7,16 +7,21 @@
   </view> -->
   <view class="overhidden w100 personal-info">
     <view class="fl">
-      <image class='cu-avatar xl round' src="{{wxUserInfo.avatarUrl || userInfo.avatar}}"></image>
-    </view>
-    <view class="fl">
-      <view class="text-lg">{{wxUserInfo.nickName || userInfo.username}}</view>
-      <view class="text-sm" style='line-height: 22px;margin: 8rpx 0;'>
-        志愿者身份认证
-        <i-icon type="editor" size="22" color="#666" i-class='ml20' bindtap="edit" />
+      <view class="fl margin-right-sm margin-bottom-sm">
+        <image class='cu-avatar xl round' src="{{wxUserInfo.avatarUrl || userInfo.avatar}}" style="margin: 0 auto;display: block;"></image>
       </view>
-      <wxs src="../../utils/filter.wxs" module="filter"></wxs>
-      <view class="text-sm text-grey">{{filter.volunteerStatus(userInfo.volunteer_status)}}</view>
+      <view class="fl">
+        <view class="text-lg">{{wxUserInfo.nickName || userInfo.username}}</view>
+        <view class="text-sm" style='line-height: 22px;margin: 8rpx 0;'>志愿者身份认证</view>
+        <wxs src="../../utils/filter.wxs" module="filter"></wxs>
+        <view class="text-sm text-grey">{{filter.volunteerStatus(userInfo.volunteer_status)}}</view>
+      </view>
+      <view class="w100">
+        <button class="cu-btn round sm" bindtap="edit" style="width: 66%;">
+          <i-icon type="editor" size="14" color="#222" />
+          {{userInfo.volunteer_status == 0 ? '志愿者认证' : '信息修改'}}
+        </button>
+      </view>
     </view>
     <view class="fr center">
       <view class='text-xxl'>{{userInfo.point}}</view>
@@ -38,12 +43,14 @@
         <view class='overhidden mt20'>
           <view class='cu-tag round'>
             <view class='text-gray'>
-              <text class="cuIcon-addressbook lg"></text> {{item.contact_name}}
+              <text class="cuIcon-addressbook lg"></text>
+              {{item.contact_name}}
             </view>
           </view>
           <view class='cu-tag round'>
             <view class='text-gray'>
-              <text class="cuIcon-dianhua lg"></text> {{item.contact_phone}}
+              <text class="cuIcon-dianhua lg"></text>
+              {{item.contact_phone}}
             </view>
           </view>
           <!-- <view class='fr cu-tag {{item.status == 1 ? "bg-orange" : "bg-green"}}' style="border-radius: 7rpx;">
@@ -53,7 +60,9 @@
       </view>
     </block>
     <block wx:if="{{current == 'tab2'}}">
-      <view class="text-lg text-black" style="padding-bottom: 20rpx;" wx:if="{{userInfo.volunteer_status == 0}}">我的点单</view>
+      <view class="text-lg text-black" style="padding-bottom: 20rpx;" wx:if="{{userInfo.volunteer_status == 0}}">
+        我的点单
+      </view>
       <navigator wx:for="{{orderList}}" wx:key="{{item.id}}" url='../orderMeal/orderDetail?id={{item.id}}'>
         <view class='activity-list'>
           <view class='text-lg text-black' style="line-height: 2;">{{item.name}}</view>

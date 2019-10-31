@@ -4,7 +4,7 @@
 <view class="w100 bg-white" style="position:fixed;bottom:0;padding: 20rpx 34rpx 34rpx;">
   <view class="text-sm margin-bottom-sm" style="height: 32rpx;">
     <image class="fl margin-right-xs" src="/static/marker.png" style="width: 32rpx;height: 32rpx;"/>
-    <text class="fl margin-right-sm" >文明服务站</text>
+    <text class="fl margin-right-sm" >实践资源</text>
     <image class="fl margin-right-xs" src="/static/hall.png" style="width: 32rpx;height: 32rpx;"/>
     <text class="fl" >文明实践管理站</text>
   </view>

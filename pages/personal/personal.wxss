@@ -4,7 +4,7 @@ page {
 .personal-info {
   background: #201717;
   color: #706259;
-  padding: 60rpx 20rpx;
+  padding: 60rpx 20rpx 20rpx;
 }
 .personal-info>view {
   margin-right: 20rpx;

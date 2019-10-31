@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "队伍",
+  "navigationBarTitleText": "服务队伍",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "i-input": "../../iview/input/index"
