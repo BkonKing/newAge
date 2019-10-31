@@ -52,7 +52,8 @@ Page({
           $Toast({
             content: '签到成功',
             type: 'success'
-          });
+          })
+          this.queryActivityContent(this.data.activityId)
           // var timeout = setTimeout(() => {
           //   wx.switchTab({
           //     url: '/pages/volunteer/volunteer'

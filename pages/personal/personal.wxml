@@ -35,29 +35,31 @@
   </i-tabs>
   <view class="padding bg-main">
     <block wx:if="{{current == 'tab1'}}">
-      <view class='team-list' wx:for="{{teamList}}" wx:key="{{item.id}}">
-        <view class='user-info'>
-          <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>
-          <text>{{item.team_name}}</text>
-        </view>
-        <view class='overhidden mt20'>
-          <view class='cu-tag round'>
-            <view class='text-gray'>
-              <text class="cuIcon-addressbook lg"></text>
-              {{item.contact_name}}
-            </view>
+      <navigator wx:for="{{teamList}}" wx:key="{{item.id}}" url='../civilizationMap/teamDetail?id={{item.id}}'>
+        <view class='team-list'>
+          <view class='user-info'>
+            <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>
+            <text>{{item.team_name}}</text>
           </view>
-          <view class='cu-tag round'>
-            <view class='text-gray'>
-              <text class="cuIcon-dianhua lg"></text>
-              {{item.contact_phone}}
+          <view class='overhidden mt20'>
+            <view class='cu-tag round'>
+              <view class='text-gray'>
+                <text class="cuIcon-addressbook lg"></text>
+                {{item.contact_name}}
+              </view>
             </view>
+            <view class='cu-tag round'>
+              <view class='text-gray'>
+                <text class="cuIcon-dianhua lg"></text>
+                {{item.contact_phone}}
+              </view>
+            </view>
+            <!-- <view class='fr cu-tag {{item.status == 1 ? "bg-orange" : "bg-green"}}' style="border-radius: 7rpx;">
+              {{item.status == 1 ? '申请中' : '通过'}}
+            </view> -->
           </view>
-          <!-- <view class='fr cu-tag {{item.status == 1 ? "bg-orange" : "bg-green"}}' style="border-radius: 7rpx;">
-            {{item.status == 1 ? '申请中' : '通过'}}
-          </view> -->
         </view>
-      </view>
+      </navigator>
     </block>
     <block wx:if="{{current == 'tab2'}}">
       <view class="text-lg text-black" style="padding-bottom: 20rpx;" wx:if="{{userInfo.volunteer_status == 0}}">

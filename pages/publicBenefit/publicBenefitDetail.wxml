@@ -28,10 +28,10 @@
   <!-- <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 1 && eventInfo.status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="apply">加入服务队</button>
   </view> -->
-  <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 1 && eventInfo.status == 1}}">
+  <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 1 && (eventInfo.status == 1 || eventInfo.status == 5)}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="join">我要报名</button>
   </view>
-  <view class='center mt20 padding' wx:if="{{activity.join_status == 2 && eventInfo.status == 3 && activity.sign_status == 1}}">
+  <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 2 && eventInfo.status == 3 && eventInfo.sign_status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="sign">签到</button>
   </view>
 </view>
