@@ -7,6 +7,17 @@ Page({
     company: undefined,
     address: '',
     town_id: 0,
+    team_id: null,
+    teamList: [
+      ['市民群众队伍','社会组织机构队伍','镇街实践所队伍','区直机关队伍','学校志愿队伍'],
+      [
+        [{
+          name: '11111'
+        },{
+          name: '22222'
+        }]
+      ]
+    ],
     townList: [],
     skillList: [
       {

@@ -69,6 +69,26 @@ Page({
       }
     })
   },
+  signout() {
+    app.request({
+      url: '/activity/' + this.data.activityId + '/signout',
+      method: 'post',
+      success: (data) => {
+        if (data.code == 1) {
+          $Toast({
+            content: '签退成功',
+            type: 'success'
+          })
+          this.queryActivityContent(this.data.activityId)
+        } else {
+          $Toast({
+            content: data.msg,
+            type: 'warning'
+          });
+        }
+      }
+    })
+  },
   apply() {
     app.request({
       url: '/apply',

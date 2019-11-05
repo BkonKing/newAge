@@ -142,6 +142,20 @@ var toBottom = function (isLeader, status, user_id, userId) {
     return 26
   }
 }
+var teamType = function (value) {
+  switch (value) {
+    case 1:
+      return '市民群众队伍';
+    case 2:
+      return '社会组织机构队伍';
+    case 3:
+      return '镇街实践所队伍';
+    case 4:
+      return '区直机关队伍';
+    case 5:
+      return '学校志愿队伍';
+  }
+}
 module.exports = {
   toActivityStatus: toActivityStatus,
   toActivityClass: toActivityClass,
@@ -155,5 +169,6 @@ module.exports = {
   toTeamClass: toTeamClass,
   toJoinClass: toJoinClass,
   toBottom: toBottom,
+  teamType: teamType,
   joinStatus: joinStatus
 }

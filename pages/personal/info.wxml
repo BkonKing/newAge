@@ -3,6 +3,12 @@
     <i-input value="{{ name }}" name="name" title="姓名" autofocus placeholder="请输入姓名" />
     <i-input value="{{ idcard }}" name="idcard" title="身份证" placeholder="请输入身份证号码" />
     <i-input value="{{ phone }}" name="phone" type="number" title="电话" placeholder="请输入联系电话" />
+    <view class="i-cell i-input" style="border-bottom:1px solid #e9eaec;">
+      <view class="i-cell-hd i-input-title">队伍</view>
+      <picker name="team_id" mode="multiSelector" bindchange="bindTeamChange" bindcolumnchange="bindTeamColumnChange" value="{{team_id}}" range="{{teamList}}" range-key="name">
+        <view class="picker">{{teamList[1][team_id].name}}</view>
+      </picker>
+    </view>
     <i-input value="{{ company }}" name="company" title="单位" placeholder="请输入单位名称" />
     <view class="i-cell i-input" style="border-bottom:1px solid #e9eaec;">
       <view class="i-cell-hd i-input-title">所属镇街</view>

@@ -28,10 +28,18 @@
     <view>
       <text>联系电话</text><text style="color: #3171ff;text-decoration: underline;" bindtap='callUp'>{{info.contact_phone}}</text>
     </view>
+    <view>
+      <text>类　　型</text>
+      {{filters.teamType(info.type)}}
+    </view>
+    <view wx:if="{{info.company_id}}">
+      <text>单　　位</text>
+      {{info.company_name}}
+    </view>
   </view>
   <view class="module-title">[ 简介 ]</view>
   <view>{{info.desc}}</view>
-  <view class='center mt20 padding' wx:if="{{info.user_status == 1}}">
+  <view class='center mt20 padding' wx:if="{{info.team_org == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="apply">加入服务队</button>
   </view>
 </view>

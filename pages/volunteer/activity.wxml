@@ -12,7 +12,7 @@
   <view class='ul'>
     <view><text>活动地点</text>{{activity.address}}</view>
     <view><text>报名上限</text>{{activity.max}}人</view>
-    <view><text>服务时长</text>{{activity.time}}分钟</view>
+    <!-- <view><text>服务时长</text>{{activity.time}}分钟</view> -->
     <view><text>开始时间</text>{{activity.start_time}}</view>
     <view><text>结束时间</text>{{activity.end_time}}</view>
   </view>
@@ -39,6 +39,9 @@
   </view>
   <view class='center mt20 padding' wx:if="{{activity.join_status == 4 && activity.status == 2 && activity.sign_status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="sign">签到</button>
+  </view>
+  <view class='center mt20 padding' wx:if="{{activity.join_status == 4 && activity.status == 2 && activity.sign_status == 2 && activity.signout_status == 1}}">
+    <button class='cu-btn bg-orange round shadow w100' bindtap="signout">签退</button>
   </view>
 </view>
 <i-toast id="toast" />
