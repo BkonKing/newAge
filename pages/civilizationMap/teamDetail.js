@@ -3,11 +3,13 @@ const { $Toast } = require('../../iview/base/index');
 Page({
   data: {
     info: {},
+    team_org: 0,
     teamId: ''
   },
   onLoad(options) {
     this.setData({
-      teamId: options.id
+      teamId: options.id,
+      team_org: app.globalData.userInfo.team_org
     })
     this.queryTeamDetail(options.id)
   },

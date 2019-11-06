@@ -5,8 +5,9 @@
     <i-input value="{{ phone }}" name="phone" type="number" title="电话" placeholder="请输入联系电话" />
     <view class="i-cell i-input" style="border-bottom:1px solid #e9eaec;">
       <view class="i-cell-hd i-input-title">队伍</view>
-      <picker name="team_id" mode="multiSelector" bindchange="bindTeamChange" bindcolumnchange="bindTeamColumnChange" value="{{team_id}}" range="{{teamList}}" range-key="name">
-        <view class="picker">{{teamList[1][team_id].name}}</view>
+      <picker name="team_id" mode="multiSelector" disabled="{{volunteer_status == 1}}" bindchange="bindTeamChange" bindcolumnchange="bindTeamColumnChange" value="{{team_id}}" range="{{teamMulList}}" range-key="name">
+        <view class="picker" wx:if="{{teamMulList[1][team_id[1]].name}}">{{teamMulList[1][team_id[1]].name}}</view>
+        <view class="picker" wx:else>请选择队伍</view>
       </picker>
     </view>
     <i-input value="{{ company }}" name="company" title="单位" placeholder="请输入单位名称" />

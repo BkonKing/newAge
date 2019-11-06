@@ -39,7 +39,7 @@
   </view>
   <view class="module-title">[ 简介 ]</view>
   <view>{{info.desc}}</view>
-  <view class='center mt20 padding' wx:if="{{info.team_org == 1}}">
+  <view class='center mt20 padding' wx:if="{{team_org == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="apply">加入服务队</button>
   </view>
 </view>

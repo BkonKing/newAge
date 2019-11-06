@@ -1,22 +1,28 @@
 const app = getApp();
 Page({
   data: {
+    volunteer_status: null,
     name: '',
     idcard: undefined,
     phone: undefined,
     company: undefined,
     address: '',
     town_id: 0,
-    team_id: null,
-    teamList: [
-      ['市民群众队伍','社会组织机构队伍','镇街实践所队伍','区直机关队伍','学校志愿队伍'],
-      [
-        [{
-          name: '11111'
-        },{
-          name: '22222'
-        }]
-      ]
+    team_id: [0, 0],
+    teamList: [],
+    teamMulList: [
+      [{
+        name: '市民群众队伍'
+      }, {
+        name: '社会组织机构队伍'
+      }, {
+        name: '镇街实践所队伍'
+      }, {
+        name: '区直机关队伍'
+      }, {
+        name: '学校志愿队伍'
+      }],
+      []
     ],
     townList: [],
     skillList: [
@@ -78,6 +84,9 @@ Page({
     ]
   },
   onLoad() {
+    this.setData({
+      volunteer_status: app.globalData.userInfo.volunteer_status
+    })
     this.queryTown()
   },
   formSubmit(e) {
@@ -92,7 +101,15 @@ Page({
       })
       return false;
     }
+    if (!this.data.teamMulList[1][this.data.team_id[1]]) {
+      wx.showModal({
+        content: "请选择队伍",
+        showCancel: false,
+      })
+      return false;
+    }
     params.town_id = this.data.townList[this.data.town_id].id
+    params.team_id = this.data.teamMulList[1][this.data.team_id[1]].id
     app.request({
       url: '/volunteer',
       method: 'post',
@@ -120,7 +137,7 @@ Page({
       }
     })
   },
-  isPhone: function(value) {
+  isPhone: function (value) {
     var isMob = /^((\+?86)|(\(\+86\)))?(1[3456789][0123456789]{9})$/
     if (isMob.test(value)) {
       return true
@@ -131,15 +148,64 @@ Page({
     })
     return false
   },
-  bindPickerChange: function(e) {
+  bindPickerChange: function (e) {
     this.setData({
       town_id: e.detail.value
+    })
+  },
+  bindTeamChange(e) {
+    this.setData({
+      team_id: e.detail.value
+    })
+  },
+  bindTeamColumnChange(e) {
+    var data = {
+      teamMulList: this.data.teamMulList,
+      team_id: this.data.team_id || []
+    }
+    data.team_id[e.detail.column] = e.detail.value
+    data.teamMulList[1] = this.data.teamList[e.detail.value]
+    data.team_id[1] = 0
+    this.setData(data)
+  },
+  queryTown() {
+    app.request({
+      url: '/town',
+      method: 'get',
+      success: (data) => {
+        if (data.code == 1) {
+          this.setData({
+            townList: data.data.data
+          })
+          this.queryTeamList()
+        }
+      }
+    })
+  },
+  queryTeamList() {
+    app.request({
+      url: '/team?all=true',
+      method: 'get',
+      success: (data) => {
+        if (data.code == 1) {
+          var arr = [[], [], [], [], [], []]
+          data.data.data.forEach((obj) => {
+            arr[parseInt(obj.type - 1)].push(obj)
+          })
+          this.setData({
+            teamList: arr,
+            ['teamMulList[1]']: arr[0]
+          })
+          this.queryCurrentVolunteer()
+        }
+      }
     })
   },
   queryCurrentVolunteer() {
     app.request({
       url: '/current/volunteer',
       method: 'get',
+      showLoading: true,
       success: (data) => {
         if (data.code == 1) {
           var skillList = this.data.skillList
@@ -154,6 +220,17 @@ Page({
               return true
             }
           })
+          const typeIndex = parseInt(data.data.team_type)-1
+          this.setData({
+            ['teamMulList[1]']: this.data.teamList[typeIndex]
+          })
+          var team_id = [typeIndex]
+          this.data.teamList[typeIndex].some((obj, index) => {
+            if (obj.id == data.data.team_id) {
+              team_id.push(index)
+              return true
+            }
+          })
           this.setData({
             name: data.data.name,
             idcard: data.data.idcard,
@@ -161,22 +238,9 @@ Page({
             company: data.data.company,
             address: data.data.address,
             town_id: town_id,
+            team_id: team_id,
             skillList: skillList
           })
-        }
-      }
-    })
-  },
-  queryTown() {
-    app.request({
-      url: '/town',
-      method: 'get',
-      success: (data) => {
-        if (data.code == 1) {
-          this.setData({
-            townList: data.data.data
-          })
-          this.queryCurrentVolunteer()
         }
       }
     })
