@@ -35,7 +35,7 @@
   </i-tabs>
   <view class="padding bg-main">
     <block wx:if="{{current == 'tab1'}}">
-      <navigator wx:for="{{teamList}}" wx:key="{{item.id}}" url='../civilizationMap/teamDetail?id={{item.id}}'>
+      <navigator wx:for="{{teamList}}" wx:key="{{item.id}}" url='../civilizationMap/teamDetail?id={{item.team_id}}'>
         <view class='team-list'>
           <view class='user-info'>
             <image class='cu-avatar round' src="{{item.avatar || defaultAvatar}}"></image>

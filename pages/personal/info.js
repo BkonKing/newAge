@@ -80,6 +80,9 @@ Page({
       }, {
         id: 18,
         name: '法律维权',
+      }, {
+        id: 19,
+        name: '其他技能',
       }
     ]
   },
@@ -159,14 +162,21 @@ Page({
     })
   },
   bindTeamColumnChange(e) {
-    var data = {
-      teamMulList: this.data.teamMulList,
+    var teamMulList =  {
+      teamMulList: this.data.teamMulList
+    }
+    var team_id = {
       team_id: this.data.team_id || []
     }
-    data.team_id[e.detail.column] = e.detail.value
-    data.teamMulList[1] = this.data.teamList[e.detail.value]
-    data.team_id[1] = 0
-    this.setData(data)
+    team_id.team_id[e.detail.column] = e.detail.value
+    if (e.detail.column == 0) {
+      teamMulList.teamMulList[1] = this.data.teamList[e.detail.value]
+      team_id.team_id[1] = 0
+      this.setData(teamMulList)
+      this.setData(team_id)
+    } else {
+      this.setData(team_id)
+    }
   },
   queryTown() {
     app.request({
@@ -220,17 +230,21 @@ Page({
               return true
             }
           })
-          const typeIndex = parseInt(data.data.team_type)-1
-          this.setData({
-            ['teamMulList[1]']: this.data.teamList[typeIndex]
-          })
-          var team_id = [typeIndex]
-          this.data.teamList[typeIndex].some((obj, index) => {
-            if (obj.id == data.data.team_id) {
-              team_id.push(index)
-              return true
-            }
-          })
+          if (data.data.team_type == '0') {
+            var team_id = [0,0]
+          } else {
+            const typeIndex = parseInt(data.data.team_type) - 1
+            this.setData({
+              ['teamMulList[1]']: this.data.teamList[typeIndex]
+            })
+            var team_id = [typeIndex]
+            this.data.teamList[typeIndex].some((obj, index) => {
+              if (obj.id == data.data.team_id) {
+                team_id.push(index)
+                return true
+              }
+            })
+          }
           this.setData({
             name: data.data.name,
             idcard: data.data.idcard,
