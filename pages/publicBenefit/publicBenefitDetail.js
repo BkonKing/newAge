@@ -5,6 +5,9 @@ Page({
   data: {
     eventInfo: {},
     eventId: '',
+    visible: false,
+    name: '',
+    phone: '',
     volunteer_status: null
   },
   onLoad(options) {
@@ -89,10 +92,27 @@ Page({
   //     }
   //   })
   // },
-  join() {
+  toJoin() {
+    this.setData({
+      visible: true
+    })
+  },
+  confirmJoin(e) {
+    var params = JSON.parse(JSON.stringify(e.detail.value))
+    if (!params.name) {
+      this.showModal('请输入姓名')
+      return false;
+    } else if (!params.phone) {
+      this.showModal('请输入电话号码')
+      return false;
+    }
+    this.join(params)
+  },
+  join(params) {
     app.request({
       url: '/event/' + this.data.eventId + '/join',
       method: 'post',
+      data: params,
       success: (data) => {
         if (data.code == 1) {
           $Toast({
@@ -117,6 +137,17 @@ Page({
           });
         }
       }
+    })
+  },
+  bindViewTap() {
+    this.setData({
+      visible: false
+    })
+  },
+  showModal(msg) {
+    wx.showModal({
+      content: msg,
+      showCancel: false,
     })
   }
 })

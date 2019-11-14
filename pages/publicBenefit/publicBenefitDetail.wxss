@@ -10,3 +10,6 @@
 .module-title {
   padding: 30rpx 0;
 }
+.join-input::after {
+  border-bottom: 1px solid #fff !important;
+}

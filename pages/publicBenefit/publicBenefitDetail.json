@@ -2,6 +2,8 @@
   "navigationBarTitleText": "公益活动",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "i-toast": "../../iview/toast/index"
+    "i-toast": "../../iview/toast/index",
+    "i-input": "../../iview/input/index",
+    "i-modal": "../../iview/modal/index"
   }
 }

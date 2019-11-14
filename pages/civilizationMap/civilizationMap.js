@@ -61,8 +61,8 @@ Page({
                 id: 0,
                 latitude: lat,
                 longitude: lng,
-                width: 16,
-                height: 16,
+                width: '32rpx',
+                height: '32rpx',
                 zIndex: 999
               })
             }

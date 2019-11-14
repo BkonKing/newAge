@@ -1,5 +1,5 @@
-const app = getApp();
-var dateTimePicker = require('../../utils/dateTimePicker.js');
+const app = getApp()
+var dateTimePicker = require('../../utils/dateTimePicker.js')
 Page({
   data: {
     name: '',
@@ -16,7 +16,10 @@ Page({
     end_dateTime: null,
     startYear: 2019,
     endYear: 2050,
-    orders_id: ''
+    orders_id: '',
+    lat: undefined,
+    lng: undefined,
+    limits: '', // 签到范围
   },
   onLoad(options) {
     this.setData({
@@ -35,6 +38,21 @@ Page({
       dateTimeArray: obj.dateTimeArray
     })
     this.queryCategory()
+  },
+  // 打开地图选择位置
+  moveToLocation: function () {
+    wx.chooseLocation({
+      success: (res) => {  
+        this.setData({
+          address: res.name,
+          lat: res.latitude,
+          lng: res.longitude
+        })
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
   },
   changeStartDateTime(e) {
     this.setData({ start_dateTime: e.detail.value });
@@ -117,6 +135,8 @@ Page({
           if (this.data.orders_id) {
             params.orders_id = this.data.orders_id
           }
+          params.lat = this.data.lat
+          params.lng = this.data.lng
           this.submit(params)
         } else if (res.cancel) {
           console.log('用户点击取消')

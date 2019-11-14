@@ -6,15 +6,45 @@ Page({
     activity: {},
     activityId: '',
     defaultAvatar: '',
-    volunteer_status: null
+    volunteer_status: null,
+    lng: undefined,
+    lat: undefined
   },
   onLoad(options) {
+    this.location()
     this.setData({
       activityId: options.id,
       defaultAvatar: app.globalData.defaultAvatar,
       volunteer_status: app.globalData.userInfo.volunteer_status,
     })
     this.queryActivityContent(options.id)
+  },
+  location() {
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userLocation']) {
+          this.getLocation()
+        } else {
+          wx.authorize({
+            scope: "scope.userLocation",
+            success: (res) => {
+              this.getLocation()
+            }
+          })
+        }
+      }
+    })
+  },
+  getLocation() {
+    wx.getLocation({
+      type: 'gcj02',
+      success: res => {
+        this.setData({
+          lat: res.latitude,
+          lng: res.longitude
+        })
+      }
+    })
   },
   onPullDownRefresh() {
     this.queryActivityContent(this.data.activityId).then(() => {
@@ -47,6 +77,10 @@ Page({
     app.request({
       url: '/activity/' + this.data.activityId + '/sign',
       method: 'post',
+      data: {
+        lng: this.data.lng,
+        lat: this.data.lat
+      },
       success: (data) => {
         if (data.code == 1) {
           $Toast({
@@ -73,6 +107,10 @@ Page({
     app.request({
       url: '/activity/' + this.data.activityId + '/signout',
       method: 'post',
+      data: {
+        lng: this.data.lng,
+        lat: this.data.lat
+      },
       success: (data) => {
         if (data.code == 1) {
           $Toast({

@@ -94,16 +94,23 @@ Page({
   },
   formSubmit(e) {
     var params = JSON.parse(JSON.stringify(e.detail.value))
-    if (!this.isPhone(params.phone)) {
-      return false;
-    }
-    if (params.idcard.length != 18) {
+    if (!params.name) {
       wx.showModal({
-        content: "请输入18位身份号码",
+        content: "请输入姓名",
         showCancel: false,
       })
       return false;
     }
+    if (!this.isPhone(params.phone)) {
+      return false;
+    }
+    // if (params.idcard.length != 18) {
+    //   wx.showModal({
+    //     content: "请输入18位身份号码",
+    //     showCancel: false,
+    //   })
+    //   return false;
+    // }
     if (!this.data.teamMulList[1][this.data.team_id[1]]) {
       wx.showModal({
         content: "请选择队伍",

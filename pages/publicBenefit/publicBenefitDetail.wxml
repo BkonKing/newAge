@@ -28,11 +28,23 @@
   <!-- <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 1 && eventInfo.status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="apply">加入服务队</button>
   </view> -->
-  <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 1 && (eventInfo.status == 1 || eventInfo.status == 5)}}">
-    <button class='cu-btn bg-orange round shadow w100' bindtap="join">我要报名</button>
+  <view class='center mt20 padding'>
+    <button class='cu-btn bg-orange round shadow w100' bindtap="toJoin">我要报名</button>
   </view>
   <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 2 && eventInfo.status == 3 && eventInfo.sign_status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="sign">签到</button>
   </view>
 </view>
+<i-modal visible="{{ visible }}" show-ok="{{false}}" show-cancel="{{false}}">
+  <form bindsubmit="confirmJoin">
+    <view style="padding: 0 20rpx 20rpx;">
+      <i-input i-class="join-input" value="{{ name }}" name="name" title="姓名" placeholder="请输入姓名" />
+      <i-input i-class="join-input" value="{{ phone }}" name="phone" title="电话" placeholder="请输入电话号码" />
+    </view>
+    <view class="dialog-footer" style="font-size: 14px;">
+      <button class="text-grey" bindtap="bindViewTap">取消</button>
+      <button class="text-green" form-type="submit">确定</button>
+    </view>
+  </form>
+</i-modal>
 <i-toast id="toast" />

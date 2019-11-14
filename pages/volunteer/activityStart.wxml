@@ -1,8 +1,9 @@
 <form bindsubmit="formSubmit">
   <view>
     <i-input value="{{ name }}" name="name" title="标题" autofocus placeholder="请输入标题" />
-    <i-input value="{{ address }}" name="address" title="地址" placeholder="请输入地址" />
+    <i-input value="{{ address }}" name="address" title="地址" placeholder="请输入地址" bindtap="moveToLocation" />
     <!-- <i-input value="{{ time }}" name="time" title="服务时长" type="number" placeholder="请输入服务时长（分钟）" /> -->
+    <i-input value="{{ limits }}" name="limits" title="签到范围" type="number" placeholder="请输入签到范围（米）" />
     <i-input value="{{ max }}" name="max" title="报名上限" type="number" placeholder="请输入报名上限" />
     <view class="i-cell i-input">
       <view class="i-cell-hd i-input-title">开始时间</view>
