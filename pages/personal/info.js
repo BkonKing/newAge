@@ -8,22 +8,26 @@ Page({
     company: undefined,
     address: '',
     town_id: 0,
-    team_id: [0, 0],
+    team_type_id: 0,
+    team_id: 0,
     teamList: [],
-    teamMulList: [
-      [{
-        name: '市民群众队伍'
-      }, {
-        name: '社会组织机构队伍'
-      }, {
-        name: '镇街实践所队伍'
-      }, {
-        name: '区直机关队伍'
-      }, {
-        name: '学校志愿队伍'
-      }],
-      []
-    ],
+    teamTypeList: [{
+      id: 4,
+      name: '区直机关队伍'
+    }, {
+      id: 3,
+      name: '镇街实践所队伍'
+    },  {
+      id: 5,
+      name: '学校志愿队伍'
+    }, {
+      id: 2,
+      name: '社会组织机构队伍'
+    }, {
+      id: 1,
+      name: '市民群众队伍'
+    }],
+    teamMulList: [],
     townList: [],
     skillList: [
       {
@@ -111,7 +115,8 @@ Page({
     //   })
     //   return false;
     // }
-    if (!this.data.teamMulList[1][this.data.team_id[1]]) {
+    const teamId = this.data.teamMulList[this.data.team_id].id
+    if (!teamId) {
       wx.showModal({
         content: "请选择队伍",
         showCancel: false,
@@ -119,7 +124,7 @@ Page({
       return false;
     }
     params.town_id = this.data.townList[this.data.town_id].id
-    params.team_id = this.data.teamMulList[1][this.data.team_id[1]].id
+    params.team_id = teamId
     app.request({
       url: '/volunteer',
       method: 'post',
@@ -168,22 +173,14 @@ Page({
       team_id: e.detail.value
     })
   },
-  bindTeamColumnChange(e) {
-    var teamMulList =  {
-      teamMulList: this.data.teamMulList
-    }
-    var team_id = {
-      team_id: this.data.team_id || []
-    }
-    team_id.team_id[e.detail.column] = e.detail.value
-    if (e.detail.column == 0) {
-      teamMulList.teamMulList[1] = this.data.teamList[e.detail.value]
-      team_id.team_id[1] = 0
-      this.setData(teamMulList)
-      this.setData(team_id)
-    } else {
-      this.setData(team_id)
-    }
+  bindTeamTypeChange(e) {
+    const value = e.detail.value
+    var teamMulList = this.data.teamList[parseInt(this.data.teamTypeList[value].id) - 1]
+    this.setData({
+      team_type_id: value,
+      teamMulList: teamMulList,
+      team_id: 0
+    })
   },
   queryTown() {
     app.request({
@@ -205,13 +202,15 @@ Page({
       method: 'get',
       success: (data) => {
         if (data.code == 1) {
-          var arr = [[], [], [], [], [], []]
+          var arr = [[], [], [], [], []]
           data.data.data.forEach((obj) => {
-            arr[parseInt(obj.type - 1)].push(obj)
+            if (typeof obj == 'object' && obj) {
+              arr[parseInt(obj.type - 1)].push(obj)
+            }
           })
           this.setData({
             teamList: arr,
-            ['teamMulList[1]']: arr[0]
+            teamMulList: arr[3]
           })
           this.queryCurrentVolunteer()
         }
@@ -237,17 +236,22 @@ Page({
               return true
             }
           })
-          if (data.data.team_type == '0') {
-            var team_id = [0,0]
-          } else {
-            const typeIndex = parseInt(data.data.team_type) - 1
-            this.setData({
-              ['teamMulList[1]']: this.data.teamList[typeIndex]
+          if (data.data.team_type != '0') {
+            const typeIndex = parseInt(data.data.team_type)
+            this.data.teamTypeList.some((obj, index) => {
+              if (obj.id == typeIndex) {
+                this.setData({
+                  team_type_id: index
+                })
+                return true
+              }
             })
-            var team_id = [typeIndex]
-            this.data.teamList[typeIndex].some((obj, index) => {
+            this.data.teamList[typeIndex - 1].some((obj, index) => {
               if (obj.id == data.data.team_id) {
-                team_id.push(index)
+                this.setData({
+                  team_id: index,
+                  teamMulList: this.data.teamList[typeIndex - 1]
+                })
                 return true
               }
             })
@@ -259,7 +263,6 @@ Page({
             company: data.data.company,
             address: data.data.address,
             town_id: town_id,
-            team_id: team_id,
             skillList: skillList
           })
         }

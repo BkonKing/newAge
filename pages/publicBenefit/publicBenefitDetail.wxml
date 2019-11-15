@@ -16,26 +16,34 @@
     <import src="/wxParse/wxParse.wxml" />
     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
-  <view class='module-title'>[ 我的活动状态 ]</view>
-  <view class='ul'>
-    <view><text>报名状态</text>{{eventInfo.join_status == 1 ? '未报名' : '已报名'}}</view>
-    <view><text>签到状态</text>{{eventInfo.sign_status == 1 ? '未签到' : '已签到'}}</view>
+  <block wx:if="{{eventInfo.join_status == 1 && (eventInfo.status == 1 || eventInfo.status == 5)}}">
+    <view class='module-title'>[ 报名信息 ]</view>
+    <form bindsubmit="confirmJoin">
+      <i-input i-class="join-input" value="{{ name }}" name="name" title="报名人" placeholder="请输入姓名" />
+      <i-input i-class="join-input" value="{{ phone }}" name="phone" title="联系电话" placeholder="请输入电话号码" />
+      <button class='cu-btn bg-orange round shadow w100' form-type="submit">我要报名</button>
+    </form>
+  </block>
+  <!-- <view class='module-title'>[ 我的活动状态 ]</view> -->
+  <!-- <view class='ul'> -->
+    <!-- <view><text>报名状态</text>{{eventInfo.join_status == 1 ? '未报名' : '已报名'}}</view>
+    <view><text>签到状态</text>{{eventInfo.sign_status == 1 ? '未签到' : '已签到'}}</view> -->
     <!-- <view><text>新增活跃</text>{{eventInfo.amount}} / {{eventInfo.time}}</view> -->
-  </view>
+  <!-- </view> -->
   <!-- <view class='center mt20 padding' wx:if="{{volunteer_status == 0}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="signin">成为志愿者</button>
   </view> -->
   <!-- <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 1 && eventInfo.status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="apply">加入服务队</button>
   </view> -->
-  <view class='center mt20 padding'>
-    <button class='cu-btn bg-orange round shadow w100' bindtap="toJoin">我要报名</button>
-  </view>
-  <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 2 && eventInfo.status == 3 && eventInfo.sign_status == 1}}">
+  <!-- <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 1 && (eventInfo.status == 1 || eventInfo.status == 5)}}">
+    <button class='cu-btn bg-orange round shadow w100' bindtap="confirmJoin">我要报名</button>
+  </view> -->
+  <!-- <view class='center mt20 padding' wx:if="{{eventInfo.join_status == 2 && eventInfo.status == 3 && eventInfo.sign_status == 1}}">
     <button class='cu-btn bg-orange round shadow w100' bindtap="sign">签到</button>
-  </view>
+  </view> -->
 </view>
-<i-modal visible="{{ visible }}" show-ok="{{false}}" show-cancel="{{false}}">
+<!-- <i-modal visible="{{ visible }}" show-ok="{{false}}" show-cancel="{{false}}">
   <form bindsubmit="confirmJoin">
     <view style="padding: 0 20rpx 20rpx;">
       <i-input i-class="join-input" value="{{ name }}" name="name" title="姓名" placeholder="请输入姓名" />
@@ -46,5 +54,5 @@
       <button class="text-green" form-type="submit">确定</button>
     </view>
   </form>
-</i-modal>
+</i-modal> -->
 <i-toast id="toast" />

@@ -2,8 +2,8 @@
 <view class="main-index">
   <i-modal visible="{{ visible }}" show-ok="{{false}}" show-cancel="{{false}}">
     <view style="padding: 0 20rpx;">
-      <view class="text-black text-bold text-left" style="font-size: 36px;">欢迎来到荔城文明实践</view>
-      <view class="text-left mt20 mb20" style="font-size: 30px;">请授权登录，获取完整的体验</view>
+      <view class="text-black text-bold text-left" style="font-size: 36rpx;">欢迎来到荔城文明实践</view>
+      <view class="text-left mt20 mb20" style="font-size: 30rpx;">请授权登录，获取完整的体验</view>
     </view>
     <view class="dialog-footer" style="font-size: 14px;">
       <button class="text-grey" bindtap="bindViewTap">取消</button>

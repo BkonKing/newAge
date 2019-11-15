@@ -3,8 +3,8 @@ page {
 }
 .hall-list-li {
   background: #fff;
-  height: 200rpx;
-  padding: 20rpx;
+  height: 204rpx;
+  padding: 20rpx 20rpx 0;
   border-radius: 13rpx;
 }
 

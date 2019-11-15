@@ -11,23 +11,24 @@ Page({
     this.setData({
       volunteer_status: app.globalData.userInfo.volunteer_status
     })
+    this.getLocation()
+  },
+  getLocation() {
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userLocation']) {
-          this.getLocation()
+          this.queryStation()
         } else {
           wx.authorize({
             scope: "scope.userLocation",
             success: (res) => {
-              this.getLocation()
+              this.queryStation()
             }
           })
         }
       }
     })
-  },
-  getLocation() {
-    this.queryStation()
+    // this.queryStation()
     // wx.getLocation({
     //   type: 'gcj02',
     //   success: res => {
@@ -46,19 +47,19 @@ Page({
       success: (data) => {
         if (data.code == 1) {
           var stationList = []
-          data.data.data.forEach((obj) => {
+          data.data.data.forEach((obj, index) => {
             var lat = parseFloat(obj.lat)
             var lng = parseFloat(obj.lng)
             if (lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180) {
-              var img = obj.map_type == '1' ? "/static/marker.png" : "/static/hall.png"
+              var img = obj.map_type == '2' ? "/static/marker.png" : "/static/hall.png"
               stationList.push({
                 iconPath: img,
                 // callout: {
-                //   content: obj.name,
+                //   content: index,
                 //   padding: 2,
                 //   display: 'ALWAYS'
                 // },
-                id: 0,
+                id: index,
                 latitude: lat,
                 longitude: lng,
                 width: '32rpx',
@@ -70,9 +71,13 @@ Page({
           this.setData({
             markers: stationList
           })
+          wx.stopPullDownRefresh()
         }
       }
     })
+  },
+  onPullDownRefresh() {
+    this.getLocation()
   },
   markertap(e) {
     // console.log(e.markerId)

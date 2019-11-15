@@ -99,13 +99,13 @@ Page({
   },
   confirmJoin(e) {
     var params = JSON.parse(JSON.stringify(e.detail.value))
-    if (!params.name) {
-      this.showModal('请输入姓名')
-      return false;
-    } else if (!params.phone) {
-      this.showModal('请输入电话号码')
-      return false;
-    }
+    // if (!params.name) {
+    //   this.showModal('请输入姓名')
+    //   return false;
+    // } else if (!params.phone) {
+    //   this.showModal('请输入电话号码')
+    //   return false;
+    // }
     this.join(params)
   },
   join(params) {

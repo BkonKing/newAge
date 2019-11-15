@@ -4,10 +4,17 @@
     <i-input value="{{ idcard }}" name="idcard" title="身份证" placeholder="请输入身份证号码" />
     <i-input value="{{ phone }}" name="phone" type="number" title="电话" placeholder="请输入联系电话" />
     <view class="i-cell i-input" style="border-bottom:1px solid #e9eaec;">
+      <view class="i-cell-hd i-input-title">队伍类型</view>
+      <picker name="team_type_id" disabled="{{volunteer_status == 1}}" bindchange="bindTeamTypeChange" value="{{team_type_id}}" range="{{teamTypeList}}" range-key="name">
+        <view class="picker" wx:if="{{teamTypeList[team_type_id].name}}">{{teamTypeList[team_type_id].name}}</view>
+        <view class="picker" wx:else>请选择队伍类型</view>
+      </picker>
+    </view>
+    <view class="i-cell i-input" style="border-bottom:1px solid #e9eaec;">
       <view class="i-cell-hd i-input-title">队伍</view>
-      <picker name="team_id" mode="multiSelector" disabled="{{volunteer_status == 1}}" bindchange="bindTeamChange" bindcolumnchange="bindTeamColumnChange" value="{{team_id}}" range="{{teamMulList}}" range-key="name">
-        <view class="picker" wx:if="{{teamMulList[1][team_id[1]].name}}">{{teamMulList[1][team_id[1]].name}}</view>
-        <view class="picker" wx:else>请选择队伍</view>
+      <picker name="team_id" disabled="{{volunteer_status == 1}}" bindchange="bindTeamChange" value="{{team_id}}" range="{{teamMulList}}" range-key="name">
+        <view class="picker" wx:if="{{teamMulList[team_id].name}}">{{teamMulList[team_id].name}}</view>
+        <view class="picker" wx:else>请先选择类型再选择队伍</view>
       </picker>
     </view>
     <i-input value="{{ company }}" name="company" title="单位" placeholder="请输入单位名称" />
