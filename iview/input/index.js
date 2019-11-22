@@ -12,6 +12,9 @@ Component({
             type: String,
             value: 'text'
         },
+        name: {
+            type: String
+        },
         disabled: {
             type: Boolean,
             value: false
