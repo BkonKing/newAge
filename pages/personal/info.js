@@ -91,7 +91,7 @@ Page({
     ]
   },
   onLoad() {
-    console.log(111)
+    console.log(33333)
     this.setData({
       volunteer_status: app.globalData.userInfo.volunteer_status
     })

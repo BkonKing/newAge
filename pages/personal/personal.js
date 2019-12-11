@@ -11,6 +11,7 @@ Page({
     volunteer: {}
   },
   onLoad() {
+    console.log(44444);
     // this.draw('runCanvas', 'runCanvas1', 20, 3000)
     this.toLoad()
   },
