@@ -4,6 +4,7 @@ App({
     // this.getUser()
   },
   request: function (params) {
+    console.log(22222);
     if (params.showLoading) {
       wx.showLoading()
     }

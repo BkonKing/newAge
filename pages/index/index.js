@@ -16,7 +16,7 @@ Page({
     })
   },
   onLoad: function () {
-    console.log('`13123123`');
+    console.log('asdfasdfadfasdf');
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
